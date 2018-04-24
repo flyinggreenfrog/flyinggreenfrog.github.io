@@ -1,3 +1,17 @@
 ---
+layout: default
+title: Home
 ---
-= Hello world
+## Shell
+
+~~~ sh
+# cmd
+~~~
+
+## File
+
+~~~ text
+#!/bin/bash
+# ~/myfile.sh
+file
+~~~

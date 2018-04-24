@@ -1,0 +1,7 @@
+## Site settings
+title: Peter Hoffmann
+description: >-
+  flyinggreenfrog
+
+## Build settings
+markdown: kramdown
