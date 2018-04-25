@@ -27,11 +27,11 @@ a[href^="http://www.flyinggreenfrog.de"] {
     background:none;
     padding-right:0px;
 }
-a[href="http://validator.w3.org/check?uri=referer"] {
+a[href^="http://validator.w3.org/check"] {
     background:none;
     padding-right:0px;
 }
-a[href="http://jigsaw.w3.org/css-validator/check/referer"],a[href="http://jigsaw.w3.org/css-validator/validator?uri=referer"] {
+a[href^="http://jigsaw.w3.org/css-validator"] {
     background:none;
     padding-right:0px;
 }
