@@ -1,8 +1,8 @@
     <ul id="navigation">
-      {%- assign navigation_pages = site.html_pages | sort: "navigation_order" -%}
-      {%- for p in navigation_pages %}
-      {% if p.navigation_order -%}
-        <li><a href="{{ p.url }}" {% if p.url == page.url %}class="current"{% endif  %}>{{ p.title }}</a></li>
+      {%- assign _navigation-pages = site.html_pages | sort: "navigation-order" -%}
+      {%- for _page in _navigation-pages %}
+      {% if _page.navigation-order -%}
+        <li><a href="{{ _page.url }}" {% if _page.url == page.url %}class="current"{% endif  %}>{{ _page.title }}</a></li>
         {%- endif -%}
       {%- endfor %}
     </ul>

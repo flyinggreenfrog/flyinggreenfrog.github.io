@@ -1,18 +1,8 @@
 ---
-layout: default
 title: Home
-navigation_order: 1
+last-changed: (2018-05-01)
+navigation-order: 1
 ---
-## Shell
+## Flyinggreenfrog
 
-~~~ sh
-# cmd
-~~~
-
-## File
-
-~~~ text
-#!/bin/bash
-# ~/myfile.sh
-file
-~~~
+You find here some notes, tipps and links.
