@@ -1,7 +1,7 @@
 ---
 title: Impressum
 last-changed: (2018-05-02)
-layout: default-de
+layout: de
 navigation-order: 100
 ---
 <p>Angaben gemäß § 5 TMG:<br><br>
