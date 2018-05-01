@@ -3,6 +3,13 @@ title: Peter Hoffmann
 description: >-
   flyinggreenfrog
 knowledgebase-categories: [Linux, Network, Programming, Security, Systemsmanagement, Technologies]
+defaults:
+  -
+    scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "en"
 
 ## Build settings
 markdown: kramdown
