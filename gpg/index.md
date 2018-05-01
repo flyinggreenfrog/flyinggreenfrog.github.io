@@ -1,6 +1,6 @@
 ---
 title: GPG
-last-changed: (2018-05-02)
+last-changed: <time>2018-05-02</time>
 navigation-order: 99
 ---
 ## Public keys

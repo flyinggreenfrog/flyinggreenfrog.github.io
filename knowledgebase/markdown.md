@@ -1,6 +1,6 @@
 ---
 title: Markdown
-last-changed: (2018-05-01)
+last-changed: <time>2018-05-02</time>
 knowledgebase: true
 categories: [Linux]
 ---
@@ -11,5 +11,5 @@ Markdown
 
 ## Links
 
-* [Markdown](https://daringfireball.net/projects/markdown) <time>(2018-05-01)</time>
-* [Github: Mastering Markdown](https://guides.github.com/features/mastering-markdown) <time>(2018-05-01)</time>
+* [Markdown](https://daringfireball.net/projects/markdown) <time>2018-05-01</time>
+* [Github: Mastering Markdown](https://guides.github.com/features/mastering-markdown) <time>2018-05-01</time>

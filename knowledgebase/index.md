@@ -1,6 +1,6 @@
 ---
 title: Knowledgebase
-last-changed: (2018-05-02)
+last-changed: <time>2018-05-02</time>
 navigation-order: 10
 ---
 {%- for site-category in site.knowledgebase-categories -%}

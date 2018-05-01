@@ -1,6 +1,6 @@
 ---
 title: Impressum
-last-changed: (2018-05-02)
+last-changed: <time>2018-05-02</time>
 layout: de
 navigation-order: 100
 ---
