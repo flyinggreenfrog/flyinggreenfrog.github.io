@@ -23,23 +23,21 @@ a[href^="http"] {
     background:url("/ext.gif") center right no-repeat;
     padding-right:16px;
 }
-a[href^="http://www.flyinggreenfrog.de"] {
-    background:none;
-    padding-right:0px;
-}
-a[href^="http://creativecommons.org/licenses"] {
-    background:none;
-    padding-right:0px;
-}
-a[href^="http://validator.w3.org/check"] {
-    background:none;
-    padding-right:0px;
-}
-a[href^="http://jigsaw.w3.org/css-validator"] {
-    background:none;
-    padding-right:0px;
-}
-a[href="http://www.vim.org"] {
+a[href^="http://www.flyinggreenfrog.de"],
+a[href^="https://www.flyinggreenfrog.de"],
+a[href^="http://flyinggreenfrog.github.io"],
+a[href^="https://flyinggreenfrog.github.io"],
+a[href^="http://github.com/flyinggreenfrog"],
+a[href^="https://github.com/flyinggreenfrog"],
+a[href^="http://creativecommons.org/licenses"],
+a[href^="https://creativecommons.org/licenses"],
+a[href^="http://validator.w3.org/check"],
+a[href^="https://validator.w3.org/check"],
+a[href^="http://jigsaw.w3.org/css-validator"],
+a[href^="https://jigsaw.w3.org/css-validator"],
+a[href="http://www.vim.org"],
+a[href="https://www.vim.org"]
+{
     background:none;
     padding-right:0px;
 }
