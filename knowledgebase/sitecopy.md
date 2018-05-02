@@ -10,13 +10,19 @@ categories: [Linux, Network]
 
 ## Setup
 
+Install sitecopy:
+
 ``` sh
 # zypper in sitecopy
 ```
 
+Create remote site information storage directory:
+
 ``` sh
 $ mkdir -m 700 ~/.sitecopy
 ```
+
+Configure sitecopy under `~/.sitecopyrc`:
 
 ``` text
 # ~/.sitecopyrc
@@ -24,9 +30,9 @@ site <SITE>
 server <HOSTNAME>
 username <USER>
 password <PASSWORD>
-local <DIR> # e.g. ~/.sitecopy/<SITE>
-remote <DIR>
-exclude <PATTERNS>
+local <LOCALDIR>
+remote <REMOTEDIR>
+exclude <PATTERN>
 state checksum
 checkmoved renames
 safe
