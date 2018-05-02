@@ -20,7 +20,7 @@ a:visited {
 }
 a[href^="http"] {
     /* image width 16px, height 16px */
-    background:url("/ext.gif") center right no-repeat;
+    background:url("/img/ext.gif") center right no-repeat;
     padding-right:16px;
 }
 a[href^="http://www.flyinggreenfrog.de"],
