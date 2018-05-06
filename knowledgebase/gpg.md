@@ -557,3 +557,107 @@ Recheck secret key encryption values:
 ``` sh
 $ gpg --list-packets ~/.gnupg/secring.gpg
 ```
+
+## Keysigning and Web of Trust
+
+With keys of others you can/should do two different things.
+
+* First you check, that the key you download e.g. from a keyserver is actually
+  from the person you think it is (**keysigning**).
+* Second you assign a trust value to such a key, that means how much you trust
+  another person, how careful he is with his own keysigning (**web of trust**).
+
+Keys that you have signed (where you have checked identity of the owner) you
+can use right off. For persons (e.g. person B), which you have not met
+personally, you rely now on the web of trust. Maybe others (e.g. person A),
+whose key you have directly signed, have signed the wanted key from person B by
+themselves. Then it depends on the trust value you assigned to the signed key
+of A, if `gpg` also accepts the key of person B.
+
+There are different level, that state how careful you have checked before
+signing another persons key:
+
+* (0) I will not answer.
+* (1) I have not checked at all.
+* (2) I have done casual checking. (Normally used after keysigning parties)
+* (3) I have done very careful checking.
+
+Then for the web of trust there are different trust level:
+
+* \- unknown
+* n never trust
+* m marginal trust (normally used)
+* f full
+* u ultimate (only for own key)
+
+An unknown key in your keyring signed from one person with full trust or signed
+from three persons with marginal trust is now trusted by `gpg`.
+
+You can do the keysigning manually or use some tool like `pius`, `monkeysign`
+or `caff`.
+
+### Keysigning - Manual
+
+Before any signing task, you need your primary key, the one that you saved e.g.
+on your encrypted USB device.
+
+``` sh
+$ export GNUPGHOME=<USBDEVICE>/gnupg
+```
+
+Now get the key you want to sign:
+
+``` sh
+$ gpg --search-keys <KEYID>|<MAIL>|<NAME>
+$ gpg --recv-keys <KEYID>|<MAIL>|<NAME>
+```
+
+List the key with signatures:
+
+``` sh
+$ gpg --list-sigs <KEYID>
+```
+
+Before signing, compare fingerprints of the key you downloaded with the one on
+the keysigning papersheet to be sure you will sign the correct key:
+
+``` sh
+$ gpg --fingerprint <KEYID>
+```
+
+Now sign the key:
+
+``` sh
+$ gpg --edit-key <KEYID>
+gpg> sign
+(2) I have done casual checking.
+gpg> save
+```
+
+Now either send the signed key back to a keyserver:
+
+``` sh
+$ gpg --send-keys <KEYID>
+```
+
+But it's better to export the key, encrypt for the owner and send it to him via
+E-Mail. That ensures that the owner indeed has access to the E-Mail he was
+claiming to possess:
+
+``` sh
+$ gpg --armor --export <KEYID> | gpg --armor --encrypt --recipient <KEYID> - |
+  mutt -s "Your signed key" <EMAIL>
+```
+
+The user now has to import his key, that you signed, and should upload it to
+keyserver by himself:
+
+``` sh
+$ gpg --decrypt <ENCRYPTED_KEY> | gpg --import
+$ gpg --send-keys <KEYID>
+```
+
+### Keysigning - PIUS
+
+For keysigning tasks (individually signing each uid and mail to it's owner) you
+can use `pius` (PGP Individual UID Signer).
