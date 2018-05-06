@@ -531,3 +531,29 @@ take back a revocation!
 $ gpg --import <KEYID>.rev.asc
 $ gpg --send-keys <KEYID>
 ```
+
+Check secret key encryption values:
+
+``` sh
+$ gpg --list-packets ~/.gnupg/secring.gpg
+```
+
+* algo 3: CAST5
+* algo 9: AES256
+* hash 2: SHA1
+* hash 10: SHA512
+
+Edit secret key encryption values:
+
+``` sh
+$ gpg --s2k-cipher-algo AES256 --s2k-digest-algo SHA512 \
+  --s2k-mode 3 --s2k-count 65000000 --edit-key <KEYID>
+gpg> passwd
+gpg> save
+```
+
+Recheck secret key encryption values:
+
+``` sh
+$ gpg --list-packets ~/.gnupg/secring.gpg
+```
