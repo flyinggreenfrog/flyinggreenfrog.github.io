@@ -7,6 +7,22 @@ categories: [Linux]
 ## Links
 
 * [The GNU Privacy Guard](https://gnupg.org) <time>2018-05-06</time>
+* [Wikipedia: OpenPGP](https://de.wikipedia.org/wiki/OpenPGP) <time>2018-05-06</time>
+* [Hauke Laging: Verschlüsselung und Signatur](http://www.hauke-laging.de/sicherheit/einfuehrung.html) <time>2018-05-06</time>
+* [Hauke Laging: OpenPGP / GnuPG](http://www.hauke-laging.de/sicherheit/openpgp.html) <time>2018-05-06</time>
+* [Phil's PGP Docs](https://www.phildev.net/pgp) <time>2018-05-06</time>
+* [OpenPGP Best Practices](https://riseup.net/en/security/message-security/openpgp/best-practices) <time>2018-05-06</time>
+* [Mike English: Getting Started with GNU Privacy Guard](https://spin.atomicobject.com/2013/09/25/gpg-gnu-privacy-guard) <time>2018-05-06</time>
+* [Creating the perfect GPG keypair](https://alexcabal.com/creating-the-perfect-gpg-keypair) <time>2018-05-06</time>
+* [GPG Anleitung](https://wiki.kairaven.de/open/krypto/gpg/gpganleitung) <time>2018-05-06</time>
+* [Using an offline GnuPG master key](https://incenp.org/notes/2015/using-an-offline-gnupg-master-key.html) <time>2018-05-06</time>
+* [OpenPGP User ID Comments considered harmful](https://debian-administration.org/users/dkg/weblog/97) <time>2018-05-06</time>
+* [Nitrokey - Secure your digital life](https://www.nitrokey.com/de) <time>2018-05-06</time>
+* [FSFE - Card with subkeys using backups](http://wiki.fsfe.org/TechDocs/CardHowtos/CardWithSubkeysUsingBackups) <time>2018-05-06</time>
+* [The GnuPG Smartcard HOWTO](https://www.gnupg.org/howtos/card-howto/en/smartcard-howto.html) <time>2018-05-06</time>
+* [Github: jaymzh / pius](https://github.com/jaymzh/pius) <time>2018-05-06</time>
+* [Monkeysign](https://monkeysign.readthedocs.io) <time>2018-05-06</time>
+* [OpenKeychain](https://www.openkeychain.org) <time>2018-05-06</time>
 
 ## Terms
 
