@@ -192,7 +192,6 @@ Entropy for key generation:
   keyboard to create enough entropy.
 * Tails distribution uses havegd, which helps to create enough entropy.
 
-
 Add additional name/E-Mail pair:
 
 ``` sh
@@ -285,6 +284,74 @@ by sending it to a keyserver:
 ``` sh
 $ gpg --send-keys <KEYID>
 ```
+
+### HSM - Nitrokey
+
+If you already have set up laptop keys, you can transfer them to a HSM (e.g.
+Nitrokey), so that the secret keys are no longer stored on the laptop itself.
+
+If you didn't set up laptop keys, start with the keyrings only containing the
+subkeys, where the primary key was already removed.
+
+Setup the HSM:
+
+``` sh
+$ gpg --card-status
+$ gpg --card-edit
+gpg/card> admin
+gpg/card> passwd
+3 - change Admin PIN
+1 - change PIN
+gpg/card> name
+gpg/card> sex
+gpg/card> url
+http://<YOUR-DOMAIN>/gpg/<KEYID>.pub.gpg
+gpg/card> login
+gpg/card> quit
+```
+
+Now you can transfer the subkeys to the HSM itself:
+
+``` sh
+$ gpg --edit-key <KEYID>
+gpg> key X
+gpg> keytocard
+gpg> key X
+gpg> key Y
+gpg> keytocard
+gpg> key Y
+gpg> key Z
+gpg> keytocard
+gpg> save
+```
+
+If you have to reset your HSM (e.g. when admin PIN was entered incorrectly
+three times), you can do this with the following steps. Be aware the keys will
+be deleted, you should have made backups before even transfering the keys for
+the first time to the HSM. From an HSM itself you can't backup keys, since this
+would defeat the purpose of a HSM.
+
+``` sh
+$ gpg --card-edit
+gpg/card> admin
+gpg/card> factory-reset
+gpg/card> quit
+```
+
+After transfering the keys to a HSM and you want to use the HSM the first time
+on a laptop you first need to fetch the public key from a keyserver. If you
+have set the url in the HSM earlier, you can use the `fetch` command too:
+
+``` sh
+$ gpg --card-edit
+gpg/card> fetch
+gpg/card> quit
+$ gpg --edit-key <KEYID> trust quit
+5 = I trust ultimately
+y
+```
+
+Again, since this is your own key, you should set the trust to ultimate.
 
 ### Backup GPG keys
 
