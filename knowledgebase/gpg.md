@@ -70,6 +70,48 @@ $ file <FILE>.asc
 <FILE>.asc: PGP message Symmetric-Key Encrypted Session Key (old)
 ```
 
+List public keys:
+
+``` sh
+$ gpg --list-keys <KEYID>|<MAIL>|<NAME>
+```
+
+List private keys:
+
+``` sh
+$ gpg --list-secret-keys
+```
+
+Show fingerprint of a key:
+
+``` sh
+$ gpg --fingerprint <KEYID>|<MAIL>|<NAME>
+```
+
+Show fingerprint of a key file without importing it into the keyring:
+
+``` sh
+$ gpg --with-fingerprint <KEYID>.pub.asc
+```
+
+Search for (and get) a key:
+
+``` sh
+$ gpg --search-keys <KEYID>|<MAIL>|<NAME>
+```
+
+Receive a key:
+
+``` sh
+$ gpg --recv-keys <KEYID>
+```
+
+Refresh keys:
+
+``` sh
+$ gpg --refresh-keys [<KEYID>]
+```
+
 ## GPG fundamentals
 
 Features of GPG keys:
@@ -282,7 +324,7 @@ Now you can publish the public key, either by putting it on your webserver or
 by sending it to a keyserver:
 
 ``` sh
-$ gpg --send-keys <KEYID>
+$ gpg --send-keys <KEYID> [--keyserver hkp://eu.pool.sks-keyservers.net]
 ```
 
 ### HSM - Nitrokey
@@ -355,6 +397,10 @@ Again, since this is your own key, you should set the trust to ultimate.
 
 ### Backup GPG keys
 
+Creating backups of the gpg key itself only makes sense on the keyring that
+contains the primary key, not on the laptop keys nor on the HSM keys.
+Ownertrust backup instead makes also sense for the later two.
+
 Create backup of private key (for usage with `paperkey`):
 
 ``` sh
@@ -376,17 +422,39 @@ $ gpg --armor --output <KEYID>.rev.asc --gen-revoke <KEYID>
 1 = Key has been compromised
 ```
 
+Create paper copies with own script, that uses paperkey and qrencode:
+
+``` sh
+$ gpg2qrcode -k <KEYID>
+$ lpr <KEYID>.sec.pdf
+```
+
+Basically the script does the following:
+
+``` sh
+$ gpg --output <KEYID>.pub.gpg --export <KEYID>
+$ gpg --output <KEYID>.sec.gpg --export-secret-keys <KEYID>
+$ paperkey --secret-key <KEYID>.sec.gpg --output <KEYID>.sec.paperkey.txt
+```
+
+* The public key `<KEYID>.pub.gpg` you can put on your webserver.
+* The paperkey `<KEYID>.sec.paperkey.txt` you can print out.
+* My own script `gpg2qrcode` qrencodes the paperkey version additionally and
+  produces a pdf to printout. This simplifies later the process of restoring.
+  Scanning and retrieving the key from the qrcode saves you a lot of typing,
+  which is error prone.
+
 Keep the following files secret and safe:
 
 * `<KEYID>.sec.gpg` (needed for usage with `paperkey`)
 * `<KEYID>.sec.asc`
 * `<KEYID>.rev.asc`
+* `<KEYID>.sec.pdf`
 
-Create paper copies with a script that uses paperkey and qrencode:
+Export owner trust:
 
 ``` sh
-$ gpg2qrcode -k <KEYID>
-$ ls <KEYID>.sec.pdf
+$ gpg --export-ownertrust > otrust.txt
 ```
 
 ### Restore GPG keys
@@ -398,6 +466,15 @@ server, and the scan of the paper copy of your key:
 $ ls <KEYID>.pub.gpg
 $ qrcode2gpg -i <SCAN>.pdf -k <KEYID>
 $ ls <KEYID>.sec.recovered
+```
+
+If you have to do that manually, i.e. without the script `qrcode2gpg`, simply
+type in the paperkey text version into `<KEYID>.sec.recovered.txt`. Then
+reconstruct the key with `paperkey`:
+
+``` sh
+$ paperkey --pubring <KEYID>.pub.gpg --secrets <KEYID>.sec.recovered.txt \
+  --output <KEYID>.sec.recovered
 ```
 
 Decide which home directory for `gpg` you want to use. Then you can restore
@@ -412,3 +489,45 @@ y
 ```
 
 Since this is your own key, you should give ultimate trust.
+
+Import owner trust:
+
+``` sh
+$ gpg --import-ownertrust < otrust.txt
+```
+
+### Maintenance
+
+Before any maintenance task, think about on which keyring you want to operate,
+e.g. the one on your encrypted USB device. Create new backups afterwards, if
+necessary.
+
+``` sh
+$ export GNUPGHOME=<USBDEVICE>/gnupg
+```
+
+Change passphrase:
+
+``` sh
+$ gpg --edit-key <KEYID>
+gpg> passwd
+gpg> save
+```
+
+Set new expiry date:
+
+``` sh
+$ gpg --edit-key <KEYID>
+gpg> key <X>
+gpg> expire
+gpg> save
+$ gpg --send-keys <KEYID>
+```
+
+If you want to revoke a key, be sure if you really want to do that. You can't
+take back a revocation!
+
+``` sh
+$ gpg --import <KEYID>.rev.asc
+$ gpg --send-keys <KEYID>
+```
