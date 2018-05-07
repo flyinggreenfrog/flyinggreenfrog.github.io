@@ -20,3 +20,25 @@ Reflog
 
 Refspec
 : Reference Specification
+
+## Usage
+
+### Working with forks
+
+Configure a remote for a fork:
+
+``` sh
+$ git remote -v
+$ git remote add <UPSTREAM> <URL>/<OWNER>/<ORIGINAL_REPOSITORY>.git
+$ git remote -v
+```
+
+Sync a fork:
+
+``` sh
+$ git fetch <UPSTREAM>
+$ git checkout master|<BRANCH>
+$ git merge upstream/master|upstream/<BRANCH>
+$ # If nothing is pushed yet, you can rebase instead of merging
+$ git rebase upstream/master|upstream/<BRANCH>
+```
