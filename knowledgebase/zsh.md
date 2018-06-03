@@ -61,9 +61,9 @@ today: aliased to date -I
 
 Useful aliases:
 
-``` text
-alias ..='cd ..'
-alias ...='cd ../..'
+``` sh
+$ alias ..='cd ..'
+$ alias ...='cd ../..'
 ```
 
 Alias can be used to correct indivdual typos, that you make often:
@@ -128,14 +128,15 @@ TT
 $ print \T
 T
 $ print 'T'
+T
 ```
 
-``` text
-alias -g NE='2> /dev/null'
-alias -g NO='&> /dev/null'
-alias -g G='| grep'
-alias -g P='| $PAGER'
-alias -g L='| less'
+``` sh
+$ alias -g NE='2> /dev/null'
+$ alias -g NO='&> /dev/null'
+$ alias -g G='| grep'
+$ alias -g P='| $PAGER'
+$ alias -g L='| less'
 ```
 
 ``` sh
@@ -157,7 +158,6 @@ global-alias-space () {
 zle -N global-alias-space
 bindkey ' ' global-alias-space
 ```
-
 
 ## Functions
 
