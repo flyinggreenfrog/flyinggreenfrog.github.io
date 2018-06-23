@@ -2,7 +2,7 @@
 title: Docker
 last-changed: <time>2018-06-23</time>
 knowledgebase: true
-categories: [Linux]
+categories: [Container, Linux]
 ---
 ## Links
 
