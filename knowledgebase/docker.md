@@ -37,15 +37,21 @@ grants rights equivalent to `root`.
 ## Usage
 
 ### Docker
+
+Getting information:
+
 ``` sh
 $ docker -v|--version
 $ docker version
 $ docker info
 ```
 
+Getting help:
+
 ``` sh
 $ docker <CMD> --help
 $ docker help <CMD>
+$ man docker-<CMD>
 ```
 
 ``` sh
@@ -75,6 +81,18 @@ $ docker search
 $ docker commit
 $ docker history
 $ docker port
+```
+
+Show logs of container:
+
+``` sh
+$ docker logs <CONTAINER>
+```
+
+Follow logs of container with timestamps:
+
+``` sh
+$ docker logs -ft <CONTAINER>
 ```
 
 ``` sh
