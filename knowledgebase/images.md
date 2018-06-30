@@ -207,3 +207,32 @@ Custom actions in `~/.config/Thunar/uca.xml`:
 </action>
 </actions>
 ```
+
+## Transfer files with MTP
+
+Installation:
+
+``` sh
+# zypper in simple-mtpfs
+```
+
+Show which devices are connected:
+
+``` sh
+$ simple-mtpfs -l
+```
+
+Mount:
+
+``` sh
+$ mkdir mnt
+$ simple-mtpfs mnt
+$ cd mnt
+```
+
+Unmount:
+
+``` sh
+$ cd
+$ fusermount -u mnt
+```
