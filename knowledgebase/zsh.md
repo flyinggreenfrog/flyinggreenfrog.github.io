@@ -1,6 +1,6 @@
 ---
 title: Zsh
-last-changed: <time>2018-06-03</time>
+last-changed: <time>2018-06-30</time>
 knowledgebase: true
 categories: [Linux]
 ---
@@ -820,6 +820,12 @@ How many normal files are in the current dir with subdirs?
 
 ``` sh
 $ files=(**/*(.)); echo ${#files}
+```
+
+Find all empty directories:
+
+``` sh
+$ print -l **/*(/^F)
 ```
 
 Find all normal files bigger than 500MB
