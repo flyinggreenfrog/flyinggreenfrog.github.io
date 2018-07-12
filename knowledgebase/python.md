@@ -539,7 +539,8 @@ issubclass(B, A)
 
 ### Exception handling
 
-* [Python: Errors and Exceptions](https://docs.python.org/3/tutorial/errors.html) <time>2018-07-12</time>
+* [Python: Built-in Exceptions](https://docs.python.org/3/library/exceptions.html) <time>2018-07-12</time>
+* [Python Tutorial: Errors and Exceptions](https://docs.python.org/3/tutorial/errors.html) <time>2018-07-12</time>
 
 Functions have following alternatives what they can do with an exception from a
 subfunction:
