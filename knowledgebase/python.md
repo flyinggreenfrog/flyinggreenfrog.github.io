@@ -327,3 +327,301 @@ m.string        string passed to match the RC
 ``` sh
 # zypper in python-systemd
 ```
+
+## Introduction into object oriented programming
+
+### Objects, classes, methods, attributes
+
+Object has attributes and methods.
+
+Access over `.` on reference of object.
+
+Class is description of an object like a recipe.
+The real object itself then is an instance of a class.
+
+Class definition:
+
+``` text
+# A.py
+class A:
+    pass
+```
+
+``` sh
+>>> from A import *
+>>> a = A()
+```
+
+Methods:
+
+``` text
+class A:
+    def method1(self):
+        pass
+    def method2(self, arg):
+        pass
+```
+
+``` sh
+>>> a.method1()
+>>> a.method2('argument')
+```
+
+Parameter `self` is the instance on the left side of `.`.
+
+Constructor:
+
+``` text
+class A:
+    def __init__(self):
+        print('constructor of A')
+```
+
+``` sh
+>>> A()
+```
+
+No destructor, that will be called definitely. Finalizer `__del__()` is
+similar, but is not guaranteed to run.
+
+Attributes should be defined inside constructor.
+
+``` text
+class A:
+    def __init__(self, x):
+        self.x = x
+```
+
+``` sh
+>>> a = A(42)
+>>> a.x
+42
+```
+
+### Inheritance and polymorphism
+
+A derived class inherits from a base class.
+
+``` text
+class A:
+    pass
+
+class B(A):
+    pass
+```
+
+Polymorphism of class methods:
+
+``` text
+class A:
+    def __init__(self):
+        print('contructor of A')
+
+class B(A):
+    del __init__(self):
+        super().__init__()
+        #A.__init__()
+        print('constructor of B')
+```
+
+Multiple inheritance:
+
+``` text
+class A:
+    pass
+class B:
+    pass
+
+class C(A, B):
+    pass
+```
+
+### Getter, setter, property attributes
+
+``` text
+class A:
+    def __init__(self):
+        self._x = 42
+    def getx(self):
+        return self._x
+    def setX(self, x):
+        self._x = x
+```
+
+Naming the attribute `_x` is by convention with underscore for attributes, that
+are seen as implementation detail, but they are not specially protected by
+Python, even the use of getter/setter methods doesn't change that.
+
+Property Attributes:
+
+``` text
+class A:
+    def __init__(self, x=42):
+        self._x = 42
+    def getx(self):
+        return self._x
+    def setx(self, x):
+        self._x = x
+    x = property(getx, setx)
+```
+
+### Static methods, class methods and class attributes
+
+``` text
+def m():
+    print('static method')
+
+class A:
+    m = staticmethod(m)
+```
+
+``` sh
+>>> A.m()
+```
+
+Static methods can be used to provide alternative constructors:
+
+``` text
+def a():
+    _a = A()
+    _a.x = int(_a.x / 2)
+    return _a
+
+class A:
+    ...
+    a = staticmethod(a)
+```
+
+``` sh
+>>> a = A.a()
+```
+
+Class methods can be called with instance:
+
+``` text
+class A:
+    def c(cls):
+        print(cls)
+    c = classmethod(c)
+```
+
+``` sh
+>>> A.c()
+>>> a = A()
+>>> a.c()
+```
+
+Class methods are often used with metaclasses.
+
+Like class methods you can use class attributes:
+
+``` text
+class A:
+    d = 42
+```
+
+``` sh
+>>> A.d
+>>> a = A()
+>>> a.d
+```
+
+### Builtin functions for objects
+
+``` text
+a.x   getattr(a, 'x')
+a.x = v   setattr(a, 'x', v)
+hasattr(a, 'x')
+del x.y   delattr(a, 'x')
+isinstance(a, A)
+issubclass(B, A)
+```
+
+### Exception handling
+
+* [Python: Errors and Exceptions](https://docs.python.org/3/tutorial/errors.html) <time>2018-07-12</time>
+
+Functions have following alternatives what they can do with an exception from a
+subfunction:
+
+* Catch exception, handle it, resume normally
+* Catch exception, handle it, throw exception again, calling function reacts
+* Don't catch exception, calling function reacts
+
+Builtin exceptions:
+
+``` text
+NameError
+SyntaxError
+TypeError
+```
+
+Class `BaseException` is base class for all exceptions. For own exceptions use
+`Exception` as class to inherit from.
+
+``` sh
+>>> e = Exception('myerror')
+>>> e.args
+```
+
+``` sh
+>>> raise SyntaxError('myerror')
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+SyntaxError: myerror
+```
+
+``` text
+try:
+    raise Exception('myerror')
+except Exception as e:
+    print(e.args[0])
+```
+
+Several exceptions can be noted as tuple after `except` keyword or with
+different `except` statements.
+
+``` text
+try:
+    ...
+except <EXCEPTION1> as <NAME1>:
+    ...
+except <EXCEPTION2> as <NAME2>:
+    ...
+else:
+    ...
+finally:
+    ...
+```
+
+Own Exceptions:
+
+``` text
+class Error(Exception):
+    def __init__(self, msg):
+        self.msg = msg
+    def __str__(self):
+        return 'myerror'
+```
+
+If you don't handle an exception you will see the stack trace
+(callstack / traceback / backtrace).
+
+With `raise` in an `except` statement you can handle it, but then raise the
+same exception again, while the stack trace remains the same.
+
+Exception chaining: raise another exception in an `except` statement.
+
+With `raise <EXCEPTION2> from <EXCEPTION1>` you can give an exception context.
+
+With `raise <EXCEPTION> from None` you prevent the Exception chaining.
+
+## Advanced object oriented programming
+
+### Magic methods and magic attributes
+
+The name of magic methods and magic attributes start and end with two
+underscores `__`.
+
+They are normally not called explicitly, but implicitly. That's why they are
+called magic.
