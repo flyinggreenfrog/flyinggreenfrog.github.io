@@ -1,6 +1,6 @@
 ---
 title: Python
-last-changed: <time>2018-07-12</time>
+last-changed: <time>2018-07-13</time>
 knowledgebase: true
 categories: [Programming]
 ---
@@ -621,8 +621,112 @@ With `raise <EXCEPTION> from None` you prevent the Exception chaining.
 
 ### Magic methods and magic attributes
 
+* [Python: Dunder Alias](https://wiki.python.org/moin/DunderAlias) <time>2018-07-13</time>
+* [Python: Special methods names](https://docs.python.org/3/reference/datamodel.html#special-method-names) <time>2018-07-13</time>
+
 The name of magic methods and magic attributes start and end with two
 underscores `__`.
 
 They are normally not called explicitly, but implicitly. That's why they are
-called magic.
+called _magic_.
+
+`__init__` can be pronounced as _dunder init_ as abbreviation for _double
+underscore init_.
+
+E.g. for _operator overloading_ you can implement the `__add__` method for your
+own classes.
+
+General magic methods:
+
+``` text
+__init__    Constructor
+__del__     Finalizer (improperly destructor)
+__repr__
+__str__
+__bytes__
+__format__
+__bool__
+__complex__
+__int__
+__float__
+__call__    To define callable objects
+```
+
+Attribute access:
+
+``` text
+__dict__          dict attribute for members of an instance
+__getattr__
+__getattribute__
+__setattr__
+__delattr__
+__slots__         attribute for members to avoid dynamic __dict__
+```
+
+Comparison operators:
+
+``` text
+<   __lt__
+<=  __le__
+==  __eq__
+!=  __ne__
+>   __gt__
+>=  __ge__
+```
+
+Binary operators:
+
+``` text
++   __add__ __radd__
+-   __sub__ __rsub__
+*   __mul__ __rmul__
+@   __matmul__ __rmatmul__ (matrix multiplication)
+/   __truediv__ __rtruediv__
+//  __floordiv__ __rfloordiv__
+%   __mod__ __rmod__
+    __divmod__ __rdivmod__ (divmod() returns tuple (//, %))
+**  __pow__ __rpow__ (with 3rd arg supports pow()
+<<  __lshift__ __rlshift__
+>>  __rshift__ __rrshift__
+&   __and__ __rand__
+^   __xor__ __rxor__
+$   __or__ __ror__
+```
+
+Inplace operators:
+
+``` text
++=  __iadd__
+-=  __isub__
+*=  __imul__
+@=  __imatmul__ (matrix multiplication)
+=/  __itruediv__
+=// __ifloordiv__
+=%  __imod__
+**= __ipow__
+=<< __ilshift__
+=>> __irshift__
+&=  __iand__
+^=  __ixor__
+$=  __ior__
+```
+
+Unary operators:
+
+``` text
+-   __neg__
++   __pos__
+abs __abs__
+~   __invert__
+```
+
+Implement built-in functions:
+
+``` text
+__dir__
+__hash__
+__round__
+__trunc__
+__floor__
+__ceil__
+```
