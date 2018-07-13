@@ -745,6 +745,96 @@ class A:
 21
 ```
 
+### Descriptors
+
+* [Python: Descriptor HowTo Guide](https://docs.python.org/3/howto/descriptor.html) <time>2018-07-13</time>
+
+A descriptor is an object attribute, where the attribute access has been
+overridden by methods in the descriptor protocol.
+
+Descriptor protocol:
+
+``` text
+__get__(self, obj, objtype=None) --> value
+__set__(self, obj, value) --> None
+__delete__(self, obj) --> None
+
+__set_name__
+```
+
+Objects with `__get__` und `__set__` are data descriptors, whereas objects with
+only `__get__` are considered non-data descriptors.
+
+Precedence:
+
+``` text
+data descriptor before dict entry
+
+dict entry before non-data descriptor
+```
+
+Descriptor example:
+
+``` text
+class Descriptor:
+    def __init__(self, value=0):
+        self.value = value
+
+    def __get__(self, obj, objtype):
+        print('Getting')
+        return self.value
+
+    def __set__(self, obj, value):
+        print('Setting')
+        self.value = value
+
+class Myclass1:
+    x = Descriptor()
+```
+
+``` sh
+>>> m = Myclass1()
+>>> m.x
+Getting
+0
+>>> m.x = 42
+Setting
+>>> m.x
+Getting
+42
+```
+
+Same, but with `property`, since `property` is implemented in Python as
+descriptor:
+
+``` text
+class Myclass2:
+    def __init__(self):
+        self.value = 0
+
+    def getx(self):
+        print('Getting')
+        return self.value
+
+    def setx(self, value):
+        print('Setting')
+        self.value = value
+
+    x = property(getx, setx)
+```
+
+``` sh
+>>> n = Myclass2()
+>>> n.x
+Getting
+0
+>>> n.x = 42
+Setting
+>>> n.x
+Getting
+42
+```
+
 ## Advanced programming
 
 ### Comprehensions
