@@ -730,3 +730,64 @@ __trunc__
 __floor__
 __ceil__
 ```
+
+## Advanced programming
+
+### Container, sequences and mappings
+
+* [Python: collections - Container datatypes](https://docs.python.org/3/library/collections.html#module-collections) <time>2018-07-13</time>
+
+If Python's standard containers (like `list`, `dict`, `set` or `tuple`) is not
+enough have a look at the module `collections`.
+
+Alternatively you can attach container functionality to own classes.
+
+To emulate container types implement:
+
+``` text
+__len__
+__length_hint__
+__getitem__
+__missing__
+__setitem__
+__delitem__
+__iter__
+__reversed__
+__contains__
+```
+
+Sequences and mappings are both container types. Sequences have in integer as
+index, mappings have more general indices. E.g. lists are sequences and dicts
+are mappings.
+
+Sequences should implement magic methods for addition (chaining) and
+multiplication (repetition).
+
+Mutable sequences should implement following methods:
+
+``` text
+append()
+count()
+index()
+extend()
+insert()
+pop()
+remove()
+reverse()
+sort()
+```
+
+Mappings should implement following methods:
+
+``` text
+keys()
+values()
+items()
+get()
+clear()
+setdefault()
+pop()
+popitem()
+copy()
+update()
+```
