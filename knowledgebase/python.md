@@ -733,6 +733,309 @@ __ceil__
 
 ## Advanced programming
 
+### Comprehensions
+
+List comprehensions:
+
+``` text
+[... for  in  ... for  in ... if ]
+```
+
+``` sh
+>>> squares = [x**2 for x in range(4)]
+```
+
+Dict comprehensions:
+
+``` text
+{key: value for  in }
+```
+
+``` sh
+>>> squares2 = {x: x**2 for x in range(4)}
+```
+
+Set comprehensions:
+
+``` text
+{item for  in ...}
+```
+
+``` sh
+>>> squares3 = {x**2 for x in range(4)}
+```
+
+### Iterators
+
+* [Python: Iterator Types](https://docs.python.org/3/library/stdtypes.html#iterator-types) <time>2018-07-13</time>
+* [Wikipedia: Fibonacci number](https://en.wikipedia.org/wiki/Fibonacci_number) <time>2018-07-13</time>
+
+iterable
+: object capable of returning members one at a time
+
+iterator
+: call of a object's `__next__` method or builtin function `next(object)` gets
+items one at a time or raises `StopIteration`
+
+Builtin function `iter()` returns an iterator of an iterable object.
+
+For an iterable container or an iterator you have to implement:
+
+``` text
+container.__iter__    iterable
+iterator.__iter__     iterator
+iterator.__next__     iterator
+```
+
+Fibonacci:
+
+``` text
+n    1  2  3  4  5  6  7  8  9 10
+f(n) 1  1  2  3  5  8 13 21 34 55
+```
+
+Class Fibonacci as iterator:
+
+``` text
+class Fibonacci:
+    def __init__(self, max_n):
+        self.MaxN = max_n
+        self.N = 0
+        self.A = 0
+        self.B = 1
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        if self.N < self.MaxN:
+            self.N += 1
+            self.A, self.B = self.B, self.A + self.B
+            return self.A
+        else:
+            raise StopIteration
+```
+
+``` sh
+>>> for f in Fibonacci(10):
+...     print(f, end=' ')
+...
+1 1 2 3 5 8 13 21 34 55
+>>> list(Fibonacci(10))
+[1, 1, 2, 3, 5, 8, 13, 21, 34, 55]
+```
+
+### Generators
+
+* [Python: Yield expressions](https://docs.python.org/3/reference/expressions.html#yield-expressions) <time>2018-07-13</time>
+
+generator
+: returns a generator iterator, contains `yield` expression for creating a
+series of values
+
+generator iterator
+: each `yield` temporarily suspends processing, would resume at that point
+later
+
+``` text
+def square_generator(n):
+    i = 0
+    while i < n:
+        yield i**2
+        i += 1
+```
+
+``` sh
+>>> for s in square_generator(10):
+...     print(s, end=' ')
+...
+0 1 4 9 16 25 36 49 64 81
+```
+
+Iterators can make use of generators.
+
+Class Fibonacci2 as generator iterator:
+
+``` text
+class Fibonacci2:
+    def __init__(self, max_n):
+        self.MaxN = max_n
+        self.A = 0
+        self.B = 1
+
+    def __iter__(self):
+        for n in range(self.MaxN):
+            self.A, self.B = self.B, self.A + self.B
+            yield self.A
+```
+
+``` sh
+>>> for f in Fibonacci2(10):
+...     print(f, end=' ')
+...
+1 1 2 3 5 8 13 21 34 55
+>>> list(Fibonacci2(10))
+[1, 1, 2, 3, 5, 8, 13, 21, 34, 55]
+```
+
+A generator can have several `yield` expressions:
+
+``` text
+def generator():
+    yield 1
+    yield 42
+```
+
+``` sh
+>>> for i in generator():
+...     print(i)
+...
+1
+42
+```
+
+Subgenerators:
+
+``` text
+def sub_generator(n):
+    yield from range(n, 0, -1)
+    yield from range(n)
+```
+
+``` sh
+>>> list(sub_generator(5))
+[5, 4, 3, 2, 1, 0, 1, 2, 3, 4]
+```
+
+Traverse binary tree with subgenerators:
+
+``` text
+class Node:
+    def __init__(self, value, left=None, right=None):
+        self.left = left
+        self.value = value
+        self.right = right
+
+    def traverse(self):
+        if self.left:
+            yield from self.left.traverse()
+        yield self.value
+        if self.right:
+            yield from self.right.traverse()
+
+left2 = Node(left=Node(1), value=2, right=Node(3))
+left1 = Node(left=left2, value=4, right=Node(5))
+
+right2 = Node(value=8, right=Node(9))
+right1 = Node(left=right2, value=7, right=Node(10))
+
+tree = Node(left=left1, value=6, right=right1)
+```
+
+``` sh
+>>> list(tree.traverse())
+[1, 2, 3, 4, 5, 6, 8, 9, 7, 10]
+```
+
+Generator expressions:
+
+``` text
+sum([i**2 for i in range(10)])
+
+sum((i**2 for i in range(10)))
+
+sum(i**2 for i in range(10))
+```
+
+Generator iterators implement:
+
+``` text
+generator.__next__
+generator.send()
+generator.throw()
+generator.close()
+```
+
+Generator implements iterator protocol, generator is producer, caller is
+consumer.
+
+``` text
+for i in range(5):
+    print(i)
+
+r = iter(range(5))
+
+try:
+    while True:
+        i = next(r)
+        print(i)
+except StopIteration:
+    pass
+```
+
+With consuming generators this is reversed, generator is consumer, caller is
+producer.
+
+``` text
+def consumer():
+    while True:
+        i = (yield)
+        print(i)
+```
+
+``` sh
+>>> c = consumer()
+>>> next(c)
+>>> c.send(42)
+42
+```
+
+To avoid the call of `next(c)` before using the consuming generator, you can
+use a decorator function, that is calling next once.
+
+``` sh
+def consumer_decorator(f):
+    def g_f(*args, **kwargs):
+        gen = f(*args, **kwargs)
+        next(gen)
+        return gen
+    return g_f
+
+@consumer_decorator
+def consumer():
+    while True:
+        i = (yield)
+        print(i)
+```
+
+``` sh
+>>> c = consumer()
+>>> c.send(42)
+42
+```
+
+Exception can also be passed into the generator function:
+
+``` text
+def square_generator2(n):
+    for i in range(n):
+        try:
+            yield i**2
+        except Exception:
+            raise Exception('Error with index {}'.format(i))
+```
+
+``` sh
+>>> g = square_generator2(10)
+>>> next(g)
+0
+>>> next(g)
+1
+>>> next(g)
+4
+>>> g.throw(ValueError)
+```
+
 ### Container, sequences and mappings
 
 * [Python: collections - Container datatypes](https://docs.python.org/3/library/collections.html#module-collections) <time>2018-07-13</time>
