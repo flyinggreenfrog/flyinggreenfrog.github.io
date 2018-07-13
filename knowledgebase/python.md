@@ -773,66 +773,100 @@ data descriptor before dict entry
 dict entry before non-data descriptor
 ```
 
-Descriptor example:
+1. Descriptors using class methods
+2. Descriptors using property types
+3. Descriptors using property decorators
+
+Descriptors using class methods:
 
 ``` text
 class Descriptor:
-    def __init__(self, value=0):
-        self.value = value
+    def __init__(self):
+        self._name = ''
 
     def __get__(self, obj, objtype):
-        print('Getting')
-        return self.value
+        print('Getting: {}'.format(self._name))
+        return self._name
 
-    def __set__(self, obj, value):
-        print('Setting')
-        self.value = value
+    def __set__(self, obj, name):
+        self._name = name.title()
+        print('Setting: {}'.format(self._name))
 
-class Myclass1:
-    x = Descriptor()
+    def __delete__(self, obj):
+        print('Deleting: {}'.format(self._name))
+        del self._name
+
+class Person1:
+    name = Descriptor()
 ```
 
 ``` sh
->>> m = Myclass1()
->>> m.x
-Getting
-0
->>> m.x = 42
-Setting
->>> m.x
-Getting
-42
+>>> user = Person1()
+>>> user.name = 'john doe'
+Setting: John Doe
+>>> name = user.name
+Getting: John Doe
 ```
 
-Same, but with `property`, since `property` is implemented in Python as
-descriptor:
+Descriptors using property types:
 
 ``` text
-class Myclass2:
+class Person2:
     def __init__(self):
-        self.value = 0
+        self._name = ''
 
-    def getx(self):
-        print('Getting')
-        return self.value
+    def getname(self):
+        print('Getting: {}'.format(self._name))
+        return self._name
 
-    def setx(self, value):
-        print('Setting')
-        self.value = value
+    def setname(self, name):
+        self._name = name.title()
+        print('Setting: {}'.format(self._name))
 
-    x = property(getx, setx)
+    def delname(self):
+        print('Deleting: {}'.format(self._name))
+        del self._name
+
+    name = property(getname, setname, delname)
 ```
 
 ``` sh
->>> n = Myclass2()
->>> n.x
-Getting
-0
->>> n.x = 42
-Setting
->>> n.x
-Getting
-42
+>>> user = Person2()
+>>> user.name = 'john doe'
+Setting: John Doe
+>>> name = user.name
+Getting: John Doe
+```
+
+Descriptors using property decorators:
+
+``` text
+class Person3:
+    def __init__(self):
+        self._name = ''
+
+    @property
+    def name(self):
+        print('Getting: {}'.format(self._name))
+        return self._name
+
+    @name.setter
+    def name(self, name):
+        self._name = name.title()
+        print('Setting: {}'.format(self._name))
+
+    @name.deleter
+    def name(self):
+        print('Deleting: {}'.format(self._name))
+        del self._name
+```
+
+``` sh
+>>> user = Person3()
+>>> user.name = 'john doe'
+Setting: John Doe
+>>> name = user.name
+Getting: John Doe
 ```
 
 ## Advanced programming
