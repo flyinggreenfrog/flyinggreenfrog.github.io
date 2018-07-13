@@ -748,6 +748,7 @@ class A:
 ### Descriptors
 
 * [Python: Descriptor HowTo Guide](https://docs.python.org/3/howto/descriptor.html) <time>2018-07-13</time>
+* [Python: property](https://docs.python.org/3/library/functions.html#property) <time>2018-07-13</time>
 
 A descriptor is an object attribute, where the attribute access has been
 overridden by methods in the descriptor protocol.
