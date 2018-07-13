@@ -436,35 +436,6 @@ class C(A, B):
     pass
 ```
 
-### Getter, setter, property attributes
-
-``` text
-class A:
-    def __init__(self):
-        self._x = 42
-    def getx(self):
-        return self._x
-    def setX(self, x):
-        self._x = x
-```
-
-Naming the attribute `_x` is by convention with underscore for attributes, that
-are seen as implementation detail, but they are not specially protected by
-Python, even the use of getter/setter methods doesn't change that.
-
-Property Attributes:
-
-``` text
-class A:
-    def __init__(self, x=42):
-        self._x = 42
-    def getx(self):
-        return self._x
-    def setx(self, x):
-        self._x = x
-    x = property(getx, setx)
-```
-
 ### Static methods, class methods and class attributes
 
 ``` text
@@ -729,6 +700,49 @@ __round__
 __trunc__
 __floor__
 __ceil__
+```
+
+### Attribute properties
+
+Getter and setter methods are a pattern often used.
+
+Example in Python:
+
+``` text
+class A:
+    def __init__(self):
+        self.setx(42)
+    def getx(self):
+        return self._x
+    def setx(self, x):
+        self._x = x
+```
+
+Naming the attribute `_x` is by convention. A leading underscore for
+attributes, shows that it should be seen as implementation detail, but these
+attributes are not specially protected by Python, even the use of getter/setter
+methods doesn't change that.
+
+Attributes properties:
+
+``` text
+class A:
+    def __init__(self, x=42):
+        self.setx(x)
+    def getx(self):
+        return self._x
+    def setx(self, x):
+        self._x = x
+    x = property(getx, setx)
+```
+
+``` sh
+>>> a = A()
+>>> a.x
+42
+>>> a.x = 21
+>>> a.x
+21
 ```
 
 ## Advanced programming
