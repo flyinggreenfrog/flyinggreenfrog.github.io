@@ -131,6 +131,12 @@ Delete todo:
 $ todo.sh del|rm <TODONUMBER> [<TERM2REMOVE>]
 ```
 
+Move todo to another list:
+
+``` sh
+$ todo.sh mv <TODONUMBER> <DESTINATION> [<SOURCE>]
+```
+
 Show todos:
 
 ``` sh
