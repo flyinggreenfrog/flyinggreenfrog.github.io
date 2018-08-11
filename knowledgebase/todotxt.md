@@ -1,6 +1,6 @@
 ---
 title: todotxt
-last-changed: <time>2018-08-03</time>
+last-changed: <time>2018-08-11</time>
 knowledgebase: true
 categories: [Linux]
 ---
@@ -55,16 +55,16 @@ Contexts (lists):
   - `@everywhere`
 * `@waitingfor`
 * `@someday` / `@maybe`
-* `@projects`
+* `@Projects`
   - `+work`
   - `+research`
 * Agenda contexts
-  - `@agenda_boss`
-  - `@agenda_meeting`
+  - `@Agenda_Boss`
+  - `@Agenda_Meeting`
 
 Projects (tags):
 
-* `+CleanGarage`
+* `+cleanGarage`
 
 Format:
 
