@@ -98,6 +98,7 @@ Priorities:
 * `todo.txt`
 * `done.txt`
 * `report.txt`
+* `(someday.txt)`
 
 Add todo:
 
