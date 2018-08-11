@@ -57,7 +57,10 @@ Contexts (lists):
 * `@someday` / `@maybe`
 * `@Projects`
   - `+work`
-  - `+research`
+  - `+personal`
+  - `+wife`
+  - `+finances`
+  - `+knowledge`
 * Agenda contexts
   - `@Agenda_Boss`
   - `@Agenda_Meeting`
