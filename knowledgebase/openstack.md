@@ -1,6 +1,6 @@
 ---
 title: Openstack
-last-changed: <time>2018-08-15</time>
+last-changed: <time>2018-08-16</time>
 knowledgebase: true
 categories: [Linux]
 ---
@@ -38,3 +38,11 @@ Others:
 * Magnum
 * Murano
 * Congress
+
+## Usage
+
+List VMs in Error state:
+
+``` sh
+$ openstack server list --all-projects --limit -1 --status ERROR -f value -c ID
+```
