@@ -1,6 +1,6 @@
 ---
 title: Software Defined Networking
-last-changed: <time>2018-08-15</time>
+last-changed: <time>2018-08-16</time>
 knowledgebase: true
 categories: [Linux, Network]
 ---
@@ -21,8 +21,14 @@ BIOS
 CPLD
 : Complex Programmable Logic Devices
 
+CPS
+: Control Plane Services
+
 CRC
 : Cyclic Redundancy Check
+
+DANOS
+: Disaggregated Network Operating System
 
 DPDK
 : Data Plane Development Kit
@@ -30,14 +36,23 @@ DPDK
 EAL
 : Environment Abstraction Layer
 
+FBOSS
+: Facebook Open Switching System
+
 FD.io
 : The Fast Data Project
 
 FPGA
 : Field Programmable Gate Array
 
+FRR
+: Free Range Routing
+
 JBOD
 : Just a Bunch of Disks
+
+NAS
+: Network Adaption Service
 
 NIC
 : Network Interface Card
@@ -57,6 +72,9 @@ OCP
 ODP
 : OpenDataPlane
 
+ONF
+: Open Network Foundation
+
 ONIE
 : Open Network Install Environment
 
@@ -66,6 +84,9 @@ ONL
 ONOS
 : Open Network Operating System
 
+OPX
+: OpenSwitch
+
 OSPF
 : Open Shortest Path First
 
@@ -74,6 +95,15 @@ OVF
 
 OVS
 : Open vSwitch
+
+P4
+: Programming Protocol-Independent Packet Processors
+
+PISA
+: Protocol Independent Switch Architecture
+
+SAI
+: Switch Abstraction Interface
 
 SDN
 : Software Defined Networking
@@ -86,6 +116,9 @@ SNMP
 
 SoC
 : System on Chip
+
+SONiC
+: Software for Open Networking in the Cloud
 
 VLAN
 : Virtual Local Area Network
