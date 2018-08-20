@@ -1,6 +1,6 @@
 ---
 title: todotxt
-last-changed: <time>2018-08-11</time>
+last-changed: <time>2018-08-20</time>
 knowledgebase: true
 categories: [Linux]
 ---
@@ -52,15 +52,10 @@ Contexts (lists):
   - `@phone`
   - `@computer`
   - `@online`
-  - `@everywhere`
+  - `(@everywhere)`
 * `@waitingfor`
 * `@someday` / `@maybe`
-* `@Projects`
-  - `+work`
-  - `+personal`
-  - `+wife`
-  - `+finances`
-  - `+knowledge`
+* `@Project`: for more info about a project tag
 * Agenda contexts
   - `@Agenda_Boss`
   - `@Agenda_Meeting`
@@ -68,11 +63,16 @@ Contexts (lists):
 Projects (tags):
 
 * `+cleanGarage`
+* `+finances`
+* `+knowledge`
+* `+personal`
+* `+wife`
+* `+work`
 
 Format:
 
 ``` text
-(A) <DATE> @<CONTEXT> do something for +<PROJECT>
+[(<PRIO>)] <DATE> @<CONTEXT> do something for +<PROJECT>
 ```
 
 Tools:
@@ -102,6 +102,7 @@ Priorities:
 * `done.txt`
 * `report.txt`
 * `(someday.txt)`
+* `(projects.txt)`
 
 Add todo:
 
