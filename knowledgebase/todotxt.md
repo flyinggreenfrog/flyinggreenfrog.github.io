@@ -49,9 +49,11 @@ Contexts (lists):
 * No context means it's in "in" (`@in`)
 * Next actions (sorted by context)
   - `@home`
-  - `@phone`
   - `@computer`
+  - `@mail`
+  - `@call`
   - `@online`
+  - `@outside`
   - `(@everywhere)`
 * `@waitingfor`
 * `@someday` / `@maybe`
