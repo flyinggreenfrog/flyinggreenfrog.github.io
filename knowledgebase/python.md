@@ -1233,3 +1233,12 @@ popitem()
 copy()
 update()
 ```
+
+### Context manager
+
+Statement `with`
+
+``` text
+__enter__
+__exit__
+```
