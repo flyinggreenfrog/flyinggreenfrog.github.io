@@ -1,6 +1,6 @@
 ---
 title: todotxt
-last-changed: <time>2018-08-20</time>
+last-changed: <time>2018-08-23</time>
 knowledgebase: true
 categories: [Linux]
 ---
@@ -223,6 +223,17 @@ $ todo.sh edit <DESTINATION>
 
 ``` sh
 $ todo.sh note
+```
+
+### due
+
+Add `due:YYYY-MM-DD` to entries, while adding or editing.
+
+List due todos:
+
+``` sh
+$ todo.sh due
+$ todo.sh due 7
 ```
 
 ### revive
