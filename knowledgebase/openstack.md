@@ -42,6 +42,13 @@ Others:
 
 ## Usage
 
+List VMs on hypervisor:
+
+``` sh
+$ openstack server list [--long] --all-projects --host <HOST>
+$ nova list --all-tenants --host <HOST>
+```
+
 List VMs in Error state:
 
 ``` sh
