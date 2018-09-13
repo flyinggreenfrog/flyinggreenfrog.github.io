@@ -1,6 +1,6 @@
 ---
 title: Openstack
-last-changed: <time>2018-08-23</time>
+last-changed: <time>2018-09-13</time>
 knowledgebase: true
 categories: [Linux]
 ---
@@ -53,4 +53,28 @@ List VMs in Error state:
 
 ``` sh
 $ openstack server list --all-projects --limit -1 --status ERROR -f value -c ID
+```
+
+Create VM:
+
+``` sh
+$ openstack flavor list
+$ nova flavor-list
+
+$ openstack image list
+$ glance image-list
+
+$ neutron net-list --tenant-id <PROJECT>
+
+$ openstack server create --flavor <FLAVOR> --image <IMAGE> \
+  --nic net-id=<NET> [--availability-zone <AZ>:<HOST>] <VM>
+$ nova boot --flavor <FLAVOR> --image <IMAGE> --nic net-id=<NET> \
+  [--availability-zone <AZ>:<HOST>] <VM>
+```
+
+Live migrate VM:
+
+``` sh
+$ openstack server migrate <VM> --live <TARGET-HOST>
+$ nova live-migration <VM> [<TARGET-HOST>]
 ```
