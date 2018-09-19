@@ -1,6 +1,6 @@
 ---
 title: Openstack
-last-changed: <time>2018-09-13</time>
+last-changed: <time>2018-09-19</time>
 knowledgebase: true
 categories: [Linux]
 ---
@@ -39,6 +39,20 @@ Others:
 * Magnum
 * Murano
 * Congress
+
+## Network
+
+Agents:
+
+* DHCP (network)
+* L3 (network, compute)
+* Metadata (network, compute)
+* LbaaS (network)
+* OVS (network, compute)
+
+Flooding vs. L2 Population
+
+Neutron: Legacy vs. DVR
 
 ## Usage
 
