@@ -11,6 +11,7 @@ categories: [Linux]
 * [Full disk encryption with LUKS (including /boot)](http://www.pavelkogan.com/2014/05/23/luks-full-disk-encryption) <time>2018-12-21</time>
 * [Ubuntuusers LUKS](https://wiki.ubuntuusers.de/LUKS) <time>2018-12-21</time>
 * [DM-Crypt und Cryptsetup-LUKS](http://www.linux-magazin.de/Ausgaben/2005/08/Geheime-Niederschrift) <time>2018-12-21</time>
+* [Automatically unlock LUKS encrypted drives with a keyfile](https://www.howtoforge.com/automatically-unlock-luks-encrypted-drives-with-a-keyfile) <time>2018-12-21</time>
 
 ## Terms
 
@@ -188,4 +189,11 @@ Info about loop devices:
 
 ``` sh
 # losetup -l
+```
+
+## Crypttab
+
+``` text
+# /etc/crypttab
+<NAME> <DEVICE> <KEYFILE> luks
 ```
