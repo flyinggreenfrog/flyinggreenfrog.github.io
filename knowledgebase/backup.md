@@ -1,6 +1,6 @@
 ---
 title: Backup
-last-changed: <time>2019-01-06</time>
+last-changed: <time>2019-01-29</time>
 knowledgebase: true
 categories: [Linux]
 ---
@@ -58,7 +58,8 @@ Set some environment variables, that borg commands will use:
 # export BORG_RSH='ssh -oBatchMode=yes'
 ```
 
-**`<SERVER>:/home/backup/.ssh/authorized_keys`**
+#### `<SERVER>:/home/backup/.ssh/authorized_keys`
+
 ```text
 command="borg serve --restrict-to-path <PATH>",restrict ssh-rsa <KEY> <COMMENT>
 command="borg serve --restrict-to-path <PATH> --append-only",restrict ssh-rsa <KEY> <COMMENT>
@@ -155,4 +156,11 @@ Restore backup encryption key:
 ```sh
 # borg key import --paper ::
 # borg key import :: <KEYFILE>
+```
+
+Change passphrase:
+
+```sh
+# borg key change-passphrase -v ::
+# BORG_PASSPHRASE=<OLD> BORG_NEW_PASSPHRASE=<NEW> borg key change-passphrase ::
 ```
