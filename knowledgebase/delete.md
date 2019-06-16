@@ -1,12 +1,12 @@
 ---
 title: Delete
-last-changed: <time>2018-07-10</time>
+last-changed: <time>2019-01-30</time>
 knowledgebase: true
 categories: [Linux]
 ---
 ## Links
 
-* [Heise: Sicheres Löschen](https://heise.de/-198816[Heise: Sicheres Löschen) <time>2018-07-10</time>
+* [Heise: Sicheres Löschen](https://www.heise.de/security/meldung/Sicheres-Loeschen-Einmal-ueberschreiben-genuegt-198816.html) <time>2019-01-30</time>
 
 ## Securely delete
 
@@ -27,7 +27,7 @@ Options:
 
 Delete one time with zeros:
 
-``` sh
+```sh
 # shred -vzn 0 <DEV>
 ```
 
@@ -35,19 +35,19 @@ Delete one time with zeros:
 
 Delete with zeros:
 
-``` sh
+```sh
 # dd if=/dev/zero of=<DEV> conv=noerror,notrunc,sync bs=10M
 ```
 
 Show progress (coreutils >= 8.24):
 
-``` sh
+```sh
 # dd if=/dev/zero of=<DEV> status=progress conv=noerror,notrunc,sync bs=10M
 ```
 
 Show progress (coreutils < 8.24):
 
-``` sh
+```sh
 # dd if=/dev/zero of=<DEV> conv=noerror,notrunc,sync bs=10M & PID=$!
 # while true; do kill -USR1 $PID && sleep 1 && clear; done
 ```
@@ -56,38 +56,38 @@ Show progress (coreutils < 8.24):
 
 Create random password file:
 
-``` sh
+```sh
 # pwgen 8 1 > keyfile
 ```
 
 Setup luks device and open it:
 
-``` sh
+```sh
 # cryptsetup luksFormat <DEV> keyfile
 # cryptsetup open <DEV> wipe --key-file keyfile
 ```
 
 Delete one time with zeros:
 
-``` sh
+```sh
 # shred -vzn 0 /dev/mapper/wipe
 # sync
 ```
 
 Close luks device:
 
-``` sh
+```sh
 # cryptsetup close wipe
 ```
 
 Securely delete password file:
 
-``` sh
+```sh
 # shred -vu keyfile
 ```
 
 Wipe LUKS header (to be on the safe side wipe 10 MiB):
 
-``` sh
+```sh
 # dd if=/dev/urandom of=<DEV> bs=10M count=1
 ```
