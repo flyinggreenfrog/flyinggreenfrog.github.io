@@ -1,16 +1,16 @@
 ---
 title: Backup
-last-changed: <time>2019-01-29</time>
+last-changed: <time>2019-06-17</time>
 knowledgebase: true
 categories: [Linux]
 ---
 ## Links
 
-* [Borg - Deduplicating Archiver](https://www.borgbackup.org) <time>2019-01-06</time>
-* [Borg Documentation](https://borgbackup.readthedocs.io) <time>2019-01-06</time>
-* [Borg - Linux Backup Tool featured Deduplicating, Compression and Encryption](https://linoxide.com/linux-how-to/borg-backup-linux-tool) <time>2019-01-06</time>
-* [System- und Dateibackup mit Borg](https://www.pro-linux.de/artikel/2/1918/system-und-dateibackup-mit-borg.html) <time>2019-01-06</time>
-* [The Tao of Backup](http://www.taobackup.com) <time>2019-01-06</time>
+* [Borg - Deduplicating Archiver](https://www.borgbackup.org) <time>2019-06-17</time>
+* [Borg Documentation](https://borgbackup.readthedocs.io) <time>2019-06-17</time>
+* [Borg - Linux Backup Tool featured Deduplicating, Compression and Encryption](https://linoxide.com/linux-how-to/borg-backup-linux-tool) <time>2019-06-17</time>
+* [System- und Dateibackup mit Borg](https://www.pro-linux.de/artikel/2/1918/system-und-dateibackup-mit-borg.html) <time>2019-06-17</time>
+* [The Tao of Backup](http://www.taobackup.com) <time>2019-06-17</time>
 
 ## General
 
@@ -36,9 +36,12 @@ Excludes:
 /srv/backup/*
 /media/*
 /mnt/*
+/.snapshots/*
 /root/.cache/*
 /home/*/.cache/*
 ```
+
+Don't backup BTRFS `/.snapshots` due to size problems with restore.
 
 ## borg
 
@@ -113,6 +116,12 @@ List backups:
 # borg list
 # borg list --prefix <PREFIX>
 # borg list ::'<ARCHIVE>'
+```
+
+Delete old backups:
+
+```sh
+# borg delete ::'<ARCHIVE>'
 ```
 
 Mount backup (partial restore):
