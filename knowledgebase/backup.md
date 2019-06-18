@@ -1,6 +1,6 @@
 ---
 title: Backup
-last-changed: <time>2019-06-17</time>
+last-changed: <time>2019-06-18</time>
 knowledgebase: true
 categories: [Linux]
 ---
@@ -137,6 +137,7 @@ Extract (borg extracts normally to current working dir):
 
 ```sh
 # cd / && borg extract \
+  --sparse \
   --list \
   --show-rc \
   ::'<ARCHIVE>'
