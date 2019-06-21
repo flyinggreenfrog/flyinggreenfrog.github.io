@@ -1,6 +1,6 @@
 ---
 title: Backup
-last-changed: <time>2019-06-18</time>
+last-changed: <time>2019-06-21</time>
 knowledgebase: true
 categories: [Linux]
 ---
@@ -19,7 +19,8 @@ read permission problems).
 
 Paths to separately backup:
 
-* `/` (without `/home`)
+* `/` (without `/home/*` and `/srv/*`)
+* `/srv`
 * `/home`
 
 Excludes:
