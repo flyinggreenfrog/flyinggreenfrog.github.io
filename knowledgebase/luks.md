@@ -1,6 +1,6 @@
 ---
 title: LUKS
-last-changed: <time>2018-12-21</time>
+last-changed: <time>2019-06-23</time>
 knowledgebase: true
 categories: [Linux]
 ---
@@ -134,7 +134,7 @@ With LUKS you can use multiple passwords, there are up to 8 slots.
 Add key:
 
 ``` sh
-# cryptsetup --verify-passphrase [--key-slot <NR>] luksAddKey <DEV>
+# cryptsetup --verify-passphrase [--key-slot <NR>] [--force-password] luksAddKey <DEV>
 ```
 
 Remove key:
