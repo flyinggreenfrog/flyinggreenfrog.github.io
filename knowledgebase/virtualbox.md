@@ -1,6 +1,6 @@
 ---
 title: Virtualbox
-last-changed: <time>2018-08-15</time>
+last-changed: <time>2019-08-27</time>
 knowledgebase: true
 categories: [Linux]
 ---
@@ -108,8 +108,12 @@ guest# apt-get install build-essential module-assistant
 guest# m-a prepare
 ```
 
-* `/usr/share/virtualbox/VBoxGuestAdditions.iso`
-* In VirtualBox select _Devices_, then _Insert Guest Additions CD image_.
+* Before:
+  - In VirtualBox GUI select _Devices_, then _Insert Guest Additions CD image_.
+  - Not there anymore: `/usr/share/virtualbox/VBoxGuestAdditions.iso`
+* Now:
+  - Instead download `https://download.virtualbox.org/virtualbox/6.0.10/VBoxGuestAdditions_6.0.10.iso`
+  - Download it, when asked for automatical download.
 * Use `dkms` or run `rcvboxadd setup` after every kernel update.
 
 Mount guest additions and install them:
