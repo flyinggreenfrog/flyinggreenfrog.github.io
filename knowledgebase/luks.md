@@ -1,6 +1,6 @@
 ---
 title: LUKS
-last-changed: <time>2019-06-23</time>
+last-changed: <time>2019-09-01</time>
 knowledgebase: true
 categories: [Linux]
 ---
@@ -12,6 +12,9 @@ categories: [Linux]
 * [Ubuntuusers LUKS](https://wiki.ubuntuusers.de/LUKS) <time>2018-12-21</time>
 * [DM-Crypt und Cryptsetup-LUKS](http://www.linux-magazin.de/Ausgaben/2005/08/Geheime-Niederschrift) <time>2018-12-21</time>
 * [Automatically unlock LUKS encrypted drives with a keyfile](https://www.howtoforge.com/automatically-unlock-luks-encrypted-drives-with-a-keyfile) <time>2018-12-21</time>
+
+* [LUKS with GnuPG and smart-card](https://wiki.majic.rs/Openpgp/protecting_luks_decryption_key_in_debian_jessie_us>) <time>2019-07-11</time>
+* [LUKS enrypted root with GPG smartcard](https://blog.fugoes.xyz/2018/11/16/LUKS-Encrypted-Root-with-GPG-Smartcard.html) <time>2019-07-11</time>
 
 ## Terms
 
