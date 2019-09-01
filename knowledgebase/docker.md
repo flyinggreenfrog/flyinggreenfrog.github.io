@@ -1,44 +1,70 @@
 ---
 title: Docker
-last-changed: <time>2018-08-15</time>
+last-changed: <time>2019-09-01</time>
 knowledgebase: true
 categories: [Container, Linux]
 ---
 ## Links
 
-* [Docker overview](https://docs.docker.com/engine/docker-overview) <time>2018-06-23</time>
-* [Get started with Docker](https://docs.docker.com/get-started) <time>2018-06-23</time>
-
-## Container
-
-* Namespaces
-* CGroups
-* Union filesystem
+* [Docker overview](https://docs.docker.com/engine/docker-overview) <time>2019-05-21</time>
+* [Get started with Docker](https://docs.docker.com/get-started) <time>2019-05-21</time>
 
 ## Setup
 
-``` sh
-# zypper in docker
+```sh
+# yum install -y yum-utils device-mapper-persistent-data lvm2
+# yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+# yum install docker-ce docker-ce-cli containerd.io
 # systemctl enable docker
 # systemctl start docker
 ```
 
 To avoid prepending `sudo` in front of every `docker` command, add your user to
-the `docker` group. Be aware of the security implications as the `docker` group
-grants rights equivalent to `root`.
+the `docker` group. Be aware of the security implications, as the `docker`
+group grants rights equivalent to `root`.
 
-``` sh
+```sh
 # usermod -a -G docker <USER>
 ```
 
-## Docker
+## Overview
 
-1. Container
-2. Services
-3. Stack
+### Docker architecture
+
+* Docker daemon
+* Docker client
+* Docker registries
+* Docker objects
+  - images: read-only template of container
+  - containers: runnable instance of image
+  - networks
+  - volumes
+* hierarchy
+  - containers
+  - services
+  - swarms
+  - stacks
 
 * `Dockerfile`
 * `docker-compose.yml`
+* `/var/lib/docker`
+
+### Technologies
+
+* Namespaces
+  - pid
+  - net
+  - ipc
+  - mtn
+  - uts
+* Control groups / cgroups
+* Union file system / UnionFS
+  - AUFS
+  - btrfs
+  - vfs
+  - DeviceMapper
+* Container format
+  - libcontainer
 
 ## Usage
 
@@ -46,7 +72,7 @@ grants rights equivalent to `root`.
 
 Getting information:
 
-``` sh
+```sh
 $ docker -v|--version
 $ docker version
 $ docker info
@@ -54,28 +80,39 @@ $ docker info
 
 Getting help:
 
-``` sh
+```sh
 $ docker <CMD> --help
 $ docker help <CMD>
 $ man docker-<CMD>
 ```
 
-``` sh
+Execute Docker image:
+
+```sh
 $ docker run hello-world
 ```
 
-``` sh
+List docker images:
+
+```sh
 $ docker (image ls|images)
-$ docker (container ls|ps)
 ```
 
-``` sh
+List docker containers (runnnig, all, all in quiet mode):
+
+```sh
+$ docker (container ls|ps)
+$ docker (container ls|ps) -a
+$ docker (container ls|ps) -aq
+```
+
+```sh
 $ docker build
 $ docker run
 $ docker tag
 ```
 
-``` sh
+```sh
 $ docker start
 $ docker restart
 $ docker attach
@@ -91,26 +128,26 @@ $ docker port
 
 Show logs of container:
 
-``` sh
+```sh
 $ docker logs <CONTAINER>
 ```
 
 Follow logs of container with timestamps:
 
-``` sh
+```sh
 $ docker logs -ft <CONTAINER>
 ```
 
-``` sh
+```sh
 $ docker login
 $ docker push
 ```
 
-``` sh
+```sh
 $ docker inspect
 ```
 
-``` sh
+```sh
 $ docker container prune
 $ docker container rm $(docker container ls -aq)
 $ docker image prune
@@ -136,7 +173,7 @@ Dockerfile instructions
 
 ### Swarm
 
-``` sh
+```sh
 $ docker swarm init
 $ docker stack deploy
 $ docker stack ls
