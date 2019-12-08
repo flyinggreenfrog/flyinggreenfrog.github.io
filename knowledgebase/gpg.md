@@ -1,6 +1,6 @@
 ---
 title: GPG
-last-changed: <time>2019-09-01</time>
+last-changed: <time>2019-12-08</time>
 knowledgebase: true
 categories: [Linux]
 ---
@@ -490,7 +490,7 @@ Now you can publish the public key, either by putting it on your webserver or
 by sending it to a keyserver:
 
 ```sh
-$ gpg --send-keys <KEYID> [--keyserver hkps://hkps.pool.sks-keyservers.net]
+$ gpg [--keyserver hkps://hkps.pool.sks-keyservers.net] --send-keys <KEYID>
 ```
 
 ### HSM - Nitrokey
@@ -706,6 +706,7 @@ Set new expiry date:
 $ gpg --edit-key <KEYID>
 gpg> key <X>
 gpg> expire
+gpg> key <X>
 gpg> save
 $ gpg --send-keys <KEYID>
 ```
