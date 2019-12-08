@@ -1,6 +1,6 @@
 ---
 title: PDF
-last-changed: <time>2018-08-19</time>
+last-changed: <time>2019-12-08</time>
 knowledgebase: true
 categories: [Linux]
 ---
@@ -13,32 +13,32 @@ PDF
 
 Burst:
 
-``` sh
+```sh
 $ pdftk <INPUT>.pdf burst output <OUTPUT>_%02d.pdf
 ```
 
 Concat:
 
-``` sh
+```sh
 $ pdftk <INPUT>.pdf cat <FROM-TO> output <OUTPUT>.pdf
 $ pdftk A=<INPUT1>.pdf B=<INPUT2> cat A<FROM-TO> B<FROM-TO> output <OUTPUT>.pdf
 ```
 
 Rotate:
 
-``` sh
+```sh
 $ pdftk <INPUT>.pdf cat 1-endeast output <OUTPUT>.pdf
 ```
 
 ## qpdf
 
-``` sh
+```sh
 # zypper in qpdf
 ```
 
 Remove password (even empty password):
 
-``` sh
+```sh
 $ qpdf --password='<PASSWORD>' --decrypt <FILE>.pdf <NEWFILE>.pdf
 ```
 
@@ -46,13 +46,13 @@ $ qpdf --password='<PASSWORD>' --decrypt <FILE>.pdf <NEWFILE>.pdf
 
 Resize to A4 paper:
 
-``` sh
+```sh
 $ pdfjam --outfile <OUTPUT>.pdf --paper a4paper <INPUT>.pdf
 ```
 
 ## xournal
 
-``` sh
+```sh
 # zypper in xournal
 ```
 
