@@ -1,6 +1,6 @@
 ---
 title: LUKS
-last-changed: <time>2019-09-01</time>
+last-changed: <time>2019-12-11</time>
 knowledgebase: true
 categories: [Linux]
 ---
@@ -50,7 +50,7 @@ SHA
 
 ## Setup
 
-``` sh
+```sh
 # modprobe loop
 # modprobe dm_crypt
 # zypper in cryptsetup
@@ -60,13 +60,13 @@ SHA
 
 Overwrite beginning:
 
-``` sh
+```sh
 # dd if=/dev/urandom of=<DEV> bs=1M count=10
 ```
 
 Help shows compiled-in defaults for cipher, key-size and hash:
 
-``` sh
+```sh
 # cryptsetup --help
 [...]
 Default compiled-in device cipher parameters:
@@ -77,7 +77,7 @@ Default compiled-in device cipher parameters:
 
 Encrypt and format device:
 
-``` sh
+```sh
 # cryptsetup --verify-passphrase --verbose \
   --cipher aes-xts-plain64 --key-size 512 --hash sha512 \
   luksFormat <DEV>
@@ -88,7 +88,7 @@ Encrypt and format device:
 
 Use device:
 
-``` sh
+```sh
 # cryptsetup open <DEV> <NAME>
 # udiskctl mount -b /dev/mapper/<NAME>
 # udiskctl unmount -b /dev/mapper/<NAME>
@@ -97,7 +97,7 @@ Use device:
 
 Info about crypto device:
 
-``` sh
+```sh
 # dmsetup info <NAME>
 # cryptsetup status <NAME>
 ```
@@ -106,19 +106,19 @@ Info about crypto device:
 
 Header information:
 
-``` sh
+```sh
 # cryptsetup luksDump <DEV>
 ```
 
 Backup header information of LUKS device:
 
-``` sh
+```sh
 # cryptsetup luksHeaderBackup <DEV> --header-backup-file <BACKUP>
 ```
 
 Restore header information of LUKS device:
 
-``` sh
+```sh
 # cryptsetup luksHeaderRestore <DEV> --header-backup-file <BACKUP>
 ```
 
@@ -126,7 +126,7 @@ Delete header, that means securely delete the data, if no header backup.
 
 Wipe LUKS header, to be on the safe side wipe 10 MiB:
 
-``` sh
+```sh
 # dd if=/dev/urandom of=<DEV> bs=1M count=10
 ```
 
@@ -136,23 +136,23 @@ With LUKS you can use multiple passwords, there are up to 8 slots.
 
 Add key:
 
-``` sh
+```sh
 # cryptsetup --verify-passphrase [--key-slot <NR>] [--force-password] luksAddKey <DEV>
 ```
 
 Remove key:
 
-``` sh
+```sh
 # cryptsetup luksRemoveKey <DEV>
 ```
 
-``` sh
+```sh
 # cryptsetup luksKillSlot <DEV> <SLOT>
 ```
 
 Test passphrase or keyfile:
 
-``` sh
+```sh
 # cryptsetup open --test-passphrase <DEV> [--key-file <KEYFILE>]
 ```
 
@@ -160,7 +160,7 @@ Test passphrase or keyfile:
 
 Create keyfile:
 
-``` sh
+```sh
 # dd bs=512 count=4 if=/dev/urandom | base64 > /etc/keyfile
 # chown root. /etc/keyfile
 # chmod 400 /etc/keyfile
@@ -168,13 +168,13 @@ Create keyfile:
 
 Add keyfile:
 
-``` sh
+```sh
 # cryptsetup luksAddKey <DEV> /etc/keyfile
 ```
 
 Use keyfile:
 
-``` sh
+```sh
 # cryptsetup open <DEV> <NAME> --key-file /etc/keyfile
 ```
 
@@ -182,7 +182,7 @@ Use keyfile:
 
 Create container file:
 
-``` sh
+```sh
 $ dd if=/dev/urandom of=<CONTAINER> bs=1G count=1
 ```
 
@@ -190,13 +190,13 @@ Then use `<CONTAINER>` as device.
 
 Info about loop devices:
 
-``` sh
+```sh
 # losetup -l
 ```
 
 ## Crypttab
 
-``` text
+```text
 # /etc/crypttab
 <NAME> <DEVICE> <KEYFILE> luks
 ```
