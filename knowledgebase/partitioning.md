@@ -1,6 +1,6 @@
 ---
 title: Partitioning
-last-changed: <time>2018-12-20</time>
+last-changed: <time>2019-12-11</time>
 knowledgebase: true
 categories: [Linux]
 ---
@@ -43,13 +43,13 @@ MBR:
 
 Erase MBR, be careful, since it means dataloss:
 
-``` sh
+```sh
 # dd if=/dev/zero of=<DEVICE> bs=512 count=1
 ```
 
 Erase all signatures from a device:
 
-``` sh
+```sh
 # wipefs --all --force <PARTITION>
 # wipefs --all --force <DEVICE>
 ```
@@ -73,13 +73,13 @@ GPT:
 
 List blockdevices with filesystem information:
 
-``` sh
+```sh
 # lsblk -f
 ```
 
 Show blockdevices attributes:
 
-``` sh
+```sh
 # blkid
 ```
 
@@ -87,13 +87,13 @@ Show blockdevices attributes:
 
 Ask kernel to reread partition tables:
 
-``` sh
+```sh
 # partprobe
 ```
 
 Which partition tables and partitions are there?
 
-``` sh
+```sh
 # partprobe -s
 ```
 
@@ -103,7 +103,7 @@ Now fdisk supports GPT.
 
 List partitions:
 
-``` sh
+```sh
 # fdisk -l <DEV>
 ```
 
@@ -116,7 +116,7 @@ Since version 2.25 cfdisk supports GPT.
 
 Partitioning:
 
-``` sh
+```sh
 # cfdisk [-z] <DEVICE>
 ```
 
@@ -140,26 +140,26 @@ Since version 2.26 sfdisk supports GPT.
 
 Save description of partition table:
 
-``` sh
-# sfdisk -d|--dump <DEVICE> > <TABLE>.dump
+```sh
+# sfdisk -d|--dump <DEVICE> > <TABLE>.backup
 ```
 
 Restore partition table:
 
-``` sh
-# sfdisk <DEVICE> < <TABLE>.dump
+```sh
+# sfdisk <DEVICE> < <TABLE>.backup
 ```
 
 Full (binary) backup of partition table to some files:
 
-``` sh
+```sh
 # sfdisk -b|--backup <DEVICE>
 sfdisk-<DEVICE>-<OFFSET>.bak
 ```
 
 Restore partition table:
 
-``` sh
+```sh
 # dd if=sfdisk-<DEVICE>-<OFFSET>.bak of=<DEVICE> seek=$((<OFFSET>)) bs=1 conv=notrunc
 ```
 
