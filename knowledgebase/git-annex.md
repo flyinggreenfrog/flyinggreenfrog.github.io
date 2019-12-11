@@ -1,6 +1,6 @@
 ---
 title: Git Annex
-last-changed: <time>2018-06-30</time>
+last-changed: <time>2019-12-11</time>
 knowledgebase: true
 categories: [Linux]
 ---
@@ -16,7 +16,7 @@ Annex
 
 ## Setup
 
-``` sh
+```sh
 # zypper in git git-annex
 ```
 
@@ -25,7 +25,7 @@ buggy (e.g. sqlite errors).
 
 Create main repo:
 
-``` sh
+```sh
 $ mkdir ~/annex
 $ cd ~/annex
 $ git init
@@ -34,7 +34,7 @@ $ git-annex init [<DESCRIPTION>] --version=5
 
 Create another repo:
 
-``` sh
+```sh
 $ cd /media/usb
 $ git clone ~/annex
 $ cd annex
@@ -46,13 +46,13 @@ $ git remote add usbdrive /media/usb/annex
 
 Change description:
 
-``` sh
+```sh
 $ git-annex describe here <DESCRIPTION>
 ```
 
 Reinit / reusing annex.uuid / restore after e.g. whole repo was deleted:
 
-``` sh
+```sh
 $ mv ~/annex ~/annex_old
 $ mkdir ~/annex
 $ cd ~/annex
@@ -67,7 +67,7 @@ $ git-annex sync
 
 Add files:
 
-``` sh
+```sh
 $ git-annex add <FILES>
 $ git commit -m 'Annexed files.'
 $ git-annex sync
@@ -75,7 +75,7 @@ $ git-annex sync
 
 Revert accidental add (with version 5 you first have to commit/sync):
 
-``` sh
+```sh
 $ git-annex add <FILES>
 $ git commit -m 'Annexed files.'
 $ git-annex unannex <FILES>
@@ -84,7 +84,7 @@ $ git commit -m 'Unannexd files.'
 
 Unlock file, edit it and annex/commit again:
 
-``` sh
+```sh
 $ git-annex unlock <FILE>
 $ vim <FILE>
 $ git-annex add <FILE>
@@ -93,14 +93,14 @@ $ git commit -m 'Edited file.'
 
 Discard changes to an unlocked file:
 
-``` sh
+```sh
 $ git-annex unlock <FILE>
 $ git-annex lock [--force] <FILE>
 ```
 
 Bring things already in git now to git-annex:
 
-``` sh
+```sh
 $ git rm --cached <FILE>
 $ git commit -m 'Removed from git.'
 $ git-annex add <FILE>
@@ -109,32 +109,32 @@ $ git commit -m 'Annexed file.'
 
 Remove things from git-annex, while keeping working copy:
 
-``` sh
+```sh
 $ git unannex <FILE>
 $ git commit -m 'Removed from git-annex.'
 ```
 
 Find and fix problems:
 
-``` sh
+```sh
 $ git-annex fsck --fast --quiet|-q
 ```
 
 Show which remotes contain what:
 
-``` sh
+```sh
 $ git-annex whereis [<PATH>]
 ```
 
 More compact view:
 
-``` sh
+```sh
 $ git-annex list [<PATH>]
 ```
 
 Unused files (not referenced in branches or tags):
 
-``` sh
+```sh
 $ git-annex unused
 $ git-annex move --unused --to <REPO>
 ```
@@ -143,29 +143,29 @@ $ git-annex move --unused --to <REPO>
 
 List groups of a repo:
 
-``` sh
+```sh
 $ git-annex group <REPO>
 ```
 
 Get or set preferred content to use group defaults:
 
-``` sh
+```sh
 $ git-annex wanted <REPO> [groupwanted]
 ```
 
 Add repo to group:
 
-``` sh
+```sh
 $ git-annex group <REPO> <GROUP>
 ```
 
 Get or set expression to group:
 
-``` sh
+```sh
 $ git-annex groupwanted <GROUP> [<EXPRESSION>]
 ```
 
-``` sh
+```sh
 $ git-annex move <FILES> --to <DRIVE>
 $ git-annex copy <FILES> --to <DRIVE>
 $ git-annex get <FILES>
@@ -176,18 +176,18 @@ $ git-annex drop <FILES>
 
 Edit git-annex config:
 
-``` sh
+```sh
 $ git-annex vicfg
 ```
 
 How many copies of a file should be stored?
 
-``` sh
+```sh
 $ git annex numcopies <N>
 ```
 
 Config file `.gitattributes` in individual directories:
 
-``` text
+```text
 * annex.numcopies=<N>
 ```
