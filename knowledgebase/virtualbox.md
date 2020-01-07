@@ -1,6 +1,6 @@
 ---
 title: Virtualbox
-last-changed: <time>2019-08-27</time>
+last-changed: <time>2020-01-07</time>
 knowledgebase: true
 categories: [Linux]
 ---
@@ -142,4 +142,16 @@ Copy image:
 
 ``` sh
 $ VBoxManage clonemedium disk <ORIG>.vdi <COPY>.vdi
+```
+
+List hdds:
+
+``` sh
+$ VBoxManage list hdds
+```
+
+Delete hdd:
+
+``` sh
+$ VBoxManage closemedium disk <UUID> --delete
 ```
