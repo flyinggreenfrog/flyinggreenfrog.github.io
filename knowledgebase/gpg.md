@@ -1,13 +1,14 @@
 ---
 title: GPG
-last-changed: <time>2019-12-08</time>
+last-changed: <time>2020-04-04</time>
 knowledgebase: true
 categories: [Linux]
 ---
 ## Links
 
-* [The GNU Privacy Guard](https://gnupg.org) <time>2019-07-13</time>
-* [Wikipedia: OpenPGP](https://de.wikipedia.org/wiki/OpenPGP) <time>2018-05-06</time>
+* [The GNU Privacy Guard](https://gnupg.org) <time>2020-04-04</time>
+* [Wikipedia: OpenPGP](https://de.wikipedia.org/wiki/OpenPGP) <time>2020-04-04</time>
+
 * [Hauke Laging: Verschlüsselung und Signatur](http://www.hauke-laging.de/sicherheit/einfuehrung.html) <time>2018-05-06</time>
 * [Hauke Laging: OpenPGP / GnuPG](http://www.hauke-laging.de/sicherheit/openpgp.html) <time>2018-05-06</time>
 * [Phil's PGP Docs](https://www.phildev.net/pgp) <time>2018-05-06</time>
@@ -59,9 +60,15 @@ Encrypt a file:
 
 ```sh
 $ gpg -a|--armor -e|--encrypt -r|--recipient <KEYID>|<MAIL> <FILE>
+$ ls <FILE>*
+<FILE>  <FILE>.asc
+$ gpg -e|--encrypt -r|--recipient <KEYID>|<MAIL> <FILE>
+$ ls <FILE>*
+<FILE>  <FILE>.asc  <FILE>.gpg
 $ shred -u <FILE>
-$ file <FILE>.asc
+$ file <FILE>.asc <FILE>.gpg
 <FILE>.asc: PGP message Public-Key Encrypted Session Key (old)
+<FILE>.gpg: PGP RSA encrypted session key - keyid: 18DDC17A E871446F RSA (Encrypt or Sign) 2048b .
 ```
 
 Decrypt a file:
@@ -74,8 +81,14 @@ Sign a file with detached signature file:
 
 ```sh
 $ gpg -a|--armor -b|--detach-sign <FILE>
-$ file <FILE>.asc
+$ ls <FILE>*
+<FILE>  <FILE>.asc
+$ gpg -b|--detach-sign <FILE>
+$ ls <FILE>*
+<FILE>  <FILE>.asc  <FILE>.sig
+$ file <FILE>.asc <FILE>.sig
 <FILE>.asc: PGP signature Signature (old)
+<FILE>.asc: data
 ```
 
 Verify a signature:
@@ -91,9 +104,17 @@ password:
 
 ```sh
 $ gpg -a|--armor -c|--symmetric <FILE>
-$ file <FILE>.asc
+$ ls <FILE>*
+<FILE>  <FILE>.asc
+$ gpg -c|--symmetric <FILE>
+$ ls <FILE>*
+<FILE>  <FILE>.asc  <FILE>.gpg
+$ file <FILE>.asc <FILE>.gpg
 <FILE>.asc: PGP message Symmetric-Key Encrypted Session Key (old)
+<FILE>.gpg: GPG symmetrically encrypted data (AES256 cipher)
 ```
+
+### Work with keys locally from keyring
 
 List public keys:
 
@@ -113,29 +134,44 @@ Show fingerprint of a key:
 $ gpg --fingerprint <KEYID>|<MAIL>|<NAME>
 ```
 
-Manually search for (and get) a key:
+### Work with keys from keyserver
+
+Since SKS pool keyservers have some fundamental problems, use
+`keys.opengpg.org` instead.
+
+```text
+keyserver hkps://keys.openpgp.org
+```
+
+There are several methods to search for keys and import them.
+
+* Manually search for a key and after confirmation import it into keyring.
+* Directly import a key without confirmation into keyring.
+* Automatically locate and import key as needed. Preferred method for me in
+  combination with `keys.opengpg.org`, since there is exactly one key to a mail
+  published.
 
 ```sh
 $ gpg --search-keys <KEYID>|<MAIL>|<NAME>
-```
-
-Automatically locate and retrieve keys as needed:
-
-```sh
+$ gpg --recv-keys <KEYID>
 $ gpg --auto-key-locate keyserver --locate-keys <MAIL>
 ```
 
-Receive a key:
+Delete key after confirmation from keyring:
 
 ```sh
+$ gpg --delete-keys <KEYID>|<MAIL>|<NAME>
+```
+
+Get key updates:
+
+```sh
+$ gpg --refresh-keys
 $ gpg --recv-keys <KEYID>
 ```
 
-Refresh keys:
-
-```sh
-$ gpg --refresh-keys [<KEYID>]
-```
+Problem with `--refresh-keys` is, that you expose which keys you have in your
+keyring. Consider updating key one by one. Check out parcimonie for it.
 
 ## gpg2
 
