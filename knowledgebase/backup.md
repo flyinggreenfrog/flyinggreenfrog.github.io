@@ -1,6 +1,6 @@
 ---
 title: Backup
-last-changed: <time>2019-06-21</time>
+last-changed: <time>2020-04-13</time>
 knowledgebase: true
 categories: [Linux]
 ---
@@ -52,6 +52,19 @@ Help:
 # borg help compression
 # borg help patterns
 # borg help placeholders
+```
+
+Comparisions for compression:
+
+```text
+total backuped size 5.6G
+
+lzma,6 -> 1.7G in 34 min
+none -> 4.9G in ~5 min
+lz4 -> 2.7G in ~4 min
+zstd,3 -> 2.0G in ~4 min
+
+For me I choose zstd,3 from now on.
 ```
 
 Set some environment variables, that borg commands will use:
