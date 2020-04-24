@@ -1,6 +1,6 @@
 ---
 title: Backup
-last-changed: <time>2020-04-13</time>
+last-changed: <time>2020-04-24</time>
 knowledgebase: true
 categories: [Linux]
 ---
@@ -128,20 +128,21 @@ List backups:
 
 ```sh
 # borg list
-# borg list --prefix <PREFIX>
 # borg list ::'<ARCHIVE>'
+# borg list -P|--prefix <PREFIX>
 ```
 
 Delete old backups:
 
 ```sh
-# borg delete ::'<ARCHIVE>'
+# borg -v delete ::'<ARCHIVE>'
+# borg -v delete -P|--prefix <PREFIX>
 ```
 
 Mount backup (partial restore):
 
 ```sh
-# borg mount --verbose [--prefix <PREFIX>] :: /mnt
+# borg mount --verbose [-P|--prefix <PREFIX>] :: /mnt
 # borg mount --verbose ::'<ARCHIVE>' /mnt
 # ls /mnt
 # borg umount /mnt
