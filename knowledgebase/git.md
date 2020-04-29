@@ -1,6 +1,6 @@
 ---
 title: Git
-last-changed: <time>2018-05-07</time>
+last-changed: <time>2020-04-29</time>
 knowledgebase: true
 categories: [Linux]
 ---
@@ -38,7 +38,7 @@ Sync a fork:
 ``` sh
 $ git fetch <UPSTREAM>
 $ git checkout master|<BRANCH>
-$ git merge upstream/master|upstream/<BRANCH>
+$ git merge --ff-only upstream/master|upstream/<BRANCH>
 $ # If nothing is pushed yet, you can rebase instead of merging
 $ git rebase upstream/master|upstream/<BRANCH>
 ```
