@@ -1,12 +1,12 @@
 ---
 title: Docker
-last-changed: <time>2019-09-01</time>
+last-changed: <time>2020-05-06</time>
 knowledgebase: true
 categories: [Container, Linux]
 ---
 ## Links
 
-* [Docker overview](https://docs.docker.com/engine/docker-overview) <time>2019-05-21</time>
+* [Docker overview](https://docs.docker.com/get-started/docker-overview) <time>2020-05-06</time>
 * [Get started with Docker](https://docs.docker.com/get-started) <time>2019-05-21</time>
 
 ## Setup
@@ -54,11 +54,11 @@ group grants rights equivalent to `root`.
 * Namespaces
   - pid
   - net
-  - ipc
-  - mtn
-  - uts
+  - ipc (InterProcess Communication)
+  - mnt
+  - uts (Unix Timesharing System)
 * Control groups / cgroups
-* Union file system / UnionFS
+* Union file systems / UnionFS
   - AUFS
   - btrfs
   - vfs
