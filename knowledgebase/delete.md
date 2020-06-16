@@ -1,6 +1,6 @@
 ---
 title: Delete
-last-changed: <time>2019-01-30</time>
+last-changed: <time>2020-06-07</time>
 knowledgebase: true
 categories: [Linux]
 ---
@@ -67,10 +67,17 @@ Setup luks device and open it:
 # cryptsetup open <DEV> wipe --key-file keyfile
 ```
 
-Delete one time with zeros:
+Delete one time with zeros (e.g. 80 GiB around 30 min):
 
 ```sh
 # shred -vzn 0 /dev/mapper/wipe
+# sync
+```
+
+Delete 3 times randomly plus one time with zeros (e.g. 80 GiB around 110 min):
+
+```sh
+# shred -vz /dev/mapper/wipe
 # sync
 ```
 
