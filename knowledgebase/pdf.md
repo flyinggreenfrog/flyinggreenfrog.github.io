@@ -1,6 +1,6 @@
 ---
 title: PDF
-last-changed: <time>2019-12-08</time>
+last-changed: <time>2020-06-16</time>
 knowledgebase: true
 categories: [Linux]
 ---
@@ -42,13 +42,46 @@ Remove password (even empty password):
 $ qpdf --password='<PASSWORD>' --decrypt <FILE>.pdf <NEWFILE>.pdf
 ```
 
+## pdfinfo
+
+Get infos, e.g. papersize:
+
+```sh
+$ pdfinfo <FILE>.pdf
+```
+
 ## pdfjam
+
+```sh
+# zypper in --no-recommends pdfjam
+```
 
 Resize to A4 paper:
 
 ```sh
 $ pdfjam --outfile <OUTPUT>.pdf --paper a4paper <INPUT>.pdf
 ```
+
+Mount 2 pdfs on one A4 page:
+
+```sh
+$ pdfjam --nup 1x2 --no-landscape --outfile <OUTPUT>.pdf <INPUT-1>.pdf <INPUT-2>.pdf
+```
+
+## convert
+
+Convert images colorspace to grayscale:
+
+```sh
+$ convert <IMAGE>.jpg -set colorspace RGB -colorspace gray <IMAGE-GRAY>.jpg
+```
+
+Convert photos to pdf:
+
+```sh
+$ convert <IMAGE>.jpg <IMAGE>.pdf
+```
+
 
 ## xournal
 
