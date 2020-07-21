@@ -1,6 +1,6 @@
 ---
 title: Zsh
-last-changed: <time>2018-06-30</time>
+last-changed: <time>2020-06-29</time>
 knowledgebase: true
 categories: [Linux]
 ---
@@ -873,6 +873,12 @@ Capitalize filename and lowercase extension:
 
 ``` sh
 $ zmv '(*).(*)' '${(C)1}.${(L)2}'
+```
+
+Add leading zeros (BASH example):
+
+```sh
+$ z=000; i=1; for f in *; do echo $f ${z:${#i}:${#z}}$i.jpg; i=$(($i + 1)); done
 ```
 
 Add leading zeros and shift:
