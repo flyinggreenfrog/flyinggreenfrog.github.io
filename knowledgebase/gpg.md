@@ -1,6 +1,6 @@
 ---
 title: GPG
-last-changed: <time>2020-04-04</time>
+last-changed: <time>2020-07-21</time>
 knowledgebase: true
 categories: [Linux]
 ---
@@ -244,28 +244,22 @@ keyring. Consider updating key one by one. Check out parcimonie for it.
 ### `gpg.conf`
 
 ```text
-# Use <KEYID> as default key to sign with
+# Default key to use for signing
 default-key <KEYID>
 
-# Use <KEYID> as key to encrypt with, if no recipient is given
+# Key to encrypt with, if no recipient is given
 default-recipient <KEYID>
 
-# Encrypt to <KEYID> additionally to other recipients
-encrypt-to <KEYID>
+# Key to encrypt to additionally to other recipients
+#encrypt-to <KEYID>
+# Same but hide this Key ID
+hidden-encrypt-to <KEYID>
 
-# Don't include keyids
-# Pro:    Doesn't reveal information unnecessarily
-# Contra: May slow down decryption on receiving side, since it will try all
-#         private keys
-#   for all keys
-#throw-keyids
-#   for <KEYID>
-#hidden-recipient <KEYID>
-#hidden-encrypt-to <KEYID>
-
-# How to display key IDs
-keyid-format 0xlong
-with-fingerprint
+# Display fingerprint in compact way instead of key ID
+keyid-format none
+# Would show fingerprint in non-compact way
+#with-fingerprint
+# Display fingerprints for subkeys
 with-subkey-fingerprint
 # To compare private keys with/inside private-keys-v1.d
 with-keygrip
@@ -276,8 +270,15 @@ with-keygrip
 no-emit-version
 no-comments
 
+# Don't include keyids
+# Pro:    Doesn't reveal information unnecessarily
+# Contra: May slow down decryption on receiving side, since it will try all
+#         private keys
+#   for all keys
+#throw-keyids
+
 # List options
-list-options show-keyring,show-policy-urls,show-notations,show-sig-expire,show-keyserver-urls
+list-options show-keyring,show-policy-urls,show-notations,show-uid-validity,show-sig-expire,show-unusable-uids,show-unusable-subkeys
 
 # Deprecated, use keyserver in dirmngr.conf instead
 #keyserver <KEYSERVER>
@@ -289,6 +290,8 @@ default-preference-list SHA512,SHA384,SHA256,SHA224,AES256,AES192,AES,CAST5,BZIP
 personal-digest-preferences SHA512,SHA384,SHA256,SHA224
 personal-cipher-preferences AES256,AES192,AES,CAST5
 personal-compress-preferences BZIP2,ZLIB,ZIP,Uncompressed
+# SHA1 is still the only algorithm to generate V4 fingerprints, so we can't
+# disable it completely
 #weak-digest SHA1
 ```
 
