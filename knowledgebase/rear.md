@@ -1,6 +1,6 @@
 ---
 title: ReaR
-last-changed: <time>2020-04-28</time>
+last-changed: <time>2020-05-23</time>
 knowledgebase: true
 categories: [Linux]
 ---
@@ -38,7 +38,6 @@ Config files are found under `/etc/rear`.
 # Use one of `<MYCONF>.conf` explicitely via `rear -C <MYCONF>`
 OUTPUT=USB
 USB_DEVICE=''
-USB_RETAIN_BACKUP_NR=10
 
 REQUIRED_PROGS+=(
   lsblk
@@ -47,12 +46,6 @@ REQUIRED_PROGS+=(
   xz
   xzcat
   mkinitrd
-)
-
-COPY_AS_IS+=(
-  /etc/borg/all.rc
-  /etc/borg/system.rc
-  /etc/borg/home.rc
 )
 ```
 
@@ -64,6 +57,12 @@ USB_DEVICE=/dev/disk/by-label/REAR-000
 USB_RETAIN_BACKUP_NR=10
 
 BACKUP=BORG
+
+COPY_AS_IS+=(
+  /etc/borg/all.rc
+  /etc/borg/system.rc
+  /etc/borg/home.rc
+)
 
 ### Backup includes
 
@@ -143,7 +142,7 @@ BACKUP_PROG_INCLUDE=(
 
 #### `usb-usb-home.conf`
 
-Similar to `usb-usb-home.conf`:
+Similar to `usb-usb-all.conf`:
 
 ```text
 [...]
