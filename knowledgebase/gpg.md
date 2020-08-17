@@ -31,6 +31,26 @@ categories: [Linux]
 * [OpenPGP](https://www.openpgp.org) <time>2019-07-13</time>
 * [keys.openpgp.org](https://keys.openpgp.org) <time>2019-07-13</time>
 
+* <https://davesteele.github.io/gpg/2014/09/20/anatomy-of-a-gpg-key/>
+* <https://debian-administration.org/users/dkg/weblog/105>
+* <https://begriffs.com/posts/2016-11-05-advanced-intro-gnupg.html>
+* <https://security.stackexchange.com/questions/14718/does-openpgp-key-expiration-add-to-security>
+* <https://gist.github.com/grugq/03167bed45e774551155>
+* <https://pthree.org/2015/11/19/your-gnupg-private-key>
+* <https://www.gesellschaft-zur-entwicklung-von-dingen.de/blog/GnuPG_richtig_einsetzten.html>
+* <https://github.com/balos1/easy-gpg-to-paper>
+* <https://www.unitas-network.de/support/wiki/smartcards/openpgp-card-initialisieren/#zustzliche-identitten>
+
+## TODO
+
+* <https://jacksum.loefflmann.net/en/index.html>
+
+```sh
+$ wget https://sourceforge.net/projects/jacksum/files/jacksum/jacksum-1.7.0.zip/download
+$ java -jar jacksum.jar -a crc24 -X -q 00040F13C0F8A16C4CA8F53C0F15295DD887892FF56B
+1FC7CA	22
+```
+
 ## Terms
 
 DSA
@@ -172,6 +192,18 @@ $ gpg --recv-keys <KEYID>
 
 Problem with `--refresh-keys` is, that you expose which keys you have in your
 keyring. Consider updating key one by one. Check out parcimonie for it.
+
+### Conversion binary vs. ASCII format
+
+Conversion from binary to ASCII format and from ASCIIi to binary format for
+e.g. public keys can be done as follows:
+
+```sh
+$ gpg --output <KEYID>.pub.asc --enarmor <KEYID>.pub.gpg
+$ sed -i -e '/^Comment:/d' -e 's|ARMORED FILE|PUBLIC KEY BLOCK|' <KEYID>.pub.asc
+
+$ gpg --output <KEYID>.pub.gpg --dearmor <KEYID>.pub.asc
+```
 
 ## gpg2
 
@@ -333,6 +365,36 @@ S
 A
 : Authenticate
 
+### Format
+
+* secret key packet
+* user ID packet
+* signature packet
+* secret sub key packet
+* signature packet
+* secret sub key packet
+* signature packet
+* secret sub key packet
+* signature packet
+
+* public key packet
+* user ID packet
+* signature packet
+* public sub key packet
+* signature packet
+* public sub key packet
+* signature packet
+* public sub key packet
+* signature packet
+
+Algo
+
+Epoch time
+
+```sh
+$ date -d @1591685390
+```
+
 ### Procedure for creating and using GPG keys
 
 1. Create a key policy.
@@ -395,6 +457,8 @@ Toggle on only sign and certify capability
 2y
 
 <NAME>
+<MAIL>
+# no comment
 ```
 
 Primary key:
@@ -421,11 +485,15 @@ Expiration date:
 
 UIDs:
 
-* The first UID in the generating step above we set without E-Mail, because
-  E-Mail addresses can get invalid in future and so we have on UID that remains
-  valid, even if all E-Mail addresses would be changed in future.
+* Previously the suggestion was, that the first UID in the generating step
+  above should be set without E-Mail, because E-Mail addresses could get
+  invalid in future and so we had one UID that remained valid, even if all
+  E-Mail addresses would have been changed in future.
+* But with using `keys.openpgp.org` as keyserver, that doesn't make sense
+  anymore, since it only distributes UID with E-Mail address, because it relies
+  on user validation of UIDs before distributing them.
 * The comment field we leave empty, because it doesn't provide so much benefit.
-* After generating the primary key we add additional name/E-Mail pairs.
+* After generating the primary key we can add additional name/E-Mail pairs.
 
 Passphrase:
 
@@ -529,7 +597,7 @@ Now you can publish the public key, either by putting it on your webserver or
 by sending it to a keyserver:
 
 ```sh
-$ gpg [--keyserver hkps://hkps.pool.sks-keyservers.net] --send-keys <KEYID>
+$ gpg [--keyserver hkps://keys.openpgp.org] --send-keys <KEYID>
 ```
 
 ### HSM - Nitrokey
@@ -611,17 +679,35 @@ Ownertrust backup instead makes also sense for the later two.
 
 Create backup of private key (for usage with `paperkey`):
 
-TODO: --export-options export-backup
+Use --export-options export-backup (it also saves trust packets)
+
+
+TODO: why not export-minimal or without option? -> all old self signatures are dropped!?
+TODO: needed for local sigs or sigs not send to keys.opengpg.org --export-options export-local
+    export-local-sigs
+
+TODO: --import-options import-restore
+
+TODO: --import-options import-local import-local-sigs
+test with paperkey export-minimal vs export-backup
+
+* backup public keys with own signatures (since keys.openpgp.org doesn't distribute them anymore)
+  - maybe just local signs?
+* With keys.openpgp.org how is key transition done?
+* After creation backup once? Or everytime the key changes?
+  - Self signatures should be retrievable from keys.openpgp.org?!
+  - Maybe password changes make new backup necessary.
 
 ```sh
-$ gpg --output <KEYID>.sec.gpg --export-secret-keys <KEYID>
+$ gpg --output <KEYID>.sec.gpg --export-secret-keys --export-options export-backup <KEYID>
+$ gpg --output <KEYID>.sec.gpg --export-secret-keys --export-options export-minimal <KEYID>
 ```
 
 Create backup of public key (e.g. to put on webserver):
 
 ```sh
-$ gpg         --output <KEYID>.pub.gpg --export <KEYID>
 $ gpg --armor --output <KEYID>.pub.asc --export <KEYID>
+$ [gpg         --output <KEYID>.pub.gpg --export <KEYID>]
 ```
 
 Optionally create ASCII armored backups and revocation certificate:
@@ -771,7 +857,7 @@ $ gpg --list-packets ~/.gnupg/secring.gpg
 * hash 2: SHA1
 * hash 10: SHA512
 
-Edit secret key encryption values:
+Edit secret key encryption values: no longer works with new private key format
 
 ```sh
 $ gpg --s2k-cipher-algo AES256 --s2k-digest-algo SHA512 \
