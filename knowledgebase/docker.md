@@ -1,13 +1,14 @@
 ---
 title: Docker
-last-changed: <time>2020-05-06</time>
+last-changed: <time>2020-06-22</time>
 knowledgebase: true
 categories: [Container, Linux]
 ---
 ## Links
 
-* [Docker overview](https://docs.docker.com/get-started/docker-overview) <time>2020-05-06</time>
-* [Get started with Docker](https://docs.docker.com/get-started) <time>2019-05-21</time>
+* [Docker overview](https://docs.docker.com/get-started/overview) <time>2020-06-22</time>
+* [Get started with Docker](https://docs.docker.com/get-started) <time>2019-06-22</time>
+* [Docker Compose](https://docs.docker.com/compose) <time>2020-06-05</time>
 
 ## Setup
 
@@ -32,13 +33,17 @@ group grants rights equivalent to `root`.
 ### Docker architecture
 
 * Docker daemon
+  - Docker Engine supports swarm mode in Docker 1.12 and higher
 * Docker client
 * Docker registries
+  - Docker Hub: publie registry
+  - Docker Datacenter (DDC) includes Docker Trusted Registry (DTR)
 * Docker objects
   - images: read-only template of container
   - containers: runnable instance of image
   - networks
   - volumes
+  - plugins
 * hierarchy
   - containers
   - services
@@ -170,6 +175,9 @@ Dockerfile instructions
 * ADD
 * ONBUILD
 * STOPSIGNAL
+
+### Compose
+
 
 ### Swarm
 
