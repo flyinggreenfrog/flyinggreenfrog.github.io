@@ -1,6 +1,6 @@
 ---
 title: ReaR
-last-changed: <time>2020-05-23</time>
+last-changed: <time>2020-08-19</time>
 knowledgebase: true
 categories: [Linux]
 ---
@@ -137,6 +137,25 @@ BACKUP_PROG_INCLUDE=(
   '/boot'
 )
 
+BACKUP_PROG_EXCLUDE=(
+  '/srv'
+  '/home'
+)
+
+[...]
+```
+
+#### `usb-usb-srv.conf`
+
+Similar to `usb-usb-all.conf`:
+
+```text
+[...]
+
+BACKUP_PROG_INCLUDE=(
+  '/srv'
+)
+
 [...]
 ```
 
@@ -152,12 +171,11 @@ BACKUP_PROG_INCLUDE=(
 )
 
 [...]
-
 ```
 
-#### `iso-ssh-all.conf`, `iso-ssh-system.conf`, `iso-ssh-home.conf`
+#### `iso-ssh-all.conf`, `iso-ssh-system.conf`, `iso-ssh-srv.conf`, `iso-ssh-home.conf`
 
-Similar to `usb-usb-all.conf`, `usb-usb-system.conf`, `usb-usb-home.conf`:
+Similar to `usb-usb-all.conf`, `usb-usb-system.conf`, `usb-usb-srv.conf`, `usb-usb-home.conf`:
 
 ```text
 [...]
@@ -221,6 +239,7 @@ Making multiple backups together with rescue medium:
 
 ```sh
 # rear -v -C iso-ssh-system mkbackuponly
+# rear -v -C iso-ssh-srv mkbackuponly
 # rear -v -C iso-ssh-home mkbackuponly
 # rear -v -C iso-ssh-system mkrescue
 ```
