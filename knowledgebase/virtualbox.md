@@ -1,6 +1,6 @@
 ---
 title: Virtualbox
-last-changed: <time>2020-01-07</time>
+last-changed: <time>2020-09-08</time>
 knowledgebase: true
 categories: [Linux]
 ---
@@ -30,17 +30,17 @@ Kernel modules:
 
 ## Setup
 
-``` sh
+```sh
 # zypper in virtualbox virtualbox-qt
 ```
 
 Add to vboxusers group:
 
-``` sh
+```sh
 # usermod -a -G vboxusers <USER>
 ```
 
-``` sh
+```sh
 # systemctl enable vboxdrv
 # systemctl start vboxdrv
 ```
@@ -49,24 +49,24 @@ Add to vboxusers group:
 
 openSUSE:
 
-``` sh
+```sh
 # zypper in dkms
 ```
 
 CentOS:
 
-``` sh
+```sh
 # yum install epel-release
 # yum install dkms
 ```
 
-``` sh
+```sh
 # /usr/lib/virtualbox/vboxdrv.sh setup
 ```
 
 ### Without DKMS
 
-``` sh
+```sh
 # #rcvboxdrv setup
 # /usr/lib/virtualbox/vboxdrv.sh setup
 ```
@@ -75,14 +75,14 @@ CentOS:
 
 CentOS:
 
-``` sh
+```sh
 guest# yum install bzip2 gcc cpp make kernel-devel-$(uname -r)
 guest# export KERN_DIR=/usr/src/kernels/$(uname -r)
 ```
 
 openSUSE/SLES:
 
-``` sh
+```sh
 guest# uname -r
 guest# zypper in kernel-default-devel = <VERSION>
 guest# zypper in gcc cpp make
@@ -90,20 +90,24 @@ guest# zypper in gcc cpp make
 
 SLES:
 
-``` sh
+```sh
 # vim /etc/modprobe.d/10-unsupported-modules.conf
 allow_unsupported_modules 1
 ```
 
 Ubuntu:
 
-``` sh
+```sh
 guest# apt-get install gcc cpp make
 ```
 
 Debian:
 
-``` sh
+```sh
+guest# apt update -y && apt upgrade
+guest# apt install dkms linux-headers-$(uname -r) build-essential
+guest# [apt install virtualbox-guest-dkms virtualbox-guest-utils virtualbox-guest-x11]
+
 guest# apt-get install build-essential module-assistant
 guest# m-a prepare
 ```
@@ -118,7 +122,7 @@ guest# m-a prepare
 
 Mount guest additions and install them:
 
-``` sh
+```sh
 guest# mount /dev/cdrom /mnt
 guest# cd /mnt
 guest# ./VBoxLinuxAdditions.run
@@ -126,13 +130,13 @@ guest# ./VBoxLinuxAdditions.run
 
 Uninstall guest additions:
 
-``` sh
+```sh
 guest# ./VBoxLinuxAdditions.run uninstall
 ```
 
 ## Usage
 
-``` sh
+```sh
 $ VBoxManage list vms|runningvms
 $ VBoxManage startvm <VM> [--type headless]
 $ VBoxManage controlvm <VM> acpipowerbutton
@@ -140,18 +144,18 @@ $ VBoxManage controlvm <VM> acpipowerbutton
 
 Copy image:
 
-``` sh
+```sh
 $ VBoxManage clonemedium disk <ORIG>.vdi <COPY>.vdi
 ```
 
 List hdds:
 
-``` sh
+```sh
 $ VBoxManage list hdds
 ```
 
 Delete hdd:
 
-``` sh
+```sh
 $ VBoxManage closemedium disk <UUID> --delete
 ```
