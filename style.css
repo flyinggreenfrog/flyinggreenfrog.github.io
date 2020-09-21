@@ -1,27 +1,27 @@
 body {
-    color:black;
-    background-color:white;
-    font-size:100.01%;
-    font-family:Helvetica,Arial,sans-serif;
-    margin:0;
-    padding: 1em;
+  color:black;
+  background-color:white;
+  font-size:100.01%;
+  font-family:Helvetica,Arial,sans-serif;
+  margin:0;
+  padding: 1em;
 }
 h1, h2, h3, h4 {
-    padding-left:0.5em;
+  padding-left:0.5em;
 }
 li {
-    margin:0.3em;
+  margin:0.3em;
 }
 a {
-    color:#177665;
+  color:#177665;
 }
 a:visited {
-    color:black;
+  color:black;
 }
 a[href^="http"] {
-    /* image width 16px, height 16px */
-    background:url("/img/ext.gif") center right no-repeat;
-    padding-right:16px;
+  /* image width 16px, height 16px */
+  background:url("/img/ext.gif") center right no-repeat;
+  padding-right:16px;
 }
 a[href^="http://www.flyinggreenfrog.de"],
 a[href^="https://www.flyinggreenfrog.de"],
@@ -38,19 +38,23 @@ a[href^="https://jigsaw.w3.org/css-validator"],
 a[href="http://www.vim.org"],
 a[href="https://www.vim.org"]
 {
-    background:none;
-    padding-right:0px;
+  background:none;
+  padding-right:0px;
 }
 pre {
-    padding:0.5em;
-    margin-right:1em;
+  padding:0.5em;
+  margin-right:1em;
 }
 div.language-text {
-    background-color:silver;
+  background-color:silver;
 }
-div.language-sh {
-    background-color:black;
-    color:white;
+div.language-bash,
+div.language-shell,
+div.language-sh,
+div.language-console
+{
+  background-color:black;
+  color:white;
 }
 dt {
   font-weight:bold;
@@ -62,7 +66,7 @@ dt::after {
 dd {
 }
 span.last-changed, time {
-   font-family:monospace;
+  font-family:monospace;
 }
 
 /******************************************************************************
@@ -70,42 +74,42 @@ span.last-changed, time {
  *****************************************************************************/
 
 ul#navigation {
-    font-size:0.91em;
-    float:left;
-    width:12em;
-    margin:0;
-    padding:0;
-    border:1px dashed silver;
+  font-size:0.91em;
+  float:left;
+  width:12em;
+  margin:0;
+  padding:0;
+  border:1px dashed silver;
 }
 ul#navigation li {
-    list-style:none;
-    margin:0;
-    padding:0.5em;
+  list-style:none;
+  margin:0;
+  padding:0.5em;
 }
 ul#navigation a {
-    display:block;
-    padding:0.2em;
-    font-weight:bold;
+  display:block;
+  padding:0.2em;
+  font-weight:bold;
 }
 ul#navigation a:link {
-    color:#177665;
-    background-color:#eee;
+  color:#177665;
+  background-color:#eee;
 }
 ul#navigation a:visited {
-    color:#177665;
-    background-color:#eee;
+  color:#177665;
+  background-color:#eee;
 }
 ul#navigation a:hover {
-    color:black;
-    background-color:#469284;
+  color:black;
+  background-color:#469284;
 }
 ul#navigation a:active {
-    color:white;
-    background-color:gray;
+  color:white;
+  background-color:gray;
 }
 ul#navigation a.current {
-    color:black;
-    background-color:#469284;
+  color:black;
+  background-color:#469284;
 }
 
 /******************************************************************************
@@ -113,42 +117,42 @@ ul#navigation a.current {
  *****************************************************************************/
 
 div#content {
-    margin-left:12em;
-    margin-right:12em;
-    padding:1em;
-    border:1px dashed silver;
-    min-width:16em;
+  margin-left:12em;
+  margin-right:12em;
+  padding:1em;
+  border:1px dashed silver;
+  min-width:16em;
 }
 div#content h1 {
-    font-size:1.5em;
-    background:#eee;
-    border-bottom:2px inset #469284;
-    border-top:2px outset #469284;
-    color:#177665;
-    font-weight:700;
-    overflow:visible;
+  font-size:1.5em;
+  background:#eee;
+  border-bottom:2px inset #469284;
+  border-top:2px outset #469284;
+  color:#177665;
+  font-weight:700;
+  overflow:visible;
 }
 div#content h2 {
-    font-size:1.2em;
-    text-decoration:none;
-    font-weight:700;
-    border:1px solid;
-    color:#177665;
-    background-color:#E0E9E9;
-    display:block;
-    border-color:#ccc #177665 #177665 #ccc;
+  font-size:1.2em;
+  text-decoration:none;
+  font-weight:700;
+  border:1px solid;
+  color:#177665;
+  background-color:#E0E9E9;
+  display:block;
+  border-color:#ccc #177665 #177665 #ccc;
 }
 div#content h3 {
-    font-size:1.1em;
-    border-bottom:1px solid #418F7C;
+  font-size:1.1em;
+  border-bottom:1px solid #418F7C;
 }
 div#content h4 {
-    border-top:1px solid #ccc;
-    border-bottom:1px solid #ccc;
+  border-top:1px solid #ccc;
+  border-bottom:1px solid #ccc;
 }
 div#content p {
-    font-size:1em;
-    margin:1em 0;
+  font-size:1em;
+  margin:1em 0;
 }
 
 /******************************************************************************
@@ -156,13 +160,13 @@ div#content p {
  *****************************************************************************/
 
 ul#footer {
-    margin-left:12em;
-    margin-right:12em;
-    margin-top:1em;
-    padding:0.5em;
-    border:1px dashed silver;
+  margin-left:12em;
+  margin-right:12em;
+  margin-top:1em;
+  padding:0.5em;
+  border:1px dashed silver;
 }
 ul#footer li {
-    list-style:none;
-    display:inline;
+  list-style:none;
+  display:inline;
 }
