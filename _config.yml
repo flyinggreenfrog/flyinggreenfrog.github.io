@@ -1,8 +1,16 @@
+---
 ## Site settings
 title: Peter Hoffmann
 description: >-
   flyinggreenfrog
-knowledgebase-categories: [Container, Linux, Network, Programming, Security, Systemsmanagement, Technologies]
+knowledgebase-categories:
+  - Container
+  - Linux
+  - Network
+  - Programming
+  - Security
+  - Systemsmanagement
+  - Technologies
 defaults:
   -
     scope:
@@ -15,6 +23,6 @@ defaults:
 markdown: kramdown
 kramdown:
   input: GFM
-  auto_ids: true
-  hard_wrap: false
+  auto_ids: True
+  hard_wrap: False
   syntax_highlighter: rouge
