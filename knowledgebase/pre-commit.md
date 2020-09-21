@@ -26,9 +26,10 @@ $ pre-commit init-templatedir ~/.git-template
 
 Example below is for usage with Ansible.
 
-`.pre-commit-config.yaml`
+#### `.pre-commit-config.yaml`
 
 ```text
+---
 default_language_version:
   python: python3
 repos:
