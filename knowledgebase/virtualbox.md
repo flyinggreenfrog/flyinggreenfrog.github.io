@@ -1,6 +1,6 @@
 ---
 title: Virtualbox
-last-changed: <time>2020-09-08</time>
+last-changed: <time>2020-10-07</time>
 knowledgebase: true
 categories: [Linux]
 ---
@@ -30,17 +30,17 @@ Kernel modules:
 
 ## Setup
 
-```sh
+```console
 # zypper in virtualbox virtualbox-qt
 ```
 
 Add to vboxusers group:
 
-```sh
+```console
 # usermod -a -G vboxusers <USER>
 ```
 
-```sh
+```console
 # systemctl enable vboxdrv
 # systemctl start vboxdrv
 ```
@@ -49,24 +49,24 @@ Add to vboxusers group:
 
 openSUSE:
 
-```sh
+```console
 # zypper in dkms
 ```
 
 CentOS:
 
-```sh
+```console
 # yum install epel-release
 # yum install dkms
 ```
 
-```sh
+```console
 # /usr/lib/virtualbox/vboxdrv.sh setup
 ```
 
 ### Without DKMS
 
-```sh
+```console
 # #rcvboxdrv setup
 # /usr/lib/virtualbox/vboxdrv.sh setup
 ```
@@ -75,14 +75,14 @@ CentOS:
 
 CentOS:
 
-```sh
+```console
 guest# yum install bzip2 gcc cpp make kernel-devel-$(uname -r)
 guest# export KERN_DIR=/usr/src/kernels/$(uname -r)
 ```
 
 openSUSE/SLES:
 
-```sh
+```console
 guest# uname -r
 guest# zypper in kernel-default-devel = <VERSION>
 guest# zypper in gcc cpp make
@@ -90,29 +90,25 @@ guest# zypper in gcc cpp make
 
 SLES:
 
-```sh
+```console
 # vim /etc/modprobe.d/10-unsupported-modules.conf
 allow_unsupported_modules 1
 ```
 
 Ubuntu:
 
-```sh
+```console
 guest# apt-get install gcc cpp make
 ```
 
 Debian:
 
-```sh
+```console
 guest# apt update -y && apt upgrade
 guest# apt install dkms linux-headers-$(uname -r) build-essential
-guest# [apt install virtualbox-guest-dkms virtualbox-guest-utils virtualbox-guest-x11]
-
-guest# apt-get install build-essential module-assistant
-guest# m-a prepare
 ```
 
-* Before:
+* Before (or in Windows):
   - In VirtualBox GUI select _Devices_, then _Insert Guest Additions CD image_.
   - Not there anymore: `/usr/share/virtualbox/VBoxGuestAdditions.iso`
 * Now:
@@ -122,7 +118,7 @@ guest# m-a prepare
 
 Mount guest additions and install them:
 
-```sh
+```console
 guest# mount /dev/cdrom /mnt
 guest# cd /mnt
 guest# ./VBoxLinuxAdditions.run
@@ -130,13 +126,18 @@ guest# ./VBoxLinuxAdditions.run
 
 Uninstall guest additions:
 
-```sh
+```console
 guest# ./VBoxLinuxAdditions.run uninstall
 ```
 
+With Virtualbox guest additions screen resolution will be adjusted
+automatically, if you resize the window.
+
+If not go to the display menu and select automatic adjustment of resolution.
+
 ## Usage
 
-```sh
+```console
 $ VBoxManage list vms|runningvms
 $ VBoxManage startvm <VM> [--type headless]
 $ VBoxManage controlvm <VM> acpipowerbutton
@@ -144,18 +145,18 @@ $ VBoxManage controlvm <VM> acpipowerbutton
 
 Copy image:
 
-```sh
+```console
 $ VBoxManage clonemedium disk <ORIG>.vdi <COPY>.vdi
 ```
 
 List hdds:
 
-```sh
+```console
 $ VBoxManage list hdds
 ```
 
 Delete hdd:
 
-```sh
+```console
 $ VBoxManage closemedium disk <UUID> --delete
 ```
