@@ -1,17 +1,21 @@
 ---
 title: Images
-last-changed: <time>2018-06-30</time>
+last-changed: <time>2020-10-25</time>
 knowledgebase: true
 categories: [Linux]
 ---
 ## Links
 
-* [EXIF Orientation](http://www.impulseadventure.com/photo/exif-orientation.html) <time>2018-06-30</time>
-* [MWG Tags](http://www.sno.phy.queensu.ca/~phil/exiftool/TagNames/MWG.html) <time>2018-06-30</time>
-* [Metadata](http://www.photometadata.org/meta-resources-field-guide-to-metadata) <time>2018-06-30</time>
-* [Metadaten mit Exiftool](http://www.linux-community.de/Internal/Artikel/Print-Artikel/LinuxUser/2010/09/Metainformationen-bearbeiten-und-Bilder-organisieren-mit-Exiftool) <time>2018-06-30</time>
-* [Digitale Fotosammlung](http://www.gerhard.fr/DAM/deutsch.php) <time>2018-06-30</time>
-* [JPEG Bilder drehen](http://www.linux-community.de/Internal/Artikel/Print-Artikel/LinuxUser/2005/10/JPEG-Bilder-automatisch-umbenennen-und-verlustlos-bearbeiten) <time>2018-06-30</time>
+* [EXIF Orientation](http://www.impulseadventure.com/photo/exif-orientation.html) <time>2020-10-25</time>
+* [MWG Tags](http://exiftool.org/TagNames/MWG.html) <time>2020-10-25</time>
+* [Metadata](http://www.photometadata.org/meta-resources-field-guide-to-metadata) <time>2020-10-25</time>
+* [Metadaten mit Exiftool](http://www.linux-community.de/Internal/Artikel/Print-Artikel/LinuxUser/2010/09/Metainformationen-bearbeiten-und-Bilder-organisieren-mit-Exiftool) <time>2020-10-25</time>
+* [Digitale Fotosammlung](http://www.gerhard.fr/DAM/deutsch.php) <time>2020-10-25</time>
+* [JPEG Bilder drehen](http://www.linux-community.de/Internal/Artikel/Print-Artikel/LinuxUser/2005/10/JPEG-Bilder-automatisch-umbenennen-und-verlustlos-bearbeiten) <time>2020-10-25</time>
+* [Bad PreviewIFD directory error with exiftool](https://codeyarns.com/tech/2014-12-05-bad-previewifd-directory-error-with-exiftool.html) <time>2020-10-25</time>
+* [ubuntuusers: ExifTool](https://wiki.ubuntuusers.de/ExifTool) <time>2020-10-25</time>
+* [Simple Media Transfer Protocol File System](https://github.com/phatina/simple-mtpfs) <time>2020-10-25</time>
+* [Thumbsup HTML galleries](https://thumbsup.github.io/docs) <time>2020-10-25</time>
 
 ## Terms
 
@@ -29,14 +33,61 @@ MWG
 
 ## Workflow
 
-1. Copy from sdcard to a temporary directory.
-2. Rotate (e.g. with `thunar`).
+1. Mount (either sdcard directly or phone via e.g. `simple-mtpfs`).
+1. Copy pictures to a temporary directory (e.g. with own script `syncdirs`).
+2. Rotate (e.g. with own scripts `rotate+90` or `rotate-90`).
 3. Delete bad pictures.
 4. Correct date/time, if necessary.
-5. Add metadata (e.g. with own script `addmetadata`).
-6. Add tags.
+5. Add EXIF metadata (e.g. with own script `addmetadata`).
+6. Add EXIF tags, if needed.
 7. Find duplicates (e.g. with `dupeguru`).
 8. Rename and sort (e.g. with own script `sortimages`).
+9. Create soft links for "albums" of chosen pictures (e.g. with NNN).
+10. Create albums with thumbsup.
+
+## Mount with simple-mtpfs
+
+Installation:
+
+```console
+# zypper in simple-mtpfs
+```
+
+Show which devices are connected:
+
+```console
+$ simple-mtpfs -l
+```
+
+Make sure device is connected in transfer photos mode, if e.g. you get
+following error:
+
+```text
+Could not retrieve device storage.
+For android phones make sure the screen is unlocked.
+```
+
+If you get the following error with simple-mtpfs, device is likely already
+mounted otherwise (e.g. with Gnome):
+
+```text
+LIBMTP PANIC: Trying to dump the error stack of a NULL device!
+```
+
+Mount:
+
+```console
+$ mkdir mnt
+$ simple-mtpfs mnt
+$ cd mnt
+```
+
+Unmount:
+
+```console
+$ cd
+$ fusermount -u mnt
+```
 
 ## Rotate
 
@@ -44,26 +95,27 @@ MWG
 
 The tool `jpegtran` deletes EXIF data!
 
-``` sh
+```console
 # zypper in libjpeg-turbo
 ```
 
 If rotation can't be done lossless, then abort:
 
-``` sh
+```console
 $ jpegtran -rotate 90 -perfect -output <ROTATED>.jpg <ORIGINAL>.jpg
 ```
 
 Drop non-transformable blocks:
-``` sh
+```console
 $ jpegtran -rotate 90 -trim -output <ROTATED>.jpg <ORIGINAL>.jpg
 ```
 
 ### Exiftran
 
-The tool `exiftran` doesn't delete EXIF data.
+The tool `exiftran` doesn't delete EXIF data. Therefore use `exiftran` instead
+of `jpegtran`.
 
-``` sh
+```console
 # zypper in exiftran
 ```
 
@@ -80,57 +132,63 @@ Options:
 
 Rotate clockwise:
 
-``` sh
+```console
 $ exiftran -i -9 <IMAGE>.jpg
 ```
 
 Rotate counter clockwise:
 
-``` sh
+```console
 $ exiftran -i -2 <IMAGE>.jpg
 ```
 
 ## Exiftool
 
-``` sh
+```console
 # zypper in exiftool
 ```
 
 Show currently set information of an image:
 
-``` sh
+```console
 $ exiftool <IMG>.jpg
 ```
 
 Options:
 
--m
+-m | -ignoreMinorErrors
 : ignore minor errors
 
--P
-: preserve date
+-P | -preserve
+: preserve file modification date/time
+
+-b | -binary
+: extract binary data (e.g. for preview/thumbnail images)
+
+-r | -recurse
+: recursively process subdirectories
 
 Get rid of 'Warning: Bad PreviewIFD directory':
 
-``` sh
-$ exiftool -m -P -overwrite_original -tagsfromfile @ -exifversion *.jpg
-```
-
-Reset modifydate to createdate:
-
-``` sh
-$ exiftool -P -overwrite_original -'filemodifydate<createdate' *.jpg
+```console
+$ exiftool -m -P -overwrite_original -tagsfromfile @ *.jpg
 ```
 
 If not there already, set createdate:
 
-``` sh
+```console
 $ exiftool -P -overwrite_original -mwg:'createdate=YYYY:MM:DD hh:mm:ss' <IMG>.jpg
+```
+
+Reset modifydate to createdate:
+
+```console
+$ exiftool -P -overwrite_original -'filemodifydate<createdate' *.jpg
 ```
 
 Adjust all dates, e.g. if camera time was incorrect:
 
-``` sh
+```console
 $ exiftool -AllDates+='HH:MM' -overwrite_original <IMG>.jpg
 ```
 
@@ -142,18 +200,25 @@ MWG Tags:
 * description
 * keywords
 
-Add some metadata:
+Add some EXIF metadata:
 
-``` sh
+```console
 $ exiftool -m -P -overwrite_original \
   -mwg:creator='<NAME>' \
   -mwg:'copyright<Copyright $createdate, <NAME> (<ADDRESS>), all rights reserved' \
   -d %Y *.jpg
 ```
 
-Add tags:
+Extract preview/thumbnail image:
 
-``` sh
+```console
+$ exiftool -b -PreviewImage <IMG>.jpg > <IMG>_preview.jpg
+$ exiftool -b -ThumbnailPreviewImage <IMG>.jpg > <IMG>_preview.jpg
+```
+
+Add EXIF tags:
+
+```console
 $ exiftool -P -overwrite_original -mwg:keywords+='<TAG>' *.jpg
 ```
 
@@ -165,74 +230,8 @@ $ exiftool -P -overwrite_original -mwg:keywords+='<TAG>' *.jpg
 
 Sort pictures into subdirectories with filenames according to createdate:
 
-``` sh
-$ exiftool -r -P \
+```console
+$ exiftool -P -r \
   -'Filename<DateTimeOriginal' \
   -d %Y-%m/%Y%m%d_%H%M%S%%-c.%%le *.jpg
-```
-
-## Thunar
-
-Custom actions in `~/.config/Thunar/uca.xml`:
-
-``` text
-<?xml encoding="UTF-8" version="1.0"?>
-<actions>
-<action>
-        <icon></icon>
-        <name>Rotate clockwise</name>
-        <unique-id></unique-id>
-        <command>for FILE in %F; do exiftran -i -9 &quot;$FILE&quot;; done</command>
-        <description></description>
-        <patterns>*.jpg;*.JPG;*.jpeg;*.JPEG</patterns>
-        <image-files/>
-</action>
-<action>
-        <icon></icon>
-        <name>Rotate counter clockwise</name>
-        <unique-id></unique-id>
-        <command>for FILE in %F; do exiftran -i -2 &quot;$FILE&quot;; done</command>
-        <description></description>
-        <patterns>*.jpg;*.JPG;*.jpeg;*.JPEG</patterns>
-        <image-files/>
-</action>
-<action>
-        <icon></icon>
-        <name>Add metadata to images</name>
-        <unique-id></unique-id>
-        <command>addmetadata %F</command>
-        <description></description>
-        <patterns>*.jpg;*.JPG;*.jpeg;*.JPEG</patterns>
-        <image-files/>
-</action>
-</actions>
-```
-
-## Transfer files with MTP
-
-Installation:
-
-``` sh
-# zypper in simple-mtpfs
-```
-
-Show which devices are connected:
-
-``` sh
-$ simple-mtpfs -l
-```
-
-Mount:
-
-``` sh
-$ mkdir mnt
-$ simple-mtpfs mnt
-$ cd mnt
-```
-
-Unmount:
-
-``` sh
-$ cd
-$ fusermount -u mnt
 ```
