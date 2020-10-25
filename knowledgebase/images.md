@@ -34,16 +34,16 @@ MWG
 ## Workflow
 
 1. Mount (either sdcard directly or phone via e.g. `simple-mtpfs`).
-1. Copy pictures to a temporary directory (e.g. with own script `syncdirs`).
-2. Rotate (e.g. with own scripts `rotate+90` or `rotate-90`).
-3. Delete bad pictures.
-4. Correct date/time, if necessary.
-5. Add EXIF metadata (e.g. with own script `addmetadata`).
-6. Add EXIF tags, if needed.
-7. Find duplicates (e.g. with `dupeguru`).
-8. Rename and sort (e.g. with own script `sortimages`).
-9. Create soft links for "albums" of chosen pictures (e.g. with NNN).
-10. Create albums with thumbsup.
+2. Copy pictures to a temporary directory (e.g. with own script `syncdirs`).
+3. Rotate (e.g. with own scripts `rotate+90` or `rotate-90`).
+4. Delete bad pictures.
+5. Correct date/time, if necessary.
+6. Add EXIF metadata (e.g. with own script `addmetadata`).
+7. Add EXIF tags, if needed.
+8. Find duplicates (e.g. with `dupeguru`).
+9. Rename and sort (e.g. with own script `sortimages`).
+10. Create soft links for "albums" of chosen pictures (e.g. with NNN).
+11. Create albums with thumbsup.
 
 ## Mount with simple-mtpfs
 
