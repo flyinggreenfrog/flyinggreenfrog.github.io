@@ -1,6 +1,6 @@
 ---
 title: LUKS
-last-changed: <time>2019-12-11</time>
+last-changed: <time>2020-11-12</time>
 knowledgebase: true
 categories: [Linux]
 ---
@@ -138,6 +138,12 @@ Add key:
 
 ```sh
 # cryptsetup --verify-passphrase [--key-slot <NR>] [--force-password] luksAddKey <DEV>
+```
+
+Change passphrase:
+
+```sh
+# cryptsetup luksChangeKey <DEV>
 ```
 
 Remove key:
