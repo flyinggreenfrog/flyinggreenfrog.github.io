@@ -1,6 +1,6 @@
 ---
 title: Images
-last-changed: <time>2020-10-25</time>
+last-changed: <time>2020-11-10</time>
 knowledgebase: true
 categories: [Linux]
 ---
@@ -43,6 +43,7 @@ MWG
 8. Find duplicates (e.g. with `dupeguru`).
 9. Rename and sort (e.g. with own script `sortimages`).
 10. Create soft links for "albums" of chosen pictures (e.g. with NNN).
+11. Use `git-annex`.
 11. Create albums with thumbsup.
 
 ## Mount with simple-mtpfs
