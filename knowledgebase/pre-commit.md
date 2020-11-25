@@ -1,6 +1,6 @@
 ---
 title: pre-commit
-last-changed: <time>2020-09-21</time>
+last-changed: <time>2020-11-24</time>
 knowledgebase: true
 categories:
   - Linux
@@ -34,11 +34,11 @@ default_language_version:
   python: python3
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v3.2.0
+    rev: v3.3.0
     hooks:
       - id: check-added-large-files
   - repo: https://github.com/adrienverge/yamllint.git
-    rev: v1.24.2
+    rev: v1.25.0
     hooks:
       - id: yamllint
         name: YAML Lint
@@ -48,7 +48,7 @@ repos:
   - repo: https://github.com/ansible/ansible-lint.git
     # In v4.2.0 auto-detection is working, but no longer with v4.3.X
     # https://github.com/ansible/ansible-lint/issues/1049
-    rev: v4.2.0
+    rev: v4.3.7
     hooks:
       - id: ansible-lint
         name: Ansible Lint
@@ -96,8 +96,20 @@ $ git commit --no-verify
 $ SKIP=ansible-lint,yamllint git commit
 ```
 
+Uninstall from repo (either delete .git/hooks/pre-commit or reconstruct it):
+
 ```console
 $ pre-commit uninstall ~/example
-$ pre-commit clean
+```
+
+Garbage collection, delete unused repositories:
+
+```console
 $ pre-commit gc
+```
+
+Delete whole cache directory:
+
+```console
+$ pre-commit clean
 ```
