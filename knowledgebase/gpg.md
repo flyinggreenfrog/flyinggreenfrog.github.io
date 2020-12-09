@@ -1,6 +1,6 @@
 ---
 title: GPG
-last-changed: <time>2020-07-21</time>
+last-changed: <time>2020-12-09</time>
 knowledgebase: true
 categories: [Linux]
 ---
@@ -814,7 +814,9 @@ $ [gpg --delete-secret-and-public-key <KEYID>]
 Reimport key to the keyring
 
 ```sh
+$ mkdir -pv $GNUPGHOME/private-keys-v1.d
 $ gpg --import <KEYID>.sec.gpg
+$ gpg --recv-keys <KEYID>
 ```
 
 Change passphrase:
