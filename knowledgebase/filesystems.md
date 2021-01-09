@@ -1,6 +1,6 @@
 ---
 title: Filesystems
-last-changed: <time>2018-07-14</time>
+last-changed: <time>2021-01-09</time>
 knowledgebase: true
 categories: [Linux]
 ---
@@ -82,4 +82,10 @@ Change label:
 
 ``` sh
 # mkfs.vfat -n <LABEL> <PARTITION>
+```
+
+## NTFS
+
+``` sh
+# mkfs.ntfs -L <LABEL> <PARTITION>
 ```
