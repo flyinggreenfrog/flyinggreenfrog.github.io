@@ -31,7 +31,18 @@ $ rpmdev-setuptree
 $ tree ~/rpmbuild
 $ rpmdev-newspec hello-world
 $ vim hello-world.spec
-$ [rpmbuild -ba hello-world.spec
+```
+
+Build binary and source packages (keeping SOURCES/BUILD content):
+
+```console
+$ rpmbuild -ba hello-world.spec
+```
+
+Build source package first, then rebuild binary package from source package
+(deleting SOURCES/BUILD content):
+
+```console
 $ rpmbuild -bs hello-world.spec
 $ rpmbuild --rebuild ~/rpmbuild/SRPMS/hello-world-<VERSION>-<RELEASE>.src.rpm
 ```
