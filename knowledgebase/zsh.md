@@ -1,6 +1,6 @@
 ---
 title: Zsh
-last-changed: <time>2020-06-29</time>
+last-changed: <time>2021-06-04</time>
 knowledgebase: true
 categories: [Linux]
 ---
@@ -891,6 +891,12 @@ $ zmv 'pic(<1->).jpg' 'pic${(l:4::0:)$(($1 + 10))}.jpg'
 
 $ ls
 pic0011.jpg pic0012.jpg pic0013.jpg
+```
+
+Rename files that have date in name:
+
+``` sh
+$ zmv '(<->-<->-<->)_(*)' '$1_NEW_$2'
 ```
 
 ## Programming
