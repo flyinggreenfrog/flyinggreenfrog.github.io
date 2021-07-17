@@ -200,6 +200,13 @@ $ gpg --output <KEYID>.pub.gpg --dearmor <KEYID>.pub.asc
 $ gpg --output <KEYID>.sec.gpg --dearmor <KEYID>.sec.asc
 ```
 
+## SSH
+
+```console
+$ gpg --export-ssh-key <KEYID>|<MAIL> \
+  | ssh <HOST> "mkdir -pv ~/.ssh && cat >> ~/.ssh/authorized_keys"
+```
+
 ## gpg2
 
 ### Executables
@@ -356,7 +363,6 @@ ignore-cache-for-signing
 #pinentry-program /usr/bin/pinentry-gnome3
 
 enable-ssh-support
-extra-socket ~/.gnupg/S.gpg-agent.extra
 ```
 
 ## GPG fundamentals
