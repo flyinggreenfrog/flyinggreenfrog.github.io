@@ -1,55 +1,39 @@
 ---
 title: GPG
-last-changed: <time>2020-12-09</time>
+last-changed: <time>2021-07-17</time>
 knowledgebase: true
 categories: [Linux]
 ---
 ## Links
 
-* [The GNU Privacy Guard](https://gnupg.org) <time>2020-04-04</time>
-* [Wikipedia: OpenPGP](https://de.wikipedia.org/wiki/OpenPGP) <time>2020-04-04</time>
-
-* [Hauke Laging: Verschlüsselung und Signatur](http://www.hauke-laging.de/sicherheit/einfuehrung.html) <time>2018-05-06</time>
-* [Hauke Laging: OpenPGP / GnuPG](http://www.hauke-laging.de/sicherheit/openpgp.html) <time>2018-05-06</time>
-* [Phil's PGP Docs](https://www.phildev.net/pgp) <time>2018-05-06</time>
-* [OpenPGP Best Practices](https://riseup.net/en/security/message-security/openpgp/best-practices) <time>2018-05-06</time>
-* [Mike English: Getting Started with GNU Privacy Guard](https://spin.atomicobject.com/2013/09/25/gpg-gnu-privacy-guard) <time>2018-05-06</time>
-* [Creating the perfect GPG keypair](https://alexcabal.com/creating-the-perfect-gpg-keypair) <time>2018-05-06</time>
-
-* [Arch: GnuPG](https://wiki.archlinux.org/index.php/GnuPG) <time>2019-07-13</time>
-* [GPG Anleitung](https://wiki.kairaven.de/open/krypto/gpg/gpganleitung) <time>2018-05-06</time>
-
-* [Using an offline GnuPG master key](https://incenp.org/notes/2015/using-an-offline-gnupg-master-key.html) <time>2018-05-06</time>
-* [OpenPGP User ID Comments considered harmful](https://debian-administration.org/users/dkg/weblog/97) <time>2018-05-06</time>
-* [Nitrokey - Secure your digital life](https://www.nitrokey.com/de) <time>2018-05-06</time>
-* [FSFE - Card with subkeys using backups](http://wiki.fsfe.org/TechDocs/CardHowtos/CardWithSubkeysUsingBackups) <time>2018-05-06</time>
-* [The GnuPG Smartcard HOWTO](https://www.gnupg.org/howtos/card-howto/en/smartcard-howto.html) <time>2018-05-06</time>
-* [Github: jaymzh / pius](https://github.com/jaymzh/pius) <time>2018-05-06</time>
-* [Monkeysign](https://monkeysign.readthedocs.io) <time>2018-05-06</time>
-* [OpenKeychain](https://www.openkeychain.org) <time>2018-05-06</time>
-
-* [OpenPGP](https://www.openpgp.org) <time>2019-07-13</time>
-* [keys.openpgp.org](https://keys.openpgp.org) <time>2019-07-13</time>
-
-* <https://davesteele.github.io/gpg/2014/09/20/anatomy-of-a-gpg-key/>
-* <https://debian-administration.org/users/dkg/weblog/105>
-* <https://begriffs.com/posts/2016-11-05-advanced-intro-gnupg.html>
-* <https://security.stackexchange.com/questions/14718/does-openpgp-key-expiration-add-to-security>
-* <https://gist.github.com/grugq/03167bed45e774551155>
-* <https://pthree.org/2015/11/19/your-gnupg-private-key>
-* <https://www.gesellschaft-zur-entwicklung-von-dingen.de/blog/GnuPG_richtig_einsetzten.html>
-* <https://github.com/balos1/easy-gpg-to-paper>
-* <https://www.unitas-network.de/support/wiki/smartcards/openpgp-card-initialisieren/#zustzliche-identitten>
-
-## TODO
-
-* <https://jacksum.loefflmann.net/en/index.html>
-
-```sh
-$ wget https://sourceforge.net/projects/jacksum/files/jacksum/jacksum-1.7.0.zip/download
-$ java -jar jacksum.jar -a crc24 -X -q 00040F13C0F8A16C4CA8F53C0F15295DD887892FF56B
-1FC7CA	22
-```
+* [The GNU Privacy Guard](https://gnupg.org) <time>2021-07-17</time>
+* [Wikipedia: OpenPGP](https://de.wikipedia.org/wiki/OpenPGP) <time>2021-07-17</time>
+* [Hauke Laging: Verschlüsselung und Signatur](http://www.hauke-laging.de/sicherheit/einfuehrung.html) <time>2021-17-</time>
+* [Hauke Laging: OpenPGP / GnuPG](http://www.hauke-laging.de/sicherheit/openpgp.html) <time>2021-07-17</time>
+* [Phil's PGP Docs](https://www.phildev.net/pgp) <time>2021-07-17</time>
+* [OpenPGP Best Practices](https://riseup.net/en/security/message-security/openpgp/best-practices) <time>2021-07-17</time>
+* [Mike English: Getting Started with GNU Privacy Guard](https://spin.atomicobject.com/2013/09/25/gpg-gnu-privacy-guard) <time>2021-07-17</time>
+* [Creating the perfect GPG keypair](https://alexcabal.com/creating-the-perfect-gpg-keypair) <time>2021-07-17</time>
+* [Arch: GnuPG](https://wiki.archlinux.org/index.php/GnuPG) <time>2021-07-17</time>
+* [GPG Anleitung](https://wiki.kairaven.de/open/krypto/gpg/gpganleitung) <time>2021-07-17</time>
+* [Using an offline GnuPG master key](https://incenp.org/notes/2015/using-an-offline-gnupg-master-key.html) <time>2021-07-17</time>
+* [OpenPGP User ID Comments considered harmful](https://dkg.fifthhorseman.net/blog/openpgp-user-id-comments-considered-harmful.html) <time>2021-07-17</time>
+* [Nitrokey - Secure your digital life](https://www.nitrokey.com/de) <time>2021-07-17</time>
+* [FSFE - Card with subkeys using backups](http://wiki.fsfe.org/TechDocs/CardHowtos/CardWithSubkeysUsingBackups) <time>2021-07-17</time>
+* [The GnuPG Smartcard HOWTO](https://www.gnupg.org/howtos/card-howto/en/smartcard-howto.html) <time>2021-07-17</time>
+* [Github: jaymzh / pius](https://github.com/jaymzh/pius) <time>2021-07-17</time>
+* [Monkeysign](https://monkeysign.readthedocs.io) <time>2021-07-17</time>
+* [OpenKeychain](https://www.openkeychain.org) <time>2021-07-17</time>
+* [OpenPGP](https://www.openpgp.org) <time>2021-07-17</time>
+* [keys.openpgp.org](https://keys.openpgp.org) <time>2021-07-17</time>
+* [Anatomy of a GPG Key](https://davesteele.github.io/gpg/2014/09/20/anatomy-of-a-gpg-key) <time>2021-07-17</time>
+* [An Advanced Intro to GnuPG](https://begriffs.com/posts/2016-11-05-advanced-intro-gnupg.html) <time>2021-07-17</time>
+* [Does OpenPGP key expiration add to security?](https://security.stackexchange.com/questions/14718/does-openpgp-key-expiration-add-to-security) <time>2021-07-17</time>
+* [Operational PGP](https://gist.github.com/grugq/03167bed45e774551155) <time>2021-07-17</time>
+* [Your GnuPG Private Key](https://pthree.org/2015/11/19/your-gnupg-private-key) <time>2021-07-17</time>
+* [GnuPG richtig einsetzen](https://www.gesellschaft-zur-entwicklung-von-dingen.de/blog/GnuPG_richtig_einsetzen.html) <time>2021-07-17</time>
+* [easy-gpg-to-paper](https://github.com/balos1/easy-gpg-to-paper) <time>2021-07-17</time>
+* [OpenGPG Card initialisier](https://www.unitas-network.de/support/wiki/smartcards/openpgp-card-initialisieren) <time>2021-07-17</time>
 
 ## Terms
 
@@ -78,7 +62,7 @@ WoT
 
 Encrypt a file:
 
-```sh
+```console
 $ gpg -a|--armor -e|--encrypt -r|--recipient <KEYID>|<MAIL> <FILE>
 $ ls <FILE>*
 <FILE>  <FILE>.asc
@@ -93,13 +77,13 @@ $ file <FILE>.asc <FILE>.gpg
 
 Decrypt a file:
 
-```sh
-$ gpg -d|--decrypt -o|--output <DECRYPTED-FILE> <FILE>.asc
+```console
+$ gpg -d|--decrypt -o|--output <DECRYPTED_FILE> <FILE>.asc
 ```
 
 Sign a file with detached signature file:
 
-```sh
+```console
 $ gpg -a|--armor -b|--detach-sign <FILE>
 $ ls <FILE>*
 <FILE>  <FILE>.asc
@@ -113,7 +97,7 @@ $ file <FILE>.asc <FILE>.sig
 
 Verify a signature:
 
-```sh
+```console
 $ ls <FILE>*
 <FILE>  <FILE>.asc
 $ gpg --verify <FILE>.asc
@@ -122,7 +106,7 @@ $ gpg --verify <FILE>.asc
 Encrypt a file symmetrically, i.e. don't use gpg keys, but use a secret
 password:
 
-```sh
+```console
 $ gpg -a|--armor -c|--symmetric <FILE>
 $ ls <FILE>*
 <FILE>  <FILE>.asc
@@ -138,26 +122,27 @@ $ file <FILE>.asc <FILE>.gpg
 
 List public keys:
 
-```sh
+```console
 $ gpg -k|--list-keys <KEYID>|<MAIL>|<NAME>
 ```
 
 List private keys:
 
-```sh
+```console
 $ gpg -K|--list-secret-keys
 ```
 
 Show fingerprint of a key:
 
-```sh
+```console
 $ gpg --fingerprint <KEYID>|<MAIL>|<NAME>
 ```
 
 ### Work with keys from keyserver
 
-Since SKS pool keyservers have some fundamental problems, use
-`keys.opengpg.org` instead.
+Since SKS pool keyservers have some fundamental problems (a key with too many
+signatures can be unusable because of its size, and anyone can append
+signatures to someone else key), use `keys.opengpg.org` instead.
 
 ```text
 keyserver hkps://keys.openpgp.org
@@ -171,7 +156,7 @@ There are several methods to search for keys and import them.
   combination with `keys.opengpg.org`, since there is exactly one key to a mail
   published.
 
-```sh
+```console
 $ gpg --search-keys <KEYID>|<MAIL>|<NAME>
 $ gpg --recv-keys <KEYID>
 $ gpg --auto-key-locate keyserver --locate-keys <MAIL>
@@ -179,13 +164,13 @@ $ gpg --auto-key-locate keyserver --locate-keys <MAIL>
 
 Delete key after confirmation from keyring:
 
-```sh
+```console
 $ gpg --delete-keys <KEYID>|<MAIL>|<NAME>
 ```
 
 Get key updates:
 
-```sh
+```console
 $ gpg --refresh-keys
 $ gpg --recv-keys <KEYID>
 ```
@@ -195,14 +180,24 @@ keyring. Consider updating key one by one. Check out parcimonie for it.
 
 ### Conversion binary vs. ASCII format
 
-Conversion from binary to ASCII format and from ASCIIi to binary format for
-e.g. public keys can be done as follows:
+Conversion between binary and ASCII format for e.g. keys (public or private) can be done as following:
 
-```sh
+Binary to ASCII format:
+
+```console
 $ gpg --output <KEYID>.pub.asc --enarmor <KEYID>.pub.gpg
 $ sed -i -e '/^Comment:/d' -e 's|ARMORED FILE|PUBLIC KEY BLOCK|' <KEYID>.pub.asc
 
+$ gpg --output <KEYID>.sec.asc --enarmor <KEYID>.sec.gpg
+$ sed -i -e '/^Comment:/d' -e 's|ARMORED FILE|PRIVATE KEY BLOCK|' <KEYID>.sec.asc
+```
+
+ASCII to binary format:
+
+```console
 $ gpg --output <KEYID>.pub.gpg --dearmor <KEYID>.pub.asc
+
+$ gpg --output <KEYID>.sec.gpg --dearmor <KEYID>.sec.asc
 ```
 
 ## gpg2
@@ -211,14 +206,16 @@ $ gpg --output <KEYID>.pub.gpg --dearmor <KEYID>.pub.asc
 
 * gpg
 * gpgv
+  - Verify signatures
 * gpgsm
+  - Encryption and signing based on X.509 certificates
 * gpg-agent
   - Daemon to manage private keys, backend for gpg and gpgsm
 * gpgconf
 * dirmngr
   - Accessing openpgp keyservers (gpg since version 2.1)
-  - Managing crls
-  - Providing access to ocsp providers
+  - Managing CRLs
+  - Providing access to OCSP providers
 * dirmngr-client
   - access dirmngr services
 
@@ -226,6 +223,9 @@ $ gpg --output <KEYID>.pub.gpg --dearmor <KEYID>.pub.asc
 
 `GNUPGHOME`
 : If set, used instead of `~/.gnupg`
+
+`GPG_TTY`
+: reflecting used tty
 
 `GPG_AGENT_INFO`
 : Obsolete (gpg since version 2.1)
@@ -284,41 +284,43 @@ default-recipient <KEYID>
 
 # Key to encrypt to additionally to other recipients
 #encrypt-to <KEYID>
-# Same but hide this Key ID
+# Same but hide this key ID
 hidden-encrypt-to <KEYID>
 
-# Display fingerprint in compact way instead of key ID
-keyid-format none
-# Would show fingerprint in non-compact way
-#with-fingerprint
+
+# Display key ID
+# 0xlong: 16-character key ID with 0x prepended
+# none: fingerprint in compact way instead of key ID
+keyid-format 0xlong
+# Show fingerprint in non-compact way
+with-fingerprint
 # Display fingerprints for subkeys
-with-subkey-fingerprint
+#with-subkey-fingerprint
 # To compare private keys with/inside private-keys-v1.d
-with-keygrip
+#with-keygrip
 # Print key listings delimited by colons, useful for scripts/machine parsing
 #with-colons
 
-# Avoid information leaked
+# Avoid leaking information
 no-emit-version
 no-comments
 
-# Don't include keyids
+# Don't include key IDs
 # Pro:    Doesn't reveal information unnecessarily
 # Contra: May slow down decryption on receiving side, since it will try all
-#         private keys
-#   for all keys
+#         private keys for all keys
 #throw-keyids
 
 # List options
-list-options show-keyring,show-policy-urls,show-notations,show-uid-validity,show-sig-expire,show-unusable-uids,show-unusable-subkeys
+list-options show-usage,show-keyring,show-policy-urls,show-notations,show-uid-validity,show-sig-expire
 
-# Deprecated, use keyserver in dirmngr.conf instead
+# Deprecated here, use keyserver in dirmngr.conf instead
 #keyserver <KEYSERVER>
 # Options for all defined keyservers
 keyserver-options no-honor-keyserver-url include-revoked
 
 # Preferences/usage of algorithms used
-default-preference-list SHA512,SHA384,SHA256,SHA224,AES256,AES192,AES,CAST5,BZIP2,ZLIB,,ZIP,Uncompressed
+default-preference-list SHA512,SHA384,SHA256,SHA224,AES256,AES192,AES,CAST5,BZIP2,ZLIB,ZIP,Uncompressed
 personal-digest-preferences SHA512,SHA384,SHA256,SHA224
 personal-cipher-preferences AES256,AES192,AES,CAST5
 personal-compress-preferences BZIP2,ZLIB,ZIP,Uncompressed
@@ -330,8 +332,13 @@ personal-compress-preferences BZIP2,ZLIB,ZIP,Uncompressed
 ### `dirmngr.conf`
 
 ```text
+# Since SKS pool keyservers have some fundamental problems (a key with too many
+# signatures can be unusable because of its size, and anyone can append
+# signatures to someone else key), use `keys.opengpg.org` instead
+
 # Built-in default hkps://hkps.pool.sks-keyservers.net
-keyserver hkps://hkps.pool.sks-keyservers.net
+
+keyserver hkps://keys.openpgp.org
 ```
 
 ### `gpg-agent.conf`
@@ -347,6 +354,9 @@ max-cache-ttl-ssh 86400
 
 ignore-cache-for-signing
 #pinentry-program /usr/bin/pinentry-gnome3
+
+enable-ssh-support
+extra-socket ~/.gnupg/S.gpg-agent.extra
 ```
 
 ## GPG fundamentals
@@ -391,7 +401,7 @@ Algo
 
 Epoch time
 
-```sh
+```console
 $ date -d @1591685390
 ```
 
@@ -412,7 +422,7 @@ Create a key policy and publish it, e.g. on your site
 ### Thoughts about secure environment
 
 * Semi secure:
-  - Store primary key on encrypted usb device.
+  - Store primary key on encrypted (e.g. with LUKS) USB device.
   - Only bring it online for key signing purposes and mailing signed keys.
   - Have subkeys on HSM (e.g. Nitrokey) and use them from there for daily
     purposes.
@@ -428,13 +438,13 @@ second feature S and the third feature A.
 
 ### Generate GPG keys
 
-To start mount the encrypted (e.g. with LUKS) USB device, where all keys will
+To start mount the encrypted USB device, where all keys will
 be stored, especially the primary key.
 
-Use a directory on this encrypted usb device as home directory for `gpg` either
+Use a directory on this encrypted USB device as home directory for `gpg` either
 via environment variable
 
-```sh
+```console
 $ export GNUPGHOME=<USBDEVICE>/gnupg
 ```
 
@@ -442,7 +452,7 @@ or use `--homedir=<USBDEVICE>/gnupg` for every following gpg command.
 
 Then generate the primary key:
 
-```sh
+```console
 $ gpg --version
 gpg (GnuPG) 2.2.5
 [...]
@@ -467,7 +477,7 @@ Primary key:
 * Toggle off the features encryption and authentication, if not already done.
 * Signing is done in rare cases to prove ownership of this key to someone, who
   doesn't recognize subkeys.
-* After generating the primary key we will add three different subkeys with
+* After generating the primary key we will add three different subkeys with the
   different features encryption, signing and authentication.
 
 Key length:
@@ -490,7 +500,7 @@ UIDs:
   invalid in future and so we had one UID that remained valid, even if all
   E-Mail addresses would have been changed in future.
 * But with using `keys.openpgp.org` as keyserver, that doesn't make sense
-  anymore, since it only distributes UID with E-Mail address, because it relies
+  anymore, since it only distributes UIDs with E-Mail address, because it relies
   on user validation of UIDs before distributing them.
 * The comment field we leave empty, because it doesn't provide so much benefit.
 * After generating the primary key we can add additional name/E-Mail pairs.
@@ -509,7 +519,7 @@ Entropy for key generation:
 
 Add additional name/E-Mail pair:
 
-```sh
+```console
 $ gpg --edit-key <KEYID>
 gpg> adduid
 <NAME>
@@ -520,7 +530,7 @@ gpg> save
 Normally the last UID created will be the primary UID used by `gpg`. If you
 want to use another UID mainly, set it as primary UID:
 
-```sh
+```console
 $ gpg --edit-key <KEYID>
 gpg> uid <X>
 gpg> primary
@@ -530,7 +540,7 @@ gpg> save
 To add subkeys repeat the following steps for each subkey, that you want to
 generate:
 
-```sh
+```console
 $ gpg --expert --edit-key <KEYID>
 gpg> addkey
 (8) RSA (set your own capabilities)
@@ -544,7 +554,7 @@ gpg> save
 
 Remove the primary key to create laptop keys only having the subkeys:
 
-```sh
+```console
 $ gpg --output <KEYID>.ssk.gpg --export-secret-subkeys <KEYID>
 $ # Only do the following step, if you have a backup of your primary key!
 $ gpg --delete-secret-keys <KEYID>
@@ -555,7 +565,7 @@ $ shred -vu <KEYID>.ssk.gpg
 Now you can set a different passphrase (maybe only 5 instead of 7 word
 passphrase) to these subkeys to make daily usage easier:
 
-```sh
+```console
 $ gpg --edit-key <KEYID>
 gpg> passwd
 gpg> save
@@ -564,7 +574,7 @@ gpg> save
 To check, if creating a keyring with only the subkeys was successful, list the
 keys:
 
-```sh
+```console
 $ gpg --list-secret-keys <KEYID>
 ```
 
@@ -574,29 +584,27 @@ $ gpg --list-secret-keys <KEYID>
 If you don't use a HSM (e.g. Nitrokey), export the keys to be used on the
 laptop:
 
-```sh
-$ gpg --armor --output <KEYID>_laptop.pub.asc --export <KEYID>
+```console
 $ gpg --armor --output <KEYID>_laptop.sec.asc --export-secret-keys <KEYID>
 ```
 
 Be sure to now use the standard home directory for `gpg`. Then import the
 laptop keys and set the trust:
 
-```sh
+```console
 $ unset GNUPGHOME
-$ gpg --import <KEYID>_laptop.pub.asc
 $ gpg --import <KEYID>_laptop.sec.asc
 $ gpg --edit-key <KEYID> trust quit
 5 = I trust ultimately
 y
 ```
 
-Since this is your own key, you should give ultimate trust.
+Since this is your own key, you give it ultimate trust.
 
 Now you can publish the public key, either by putting it on your webserver or
 by sending it to a keyserver:
 
-```sh
+```console
 $ gpg [--keyserver hkps://keys.openpgp.org] --send-keys <KEYID>
 ```
 
@@ -610,7 +618,7 @@ subkeys, where the primary key was already removed.
 
 Setup the HSM:
 
-```sh
+```console
 $ gpg --card-status
 $ gpg --card-edit
 gpg/card> admin
@@ -628,7 +636,7 @@ gpg/card> quit
 
 Now you can transfer the subkeys to the HSM itself:
 
-```sh
+```console
 $ gpg --edit-key <KEYID>
 gpg> key X
 gpg> keytocard
@@ -647,18 +655,18 @@ be deleted, you should have made backups before even transfering the keys for
 the first time to the HSM. From an HSM itself you can't backup keys, since this
 would defeat the purpose of a HSM.
 
-```sh
+```console
 $ gpg --card-edit
 gpg/card> admin
 gpg/card> factory-reset
 gpg/card> quit
 ```
 
-After transfering the keys to a HSM and you want to use the HSM the first time
-on a laptop you first need to fetch the public key from a keyserver. If you
-have set the url in the HSM earlier, you can use the `fetch` command too:
+After transfering the keys to a HSM and if you want to use the HSM the first
+time on a laptop, you first need to fetch the public key from a keyserver. If
+you have set the url in the HSM earlier, you can use the `fetch` command too:
 
-```sh
+```console
 $ gpg --card-edit
 gpg/card> fetch
 gpg/card> quit
@@ -666,10 +674,19 @@ $ gpg --edit-key <KEYID> trust quit
 5 = I trust ultimately
 y
 $ gpg --refresh-keys <KEYID>
-$ [cd ~/.gnupg/private-keys-v1.d && rm <KEYGRIP>.key # 3x]
 ```
 
-Again, since this is your own key, you should set the trust to ultimate.
+Again, since this is your own key, set the trust to ultimate.
+
+To use a different HSM (that has the same key loaded), you must delete the key
+stub files:
+
+```console
+$ cd ~/.gnupg/private-keys-v1.d
+$ gpg --list-secret-key --with-keygrip <KEYID>
+$ # delete all (up to 3) key stub files
+$ rm <KEYGRIP>.key
+```
 
 ### Backup GPG keys
 
@@ -677,119 +694,59 @@ Creating backups of the gpg key itself only makes sense on the keyring that
 contains the primary key, not on the laptop keys nor on the HSM keys.
 Ownertrust backup instead makes also sense for the later two.
 
-Create backup of private key (for usage with `paperkey`):
+For creating backup of private key, use `--export-options export-backup`.
+It also saves trust packets.
 
-Use --export-options export-backup (it also saves trust packets)
-
-
-TODO: why not export-minimal or without option? -> all old self signatures are dropped!?
-TODO: needed for local sigs or sigs not send to keys.opengpg.org --export-options export-local
-    export-local-sigs
-
-TODO: --import-options import-restore
-
-TODO: --import-options import-local import-local-sigs
-test with paperkey export-minimal vs export-backup
-
-* backup public keys with own signatures (since keys.openpgp.org doesn't distribute them anymore)
-  - maybe just local signs?
-* With keys.openpgp.org how is key transition done?
-* After creation backup once? Or everytime the key changes?
-  - Self signatures should be retrievable from keys.openpgp.org?!
-  - Maybe password changes make new backup necessary.
-
-```sh
-$ gpg --output <KEYID>.sec.gpg --export-secret-keys --export-options export-backup <KEYID>
-$ gpg --output <KEYID>.sec.gpg --export-secret-keys --export-options export-minimal <KEYID>
+```console
+$ gpg --armor --output <KEYID>.sec.asc --export-secret-keys --export-options export-backup <KEYID>
 ```
 
 Create backup of public key (e.g. to put on webserver):
 
-```sh
+```console
 $ gpg --armor --output <KEYID>.pub.asc --export <KEYID>
-$ [gpg         --output <KEYID>.pub.gpg --export <KEYID>]
 ```
 
-Optionally create ASCII armored backups and revocation certificate:
+Optionally create revocation certificate:
 
-```sh
-$ gpg --armor --output <KEYID>.sec.asc --export-secret-keys <KEYID>
+```console
 $ gpg --armor --output <KEYID>.rev.asc --gen-revoke <KEYID>
 1 = Key has been compromised
 ```
 
-Create paper copies with own script, that uses paperkey and qrencode:
-
-```sh
-$ gpg2qrcode -k <KEYID>
-$ lpr <KEYID>.sec.pdf
-```
-
-Basically the script does the following:
-
-```sh
-$ gpg --output <KEYID>.pub.gpg --export <KEYID>
-$ gpg --output <KEYID>.sec.gpg --export-secret-keys <KEYID>
-$ paperkey --secret-key <KEYID>.sec.gpg --output <KEYID>.sec.paperkey.txt
-```
-
-* The public key `<KEYID>.pub.gpg` you can put on your webserver.
-* The paperkey `<KEYID>.sec.paperkey.txt` you can print out.
-* My own script `gpg2qrcode` qrencodes the paperkey version additionally and
-  produces a pdf to printout. This simplifies later the process of restoring.
-  Scanning and retrieving the key from the qrcode saves you a lot of typing,
-  which is error prone.
-
 Keep the following files secret and safe:
 
-* `<KEYID>.sec.gpg` (needed for usage with `paperkey`)
 * `<KEYID>.sec.asc`
 * `<KEYID>.rev.asc`
-* `<KEYID>.sec.pdf`
 
 Export owner trust:
 
-```sh
+```console
 $ gpg --export-ownertrust > otrust.txt
 ```
 
 ### Restore GPG keys
 
-To restore keys you will need the public key, e.g. from your webserver or a key
-server, and the scan of the paper copy of your key:
-
-```sh
-$ ls <KEYID>.pub.gpg
-$ qrcode2gpg -i <SCAN>.pdf -k <KEYID>
-$ ls <KEYID>.sec.recovered
-```
-
-If you have to do that manually, i.e. without the script `qrcode2gpg`, simply
-type in the paperkey text version into `<KEYID>.sec.recovered.txt`. Then
-reconstruct the key with `paperkey`:
-
-```sh
-$ paperkey --pubring <KEYID>.pub.gpg --secrets <KEYID>.sec.recovered.txt \
-  --output <KEYID>.sec.recovered
-```
-
 Decide which home directory for `gpg` you want to use. Then you can restore
 your key:
 
-```sh
+```console
 $ echo $GNUPGHOME
-$ gpg --import <KEYID>.sec.recovered
-$ gpg --edit-key <KEYID> trust quit
-5 = I trust ultimately
-y
+$ gpg --import <KEYID>.sec.asc
 ```
-
-Since this is your own key, you should give ultimate trust.
 
 Import owner trust:
 
-```sh
+```console
 $ gpg --import-ownertrust < otrust.txt
+```
+
+If you don't have ownertrust backup, give your own key ultimate trust:
+
+```console
+$ gpg --edit-key <KEYID> trust quit
+5 = I trust ultimately
+y
 ```
 
 ### Maintenance
@@ -798,13 +755,13 @@ Before any maintenance task, think about on which keyring you want to operate,
 e.g. the one on your encrypted USB device. Create new backups afterwards, if
 necessary.
 
-```sh
+```console
 $ export GNUPGHOME=<USBDEVICE>/gnupg
 ```
 
 Delete a key from the keyring:
 
-```sh
+```console
 # Only do the following, if you have backups of your own keys
 $ gpg --delete-secret-keys <KEYID>
 $ gpg --delete-keys <KEYID>
@@ -813,15 +770,15 @@ $ [gpg --delete-secret-and-public-key <KEYID>]
 
 Reimport key to the keyring
 
-```sh
+```console
 $ mkdir -pv $GNUPGHOME/private-keys-v1.d
-$ gpg --import <KEYID>.sec.gpg
-$ gpg --recv-keys <KEYID>
+$ gpg --import <KEYID>.sec.sec
+$ gpg --refresh-keys <KEYID>
 ```
 
 Change passphrase:
 
-```sh
+```console
 $ gpg --edit-key <KEYID>
 gpg> passwd
 gpg> save
@@ -829,7 +786,7 @@ gpg> save
 
 Set new expiry date:
 
-```sh
+```console
 $ gpg --edit-key <KEYID>
 gpg> key <X>
 gpg> expire
@@ -843,14 +800,14 @@ Send every public subkey!
 If you want to revoke a key, be sure if you really want to do that. You can't
 take back a revocation!
 
-```sh
+```console
 $ gpg --import <KEYID>.rev.asc
 $ gpg --send-keys <KEYID>
 ```
 
-Check secret key encryption values:
+Check secret key encryption values (gpg until version 2.1):
 
-```sh
+```console
 $ gpg --list-packets ~/.gnupg/secring.gpg
 ```
 
@@ -861,7 +818,7 @@ $ gpg --list-packets ~/.gnupg/secring.gpg
 
 Edit secret key encryption values: no longer works with new private key format
 
-```sh
+```console
 $ gpg --s2k-cipher-algo AES256 --s2k-digest-algo SHA512 \
   --s2k-mode 3 --s2k-count 65000000 --edit-key <KEYID>
 gpg> passwd
@@ -870,7 +827,7 @@ gpg> save
 
 Recheck secret key encryption values:
 
-```sh
+```console
 $ gpg --list-packets ~/.gnupg/secring.gpg
 ```
 
@@ -917,33 +874,33 @@ or `caff`.
 Before any signing task, you need your primary key, the one that you saved e.g.
 on your encrypted USB device.
 
-```sh
+```console
 $ export GNUPGHOME=<USBDEVICE>/gnupg
 ```
 
 Now get the key you want to sign:
 
-```sh
+```console
 $ gpg --search-keys <KEYID>|<MAIL>|<NAME>
 $ gpg --recv-keys <KEYID>|<MAIL>|<NAME>
 ```
 
 List the key with signatures:
 
-```sh
+```console
 $ gpg --list-sigs <KEYID>
 ```
 
 Before signing, compare fingerprints of the key you downloaded with the one on
 the keysigning papersheet to be sure you will sign the correct key:
 
-```sh
+```console
 $ gpg --fingerprint <KEYID>
 ```
 
 Now sign the key:
 
-```sh
+```console
 $ gpg --edit-key <KEYID>
 gpg> sign
 (2) I have done casual checking.
@@ -952,23 +909,23 @@ gpg> save
 
 Now either send the signed key back to a keyserver:
 
-```sh
+```console
 $ gpg --send-keys <KEYID>
 ```
 
-But it's better to export the key, encrypt for the owner and send it to him via
-E-Mail. That ensures that the owner indeed has access to the E-Mail he was
+But it's better to export the key, encrypt it for the owner and send it to him
+via E-Mail. That ensures that the owner indeed has access to the E-Mail he was
 claiming to possess:
 
-```sh
+```console
 $ gpg --armor --export <KEYID> | gpg --armor --encrypt --recipient <KEYID> - |
   mutt -s "Your signed key" <EMAIL>
 ```
 
-The user now has to import his key, that you signed, and should upload it to
+The user now has to import his key, that you signed, and should upload it to a
 keyserver by himself:
 
-```sh
+```console
 $ gpg --decrypt <ENCRYPTED_KEY> | gpg --import
 $ gpg --send-keys <KEYID>
 ```
