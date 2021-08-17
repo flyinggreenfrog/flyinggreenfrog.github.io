@@ -1,13 +1,13 @@
 ---
 title: todotxt
-last-changed: <time>2018-08-23</time>
+last-changed: <time>2021-03-21</time>
 knowledgebase: true
 categories: [Linux]
 ---
 ## Links
 
-* [todo.txt](http://todotxt.org) <time>2018-08-03</time>
-* [todo.txt-cli](https://github.com/todotxt/todo.txt-cli) <time>2018-08-03</time>
+* [todo.txt](http://todotxt.org) <time>2021-01-29</time>
+* [todo.txt-cli](https://github.com/todotxt/todo.txt-cli) <time>2021-01-29</time>
 * [todo.txt format](https://github.com/todotxt/todo.txt) <time>2018-08-03</time>
 * [A Pragmatic Guide to Getting Things Done](https://hamberg.no/gtd) <time>2018-08-03</time>
 * [Plaintext Productivity Tasks](http://plaintext-productivity.net/1-00-tasks-introduction.html) <time>2018-08-03</time>
@@ -57,10 +57,10 @@ Contexts (lists):
   - `(@everywhere)`
 * `@waitingfor`
 * `@someday` / `@maybe`
-* `@Project`: for more info about a project tag
+* `@project`: for more info about a project tag
 * Agenda contexts
-  - `@Agenda_Boss`
-  - `@Agenda_Meeting`
+  - `@agenda_<PERSON>`
+  - `@agenda_<MEETING>`
 
 Projects (tags):
 
@@ -68,13 +68,14 @@ Projects (tags):
 * `+finances`
 * `+knowledge`
 * `+personal`
+* `+family`
 * `+wife`
 * `+work`
 
 Format:
 
-``` text
-[(<PRIO>)] <DATE> @<CONTEXT> do something for +<PROJECT>
+```text
+[x] [(<PRIO>)] [<COMPLETION-DATE>] <CREATION-DATE> @<CONTEXT> do something for +<PROJECT>
 ```
 
 Tools:
@@ -83,7 +84,7 @@ Tools:
 * Trigger list
 * Read/review folder
 * Tickler file
-* Notes to tasks / Project support
+* Notes to tasks / project support
 
 Weekly Review:
 
@@ -98,29 +99,29 @@ Priorities:
 * B: tasks to plan to do today
 * C: tasks to plan to do this week
 
+## taskwarrior / timewarrior
+
 ## todo.txt-cli
 
 * `todo.txt`
 * `done.txt`
 * `report.txt`
-* `(someday.txt)`
-* `(projects.txt)`
 
 Add todo:
 
-``` sh
+```console
 $ todo.sh add|a "[@<CONTEXT>] <MYTODO> [+<PROJECT>]"
 ```
 
 Add todo to another file:
 
-``` sh
+```console
 $ todo.sh addto <DESTINATION>.txt "..."
 ```
 
 Add prioritized todo:
 
-``` sh
+```console
 $ todo.sh aa "..."
 $ todo.sh ab "..."
 $ todo.sh ac "..."
@@ -128,85 +129,85 @@ $ todo.sh ac "..."
 
 Mark todo as done:
 
-``` sh
+```console
 $ todo.sh do <TODONUMBER>
 ```
 
 Delete todo:
 
-``` sh
+```console
 $ todo.sh del|rm <TODONUMBER> [<TERM2REMOVE>]
 ```
 
 Move todo to another list:
 
-``` sh
+```console
 $ todo.sh mv <TODONUMBER> <DESTINATION> [<SOURCE>]
 ```
 
 Show todos:
 
-``` sh
+```console
 $ todo.sh list|ls [<SEARCH>]
 ```
 
 Show todos without <SEARCH>:
 
-``` sh
+```console
 $ todo.sh list|ls -<SEARCH>
 ```
 
 Show all todos including done todos:
 
-``` sh
+```console
 $ todo.sh listall|lsa [<SEARCH>]
 ```
 
 Show todos from another file:
 
-``` sh
+```console
 $ todo.sh listfile|lf <DESTINATION> [<SEARCH>]
 ```
 
 Show prioritized todos:
 
-``` sh
+```console
 $ todo.sh listpri|lsp [<PRIORITY>]
 ```
 
 Show all used contexts:
 
-``` sh
+```console
 $ todo.sh listcon|lsc
 ```
 
 Show all used projects:
 
-``` sh
+```console
 $ todo.sh listproj|lsprj
 ```
 
 Prioritize:
 
-``` sh
+```console
 $ todo.sh pri|p <TODONUMBER> <PRIORITY>
 ```
 
 Deprioritize:
 
-``` sh
+```console
 $ todo.sh pri|dp <TODONUMBER>
 ```
 
 Archive (move done todos to `done.txt` and remove blank lines):
 
-``` sh
+```console
 $ todo.sh archive
 ```
 
 Add number of open and done todos to `report.txt`:
 
-``` sh
+```console
 $ todo.sh report
 ```
 
@@ -214,14 +215,14 @@ $ todo.sh report
 
 ### edit
 
-``` sh
+```console
 $ todo.sh edit
 $ todo.sh edit <DESTINATION>
 ```
 
 ### note
 
-``` sh
+```console
 $ todo.sh note
 ```
 
@@ -231,36 +232,22 @@ Add `due:YYYY-MM-DD` to entries, while adding or editing.
 
 List due todos:
 
-``` sh
+```console
 $ todo.sh due
 $ todo.sh due 7
 ```
 
 ### revive
 
-``` sh
+```console
 $ todo.sh revive
 $ todo.sh revive <TODONUMBER>
 ```
 
-### mit
-
-``` sh
-$ todo mit
-$ todo mit add item
-```
-
 ### graph
 
-``` sh
+```console
 $ todo graph
-```
-
-### hiding
-
-``` sh
-$ todo hiding @someday
-$ todo hiding +project @in
 ```
 
 ## vim
