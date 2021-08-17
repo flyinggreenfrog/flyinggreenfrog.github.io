@@ -1,6 +1,6 @@
 ---
 title: GPG
-last-changed: <time>2021-07-17</time>
+last-changed: <time>2021-08-17</time>
 knowledgebase: true
 categories: [Linux]
 ---
@@ -692,6 +692,15 @@ $ cd ~/.gnupg/private-keys-v1.d
 $ gpg --list-secret-key --with-keygrip <KEYID>
 $ # delete all (up to 3) key stub files
 $ rm <KEYGRIP>.key
+```
+
+### Full disk encryption
+
+TODO: LUKS with nitrokey and debian
+
+```text
+# /etc/crypttab
+<NAME> <DEVICE> <KEYFILE> luks
 ```
 
 ### Backup GPG keys
