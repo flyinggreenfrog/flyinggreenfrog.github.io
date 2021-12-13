@@ -1,6 +1,6 @@
 ---
 title: GPG
-last-changed: <time>2021-08-17</time>
+last-changed: <time>2021-12-13</time>
 knowledgebase: true
 categories: [Linux]
 ---
@@ -720,6 +720,13 @@ Create backup of public key (e.g. to put on webserver):
 
 ```console
 $ gpg --armor --output <KEYID>.pub.asc --export <KEYID>
+```
+
+For usage with nitro key automatic fetch:
+
+```console
+$ gpg --output <KEYID>.pub.gpg --export <KEYID>
+
 ```
 
 Optionally create revocation certificate:
