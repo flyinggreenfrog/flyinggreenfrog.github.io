@@ -203,6 +203,8 @@ $ gpg --output <KEYID>.sec.gpg --dearmor <KEYID>.sec.asc
 ## SSH
 
 ```console
+$ echo 'enable-ssh-support' >> ~/.gnugp/gpg-agent.conf
+$ echo 'export SSH_AUTH_SOCK="$( gpgconf --list-dirs agent-ssh-socket )" >> ~/.zshrc
 $ gpg --export-ssh-key <KEYID>|<MAIL> \
   | ssh <HOST> "mkdir -pv ~/.ssh && cat >> ~/.ssh/authorized_keys"
 ```
