@@ -1,6 +1,6 @@
 ---
 title: GPG
-last-changed: <time>2021-12-13</time>
+last-changed: <time>2023-03-14</time>
 knowledgebase: true
 categories: [Linux]
 ---
@@ -209,6 +209,18 @@ $ gpg --export-ssh-key <KEYID>|<MAIL> \
   | ssh <HOST> "mkdir -pv ~/.ssh && cat >> ~/.ssh/authorized_keys"
 ```
 
+Remove ssh keys from gpg-agent:
+
+```console
+$ gpg-connect-agent
+> KEYINFO --ssh-list --ssh-fpr
+S KEYINFO <KEYID> D - - - P <FINGERPRINT> - S
+> DELETE_KEY <KEYID>
+OK
+> BYE
+OK closing connection
+```
+
 ## gpg2
 
 ### Executables
@@ -274,9 +286,6 @@ $ gpg --export-ssh-key <KEYID>|<MAIL> \
 
 `sshcontrol`
 : Used, if support for ssh agent protocol is enabled (gpg-agent)
-
-`S.gpg-agent`
-: Socket (gpg-agent)
 
 `trustdb.gpg`
 : Contains trust database, don't backup this file, but use
@@ -630,9 +639,6 @@ Setup the HSM:
 $ gpg --card-status
 $ gpg --card-edit
 gpg/card> admin
-gpg/card> passwd
-3 - change Admin PIN
-1 - change PIN
 gpg/card> name
 gpg/card> lang
 gpg/card> sex
@@ -646,15 +652,27 @@ Now you can transfer the subkeys to the HSM itself:
 
 ```console
 $ gpg --edit-key <KEYID>
-gpg> key X
+gpg> key 1
 gpg> keytocard
-gpg> key X
-gpg> key Y
+gpg> key 1
+gpg> key 2
 gpg> keytocard
-gpg> key Y
-gpg> key Z
+gpg> key 2
+gpg> key 3
 gpg> keytocard
 gpg> save
+```
+
+Changing PIN and admin PIN is only possible after keys are transfered. Changing
+admin PIN before PIN is necessary:
+
+```console
+$ gpg --card-edit
+gpg/card> admin
+gpg/card> passwd
+3 - change Admin PIN
+1 - change PIN
+gpg/card> quit
 ```
 
 If you have to reset your HSM (e.g. when admin PIN was entered incorrectly
