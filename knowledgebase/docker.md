@@ -1,6 +1,6 @@
 ---
 title: Docker
-last-changed: <time>2020-06-22</time>
+last-changed: 2023-03-28.
 knowledgebase: true
 categories: [Container, Linux]
 ---
@@ -12,7 +12,7 @@ categories: [Container, Linux]
 
 ## Setup
 
-```sh
+```console
 # yum install -y yum-utils device-mapper-persistent-data lvm2
 # yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
 # yum install docker-ce docker-ce-cli containerd.io
@@ -24,7 +24,7 @@ To avoid prepending `sudo` in front of every `docker` command, add your user to
 the `docker` group. Be aware of the security implications, as the `docker`
 group grants rights equivalent to `root`.
 
-```sh
+```console
 # usermod -a -G docker <USER>
 ```
 
@@ -77,7 +77,7 @@ group grants rights equivalent to `root`.
 
 Getting information:
 
-```sh
+```console
 $ docker -v|--version
 $ docker version
 $ docker info
@@ -85,7 +85,7 @@ $ docker info
 
 Getting help:
 
-```sh
+```console
 $ docker <CMD> --help
 $ docker help <CMD>
 $ man docker-<CMD>
@@ -93,31 +93,31 @@ $ man docker-<CMD>
 
 Execute Docker image:
 
-```sh
+```console
 $ docker run hello-world
 ```
 
 List docker images:
 
-```sh
+```console
 $ docker (image ls|images)
 ```
 
 List docker containers (runnnig, all, all in quiet mode):
 
-```sh
+```console
 $ docker (container ls|ps)
 $ docker (container ls|ps) -a
 $ docker (container ls|ps) -aq
 ```
 
-```sh
+```console
 $ docker build
 $ docker run
 $ docker tag
 ```
 
-```sh
+```console
 $ docker start
 $ docker restart
 $ docker attach
@@ -133,26 +133,26 @@ $ docker port
 
 Show logs of container:
 
-```sh
+```console
 $ docker logs <CONTAINER>
 ```
 
 Follow logs of container with timestamps:
 
-```sh
+```console
 $ docker logs -ft <CONTAINER>
 ```
 
-```sh
+```console
 $ docker login
 $ docker push
 ```
 
-```sh
+```console
 $ docker inspect
 ```
 
-```sh
+```console
 $ docker container prune
 $ docker container rm $(docker container ls -aq)
 $ docker image prune
@@ -178,10 +178,9 @@ Dockerfile instructions
 
 ### Compose
 
-
 ### Swarm
 
-```sh
+```console
 $ docker swarm init
 $ docker stack deploy
 $ docker stack ls
