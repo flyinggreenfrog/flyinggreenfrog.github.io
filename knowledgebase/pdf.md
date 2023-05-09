@@ -1,6 +1,6 @@
 ---
 title: PDF
-last-changed: <time>2020-06-16</time>
+last-changed: 2023-05-09.
 knowledgebase: true
 categories: [Linux]
 ---
@@ -28,6 +28,14 @@ Rotate:
 
 ```sh
 $ pdftk <INPUT>.pdf cat 1-endeast output <OUTPUT>.pdf
+```
+
+## mupdf
+
+Split a 2-pages per page PDF into a single-pages per page PDF:
+
+```sh
+$ mutool poster -x 2 <INPUT>.pdf <OUTPUT>.pdf
 ```
 
 ## qpdf
