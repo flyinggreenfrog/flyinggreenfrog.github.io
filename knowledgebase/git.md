@@ -1,6 +1,6 @@
 ---
 title: Git
-last-changed: <time>2020-04-29</time>
+last-changed: <time>2024-02-05</time>
 knowledgebase: true
 categories: [Linux]
 ---
@@ -23,11 +23,17 @@ Refspec
 
 ## Usage
 
+### Checkout remote branch
+
+```console
+$ git checkout -t origin/<BRANCH>
+```
+
 ### Working with forks
 
 Configure a remote for a fork:
 
-``` sh
+```console
 $ git remote -v
 $ git remote add <UPSTREAM> <URL>/<OWNER>/<ORIGINAL_REPOSITORY>.git
 $ git remote -v
@@ -35,7 +41,7 @@ $ git remote -v
 
 Sync a fork:
 
-``` sh
+```console
 $ git fetch <UPSTREAM>
 $ git checkout master|<BRANCH>
 $ git merge --ff-only upstream/master|upstream/<BRANCH>
