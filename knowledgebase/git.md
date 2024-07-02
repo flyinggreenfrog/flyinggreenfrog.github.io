@@ -1,6 +1,6 @@
 ---
 title: Git
-last-changed: <time>2024-02-05</time>
+last-changed: <time>2024-07-02</time>
 knowledgebase: true
 categories: [Linux]
 ---
@@ -47,4 +47,22 @@ $ git checkout master|<BRANCH>
 $ git merge --ff-only upstream/master|upstream/<BRANCH>
 $ # If nothing is pushed yet, you can rebase instead of merging
 $ git rebase upstream/master|upstream/<BRANCH>
+```
+
+### Split a commit into smaller ones
+
+```console
+$ git log --online
+$ git rebase -i <COMMIT-HASH-BEFORE-COMMIT-TO-BE-CHANGED>
+... pick -> edit ...
+$ git reset HEAD~1
+$ git commit
+$ [git commit]
+$ git rebase --continue
+```
+
+If something goes wrong and you want to start again:
+
+```console
+$ git rebase --abort
 ```
