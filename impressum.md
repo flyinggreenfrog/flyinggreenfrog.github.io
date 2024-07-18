@@ -1,12 +1,12 @@
 ---
 title: Impressum
-last-changed: <time>2018-05-02</time>
+last-changed: <time>2024-07-18</time>
 layout: de
 navigation-order: 100
 ---
 <p>Angaben gemäß § 5 TMG:<br><br>
 Peter Hoffmann<br>
-Leithenweg 2<br>
+Buchenweg 8<br>
 95119 Naila<br></p>
 
 <h3>Kontakt:</h3>
@@ -14,7 +14,7 @@ Leithenweg 2<br>
 
 <h3>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV:</h3>
 <p>Peter Hoffmann<br>
-Leithenweg 2<br>
+Buchenweg 8<br>
 95119 Naila<br></p>
 
 <p>Quelle: <a href="http://www.e-recht24.de/impressum-generator.html">eRecht24 Impressumgenerator</a></p>
