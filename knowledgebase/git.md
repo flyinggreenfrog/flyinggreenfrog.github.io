@@ -52,7 +52,7 @@ $ git rebase upstream/master|upstream/<BRANCH>
 ### Split a commit into smaller ones
 
 ```console
-$ git log --online
+$ git log --oneline
 $ git rebase -i <COMMIT-HASH-BEFORE-COMMIT-TO-BE-CHANGED>
 ... pick -> edit ...
 $ git reset HEAD~1
@@ -65,4 +65,13 @@ If something goes wrong and you want to start again:
 
 ```console
 $ git rebase --abort
+```
+
+### Delete a specific commit
+
+```console
+$ git log --oneline
+$ git rebase -i <COMMIT-HASH-BEFORE-COMMIT-TO-BE-DELETED>
+... pick -> drop ...
+$
 ```
