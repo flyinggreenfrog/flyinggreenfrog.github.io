@@ -21,6 +21,11 @@ ui:
     - path: .nojekyll
     - path: partials/header-content.hbs
       contents: ./supplemental-ui/partials/header-content.hbs
+    - path: partials/footer-content.hbs
+      contents: |
+        <footer class="footer">
+          <p>Copyright (C) <a href="https://github.com/flyinggreenfrog">flyinggreenfrog</a></p>
+        </footer>
 asciidoc:
   attributes:
     experimental: ''
