@@ -2,7 +2,7 @@
 site:
   title: Flyinggreenfrog
   url: https://flyinggreenfrog.github.io
-  start_page: flyinggreenfrog::index.adoc
+  start_page: ROOT::index.adoc
 content:
   sources:
     - url: https://github.com/flyinggreenfrog/flyinggreenfrog.github.io.git
