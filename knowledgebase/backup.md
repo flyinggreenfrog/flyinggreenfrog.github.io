@@ -1,16 +1,17 @@
 ---
 title: Backup
-last-changed: <time>2020-04-24</time>
+last-changed: <time>2023-02-17</time>
 knowledgebase: true
 categories: [Linux]
 ---
 ## Links
 
-* [Borg - Deduplicating Archiver](https://www.borgbackup.org) <time>2019-06-17</time>
-* [Borg Documentation](https://borgbackup.readthedocs.io) <time>2019-06-17</time>
-* [Borg - Linux Backup Tool featured Deduplicating, Compression and Encryption](https://linoxide.com/linux-how-to/borg-backup-linux-tool) <time>2019-06-17</time>
-* [System- und Dateibackup mit Borg](https://www.pro-linux.de/artikel/2/1918/system-und-dateibackup-mit-borg.html) <time>2019-06-17</time>
-* [The Tao of Backup](http://www.taobackup.com) <time>2019-06-17</time>
+* [Borg - Deduplicating Archiver](https://www.borgbackup.org) <time>2023-02-17</time>
+* [Borg Documentation](https://borgbackup.readthedocs.io) <time>2023-02-17</time>
+* [borgmatic](https://torsion.org/borgmatic) <time>2023-02-17</time>
+* [Borg - Linux Backup Tool featured Deduplicating, Compression and Encryption](https://linoxide.com/linux-how-to/borg-backup-linux-tool) <time>2023-02-17</time>
+* [System- und Dateibackup mit Borg](https://www.pro-linux.de/artikel/2/1918/system-und-dateibackup-mit-borg.html) <time>2023-02-17</time>
+* [The Tao of Backup](http://www.taobackup.com) <time>2023-02-17</time>
 
 ## General
 
@@ -44,11 +45,17 @@ Excludes:
 
 Don't backup BTRFS `/.snapshots` due to size problems with restore.
 
+## borgmatic
+
+```console
+# borgmatic init --encryption keyfile-blake2
+```
+
 ## borg
 
 Help:
 
-```sh
+```console
 # borg help compression
 # borg help patterns
 # borg help placeholders
@@ -69,7 +76,7 @@ For me I choose zstd,3 from now on.
 
 Set some environment variables, that borg commands will use:
 
-```sh
+```console
 # export BORG_PASSPHRASE='<SECRET>'
 # export BORG_REPO='backup@<SERVER>:borgbackup/<HOSTNAME>'
 # export BORG_RSH='ssh -oBatchMode=yes'
@@ -84,13 +91,13 @@ command="borg serve --restrict-to-path <PATH> --append-only",restrict ssh-rsa <K
 
 Initialize repo:
 
-```sh
+```console
 # borg init --encryption repokey|keyfile|repokey-blake2|keyfile-blake2
 ```
 
 Make backup:
 
-```sh
+```console
 # borg create \
   --verbose \
   --stats \
@@ -118,7 +125,7 @@ Make backup:
 
 Check all backups:
 
-```sh
+```console
 # borg check \
   --verbose \
   --show-rc
@@ -126,7 +133,7 @@ Check all backups:
 
 List backups:
 
-```sh
+```console
 # borg list
 # borg list ::'<ARCHIVE>'
 # borg list -P|--prefix <PREFIX>
@@ -134,14 +141,14 @@ List backups:
 
 Delete old backups:
 
-```sh
+```console
 # borg -v delete ::'<ARCHIVE>'
 # borg -v delete -P|--prefix <PREFIX>
 ```
 
 Mount backup (partial restore):
 
-```sh
+```console
 # borg mount --verbose [-P|--prefix <PREFIX>] :: /mnt
 # borg mount --verbose ::'<ARCHIVE>' /mnt
 # ls /mnt
@@ -150,7 +157,7 @@ Mount backup (partial restore):
 
 Extract (borg extracts normally to current working dir):
 
-```sh
+```console
 # cd / && borg extract \
   --sparse \
   --list \
@@ -170,7 +177,7 @@ Extract (borg extracts normally to current working dir):
 
 Backup encryption key:
 
-```sh
+```console
 # borg key export --qr-html :: <PAPERKEYFILE>
 # borg key export --paper :: <PAPERKEYFILE>
 # borg key export :: <KEYFILE>
@@ -178,14 +185,14 @@ Backup encryption key:
 
 Restore backup encryption key:
 
-```sh
+```console
 # borg key import --paper ::
 # borg key import :: <KEYFILE>
 ```
 
 Change passphrase:
 
-```sh
+```console
 # borg key change-passphrase -v ::
 # BORG_PASSPHRASE=<OLD> BORG_NEW_PASSPHRASE=<NEW> borg key change-passphrase ::
 ```
