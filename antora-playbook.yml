@@ -21,4 +21,4 @@ ui:
       contents: ./supplemental-ui/partials/header-content.hbs
 asciidoc:
   attributes:
-    experimental:
+    experimental: ''
