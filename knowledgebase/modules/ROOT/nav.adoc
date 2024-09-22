@@ -1,3 +1,6 @@
-.Knowledgebase
 * xref:index.adoc[]
-* xref:git.adoc[]
+* Knowledgebase
++
+--
+include:partial$knowledgebase.adoc[]
+--
