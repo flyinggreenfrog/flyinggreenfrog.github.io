@@ -17,6 +17,15 @@ ui:
     - path: .nojekyll
     - path: partials/header-content.hbs
       contents: ./supplemental-ui/partials/header-content.hbs
+    - path: partials/nav.hbs
+      contents: |
+        <div class="nav-container"{{#if page.component}} data-component="{{page.component.name}}" data-version="{{page.version}}"{{/if}}>
+          <aside class="nav">
+            <div class="panels">
+        {{> nav-menu}}
+            </div>
+          </aside>
+        </div>
     - path: partials/footer-content.hbs
       contents: |
         <footer class="footer">
