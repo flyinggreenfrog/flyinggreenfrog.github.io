@@ -19,3 +19,6 @@ ui:
     - path: .nojekyll
     - path: partials/header-content.hbs
       contents: ./supplemental-ui/partials/header-content.hbs
+asciidoc:
+  attributes:
+    experimental:
