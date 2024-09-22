@@ -1,3 +1,0 @@
-.Knowledgebase
-* xref:apache.adoc[]
-* xref:git.adoc[]
