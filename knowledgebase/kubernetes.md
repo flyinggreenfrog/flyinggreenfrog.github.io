@@ -1,20 +1,25 @@
 ---
 title: Kubernetes
-last-changed: <time>2020-03-16</time>
+last-changed: <time>2023-02-15</time>
 knowledgebase: true
 categories: [Container, Linux]
 ---
 ## Links
 
-* [kubernetes: Concepts](https://kubernetes.io/docs/concepts) <time>2020-03-10</time>
+* [kubernetes: Concepts](https://kubernetes.io/docs/concepts) <time>2023-02-01</time>
+* [kubernetes: Glossary](https://kubernetes.io/docs/reference/glossary/?fundamental=true) <time>2023-02-01</time>
+* [kubernetes: Kubernetes Basics](https://kubernetes.io/docs/tutorials/kubernetes-basics) <time>2023-02-01</time>
+
 * [kubectl](https://kubectl.docs.kubernetes.io) <time>2020-03-11</time>
 * [minikube: Getting Started / Linux](https://minikube.sigs.k8s.io/docs/start/linux) <time>2020-03-10</time>
 * [kubernetes: Hello Minikube](https://kubernetes.io/docs/tutorials/hello-minikube) <time>2020-03-10</time>
-* [kubernetes: Kubernetes Basics](https://kubernetes.io/docs/tutorials/kubernetes-basics) <time>2020-03-10</time>
 * [kubernetes: Install Minikube](https://kubernetes.io/docs/tasks/tools/install-minikube) <time>2019-06-14</time>
 * [kubernetes: Running Kubernetes Locally via Minikube](https://kubernetes.io/docs/setup/minikube) <time>2018-06-23</time>
-* [helm: Documentation](https://docs.helm.sh) <time>2018-06-23</time>
+* [helm: Documentation](https://docs.helm.sh) <time>2023-02-14</time>
 * [k3s: lightweight kubernetes](https://k3s.io) <time>2019-06-14</time>
+
+* [Operator Framework on Kubernetes](https://cloud.redhat.com/blog/introducing-the-operator-framework) <time>2023-02-15</time>
+* [Kubernetes Operator](https://www.redhat.com/de/topics/containers/what-is-a-kubernetes-operator) <time>2023-02-15</time>
 
 ## Terms
 
@@ -26,41 +31,65 @@ PLEG
 
 ## Concepts
 
-Kubernetes Master processes:
+K8s cluster: at least on worker node
+
+Control plane components:
 
 * kube-apiserver
-* kube-controller-manager
+* etcd
 * kube-scheduler
-* (cloud-controller-manager: release 1.6)
+* kube-controller-manager
+  - Node controller
+  - Job controller
+  - EndpointSlice controller
+  - ServiceAccount controller
+* optional: cloud-controller-manager
+  - Node controller
+  - Route controller
+  - Service controller
 
-Non-master nodes / worker (previously minions):
+Node components (worker):
 
 * kubelet
 * kube-proxy
-* <CONTAINER-RUNTIME>: docker, containerd, CRI-O, rkt
+* Container runtime: containerd, CRI-O, rkt, (docker)
 
-Basic Objects
+Kubernetes object management:
+
+* Imperative commands
+* Imperative object configuration
+* Declarative object configuration
+
+Basic Objects:
 
 * Pod
-  - One ore more container
-  - Shared storage
-  - Network
+  - One ore more container with shared namespaces
+  - Shared storage (volumes)
+  - Network (IP addresses)
 * Service
   - Logical set of pods
   - external traffic
   - load balancing
+  - service discovery
 * Volume
 * Namespace
 
-Controllers
+Controllers:
 
+* Deployment
 * (ReplicationController: historisch)
 * ReplicaSet
-* Deployment
 * StatefulSet
 * DaemonSet
 * Job
 * CronJob
+
+Pod:
+
+* Pod phase (status)
+* Container states
+* Pod conditions
+
 
 ## Setup
 
