@@ -19,6 +19,9 @@ ui:
         static_files:
           - .nojekyll
     - path: .nojekyll
+    - path: partials/header.hbs
+      contents: |
+        {{> header-scripts }}
     - path: partials/header-content.hbs
       contents: ./supplemental-ui/partials/header-content.hbs
     - path: partials/footer-content.hbs
