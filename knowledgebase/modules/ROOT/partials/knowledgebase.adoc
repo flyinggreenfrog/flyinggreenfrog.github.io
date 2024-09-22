@@ -1,2 +1,2 @@
-* xref:apache[]
-* xref:git[]
+* xref:apache.adoc[]
+* xref:git.adoc[]
