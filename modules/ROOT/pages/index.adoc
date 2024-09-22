@@ -1,3 +1,3 @@
 = Home
 
-include::partial$knowledgebase_nav.adoc[]
+include::partial$nav/knowledgebase.adoc[]
