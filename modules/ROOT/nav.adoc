@@ -1,1 +1,5 @@
+.Knowledgebase
+* xref:apache.adoc[]
+* xref:git.adoc[]
+
 include::partial$knowledgebase_nav.adoc[]
