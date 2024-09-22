@@ -1,6 +1,2 @@
-* xref:index.adoc[]
-* Knowledgebase
-+
---
-include:partial$knowledgebase.adoc[]
---
+.xref:index.adoc[]
+include::partial$knowledgebase.adoc[]
