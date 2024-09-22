@@ -4,13 +4,15 @@ Git Overview
 
 == Git Commands
 
+=== Rename default branch
+
 [,shell]
 ----
 $ git branch -m master main
 $ git push -u origin main
 ----
 
-[,bash]
-----
-$ git branch -u origin/main main
-----
+=== Github: Rename default branch
+
+On Github select menu:Settings[General -> Default branch] and rename default
+branch.
