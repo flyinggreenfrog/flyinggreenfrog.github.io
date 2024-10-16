@@ -5,7 +5,7 @@ last-changed: 2024-10-16.
 == Links
 
 * https://docs.ansible.com/ansible[Ansible Documentation] (2024-10-16)
-* https://docs.ansible.com/ansible/latest/user_guide/index.html[Ansible
+* https://docs.ansible.com/ansible/latest/user_guide/index.html[Ansible Documentation: User Guide] (2024-10-16)
 
 == Ansible
 
