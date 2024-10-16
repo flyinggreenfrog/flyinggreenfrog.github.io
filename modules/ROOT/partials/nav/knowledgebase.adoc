@@ -1,3 +1,4 @@
 .Knowledgebase
+* xref:knowledgebase/ansible.adoc[]
 * xref:knowledgebase/apache.adoc[]
 * xref:knowledgebase/git.adoc[]
