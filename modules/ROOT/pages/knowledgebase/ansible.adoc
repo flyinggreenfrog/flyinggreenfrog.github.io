@@ -2,6 +2,11 @@
 
 last-changed: 2024-10-16.
 
-== Ansible Overview
-
 == Links
+
+* https://docs.ansible.com/ansible[Ansible Documentation] (2024-10-16)
+* https://docs.ansible.com/ansible/latest/user_guide/index.html[Ansible
+
+== Ansible
+
+== AWX
