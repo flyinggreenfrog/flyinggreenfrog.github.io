@@ -14,8 +14,10 @@ ui:
       contents: |
         static_files:
           - .nojekyll
-          - gpg/0x295DD887892FF56B.pub.gpg
+          - gpg
     - path: .nojekyll
+    - path: gpg
+      contents: ./gpg
     - path: partials/header-content.hbs
       contents: ./supplemental-ui/partials/header-content.hbs
     - path: partials/nav.hbs
