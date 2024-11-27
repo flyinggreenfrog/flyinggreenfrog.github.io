@@ -15,9 +15,24 @@ ui:
         static_files:
           - .nojekyll
           - gpg/0x295DD887892FF56B.pub.gpg
+          - gpg/0x295DD887892FF56B.pub.asc
+          - gpg/0x4EFF1B9A87D6DBB0.pub.gpg
+          - gpg/0x4EFF1B9A87D6DBB0.pub.asc
+          - gpg/0x909B4900403C82BE.pub.gpg
+          - gpg/0x909B4900403C82BE.pub.asc
     - path: .nojekyll
     - path: gpg/0x295DD887892FF56B.pub.gpg
       contents: ./supplemental-ui/gpg/0x295DD887892FF56B.pub.gpg
+    - path: gpg/0x295DD887892FF56B.pub.asc
+      contents: ./supplemental-ui/gpg/0x295DD887892FF56B.pub.asc
+    - path: gpg/0x4EFF1B9A87D6DBB0.pub.gpg
+      contents: ./supplemental-ui/gpg/0x4EFF1B9A87D6DBB0.pub.gpg
+    - path: gpg/0x4EFF1B9A87D6DBB0.pub.asc
+      contents: ./supplemental-ui/gpg/0x4EFF1B9A87D6DBB0.pub.asc
+    - path: gpg/0x909B4900403C82BE.pub.gpg
+      contents: ./supplemental-ui/gpg/0x909B4900403C82BE.pub.gpg
+    - path: gpg/0x909B4900403C82BE.pub.asc
+      contents: ./supplemental-ui/gpg/0x909B4900403C82BE.pub.asc
     - path: partials/header-content.hbs
       contents: ./supplemental-ui/partials/header-content.hbs
     - path: partials/nav.hbs

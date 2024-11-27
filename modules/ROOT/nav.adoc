@@ -1,1 +1,4 @@
 include::partial$nav/knowledgebase.adoc[]
+
+.GPG
+* xref:gpg/index.adoc[]
