@@ -1,6 +1,6 @@
 = Ansible
 
-last-changed: 2024-10-16.
+last-changed: 2024-10-17.
 
 == Links
 
@@ -8,6 +8,7 @@ last-changed: 2024-10-16.
 * https://docs.ansible.com/ansible/latest/user_guide/index.html[Ansible Documentation: User Guide] (2024-10-16)
 * https://docs.ansible.com/ansible/latest/collections_guide/index.html[Ansible Documentation: Using Ansible collections] (2024-10-16)
 * https://docs.ansible.com/ansible/latest/dev_guide/developing_collections.html[Ansible Documentation: Developing collections] (2024-10-16)
+* https://docs.ansible.com/ansible/latest/getting_started_ee/index.html[Ansible Documentation: Getting started with Execution Environments] (2024-10-17)
 * https://galaxy.ansible.com[Ansible Galaxy] (2024-10-16)
 * https://docs.ansible.com/ansible/latest/galaxy/user_guide.html[Ansible Galaxy: User Guide] (2024-10-16)
 
