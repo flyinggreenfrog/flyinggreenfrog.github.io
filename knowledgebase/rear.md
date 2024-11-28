@@ -60,8 +60,8 @@ SSH_ROOT_PASSWORD=<PASSWORD>
 ```text
 BACKUP=REQUESTRESTORE
 OUTPUT=USB
-USB_DEVICE=/dev/disk/by-label/REAR-001
-USB_DEVICE_FILESYSTEM_LABEL=REAR-001
+USB_DEVICE=/dev/disk/by-label/REAR-003
+USB_DEVICE_FILESYSTEM_LABEL=REAR-003
 USB_RETAIN_BACKUP_NR=10
 ```
 
@@ -77,13 +77,13 @@ borgmatic takes care of the backup itself.
 Prepare USB device as rear medium:
 
 ```console
-# rear -v format -C usb <DEV>
+# rear -v format -C usb-wd -- -b <DEV>
 ```
 
 Making rescue medium:
 
 ```console
-# rear -v -C usb mkrescue
+# rear -v -C usb-wd mkrescue
 ```
 
 ### ISO - create
@@ -166,10 +166,17 @@ EOF
 REAR# cat << EOF > /etc/borgmatic/.passphrase
 <BORGPASSPHRASE>
 EOF
+REAR# mkdir -pv /media/REAR-003
+REAR# mount /dev/disk/by-label/REAR-003 /media/REAR-003
+REAR# bm3 rinfo
+
 REAR# borgmatic info
 REAR# borgmatic list
+REAR# borgmatic list --archive latest --path boot/
 REAR# cd /mnt/local
 REAR# mount -o remount,rw /dev/sdb1 /mnt/local/boot
+REAR# bm3 -v 1 extract --archive latest
+
 REAR# borgmatic -v 1 extract --repository <REPO> --archive latest
 REAR# exit
 ```

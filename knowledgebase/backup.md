@@ -20,9 +20,10 @@ read permission problems).
 
 Paths to separately backup:
 
-* `/` (without `/home/*` and `/srv/*`)
-* `/srv`
+* `/` (without `/boot/*`, `/home/*` and `/srv/*`)
+* `/boot`
 * `/home`
+* `/srv`
 
 Excludes:
 
@@ -48,8 +49,20 @@ Don't backup BTRFS `/.snapshots` due to size problems with restore.
 ## borgmatic
 
 ```console
-# borgmatic init --encryption keyfile-blake2
+# findmnt /media/REAR-003
+# mkdir -pv /media/REAR-003/backup/borg
+# cp /etc/borgmatic.d/{hetzner,usb-wd}.yaml
+# borgmatic -c /etc/borgmatic.d/usb-wd.yaml init -e keyfile-blake2
+
+# # Save to gopass on controller
+# borgmatic -c /etc/borgmatic.d/usb-wd.yaml key export
+# # Copy and paste
+
+# # do backup
+# borgmatic -c /etc/borgmatic.d/usb-wd.yaml prune compact create --verbosity -1 --syslog-verbosity 1
 ```
+
+
 
 ## borg
 
